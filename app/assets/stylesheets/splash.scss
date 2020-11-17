@@ -3,20 +3,41 @@
 div#splash {
   background-color: $sc-white;
   color: $sc-dark-black;
+  text-align: center;
+
+  p#message1 {
+    font-size: 35px;
+  }
+
+  p#message2 {
+    font-size: 25px;
+    margin: 10px;
+  }
 
   button#create-account-button {
     color: $sc-white;
     background-color: $sc-orange;
-    padding: 20px;
+    border: none;
+    font-size: 15px;
+    padding: 10px 30px;
+    margin: 10px;
   }
 
   div#signin_message {
     display: flex;
+    flex-direction: row;
+    justify-content: center;
     align-items: center;
+    margin: 10px;
+
+    p#message3 {
+      font-size: 15px;
+    }
 
     button#sign-in-button {
       background-color: $sc-white;
       border-color: $sc-light-grey;
+      padding: 10px 10px;
     }
   }
 }
