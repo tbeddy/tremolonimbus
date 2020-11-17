@@ -5,6 +5,10 @@ $sc-light-black: #CBCBCB;
 $sc-dark-black: #111111;
 $sc-white: #FFFFFF;
 
+main {
+  height: 100%;
+}
+
 #app-div {
   background: $sc-light-grey;
   font-family: Arial, Helvetica, sans-serif;
@@ -16,8 +20,23 @@ button {
   border-style: solid;
   border-width: 1px;
   border-radius: 3px;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
-button:hover {
-  cursor: pointer;
+button.create-account-button {
+  color: $sc-white;
+  background-color: $sc-orange;
+  border: none;
+  font-size: 15px;
+  padding: 10px 30px;
+  margin: 10px;
+}
+
+button.sign-in-button {
+  background-color: $sc-white;
+  border-color: $sc-light-grey;
+  padding: 10px 10px;
 }

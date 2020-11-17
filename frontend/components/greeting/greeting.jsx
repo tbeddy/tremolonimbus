@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export default ({ currentUser, logout }) => {
+export default ({ currentUser, logout, openModal }) => {
   return currentUser ? (
     <div className="greeting-bar">
       <div>TremoloNimbus</div>
@@ -13,9 +13,14 @@ export default ({ currentUser, logout }) => {
   ) : (
     <div className="greeting-bar">
       <div>TremoloNimbus</div>
-      <Link to="/signup">Sign Up</Link>
-      <br />
-      <Link to="/login">Log In</Link>
+      <button
+        className="sign-in-button"
+        onClick={() => openModal('login')}
+      >Sign in</button>
+      <button
+        className="create-account-button"
+        onClick={() => openModal('signup')}
+      >Create account</button>
     </div>
   );
 }

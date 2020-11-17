@@ -14,13 +14,8 @@ div#splash {
     margin: 10px;
   }
 
-  button#create-account-button {
-    color: $sc-white;
-    background-color: $sc-orange;
-    border: none;
-    font-size: 15px;
-    padding: 10px 30px;
-    margin: 10px;
+  button.create-account-button {
+    // TODO: put custom padding here
   }
 
   div#signin_message {
@@ -34,10 +29,8 @@ div#splash {
       font-size: 15px;
     }
 
-    button#sign-in-button {
-      background-color: $sc-white;
-      border-color: $sc-light-grey;
-      padding: 10px 10px;
+    button.sign-in-button {
+      // TODO: put custom padding here
     }
   }
 }
