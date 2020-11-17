@@ -7,7 +7,17 @@ const Auth = ({ component: Component, path, loggedIn, exact }) => (
     path={path}
     exact={exact}
     render={props =>
-      !loggedIn ? <Component {...props} /> : <Redirect to="/" />
+      !loggedIn ? <Component {...props} /> : <Redirect to="/stream" />
+    }
+  />
+);
+
+const Protected = ({ component: Component, path, loggedIn, exact }) => (
+  <Route
+    path={path}
+    exact={exact}
+    render={props =>
+      loggedIn ? <Component {...props} /> : <Redirect to="/" />
     }
   />
 );
@@ -18,4 +28,8 @@ const mStP = state => {
 
 export const AuthRoute = withRouter(
   connect(mStP, null)(Auth)
+);
+
+export const ProtectedRoute = withRouter(
+  connect(mStP, null)(Protected)
 );
