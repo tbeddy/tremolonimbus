@@ -1,0 +1,22 @@
+@import './core.scss';
+
+div#splash {
+  background-color: $sc-white;
+  color: $sc-dark-black;
+
+  button#create-account-button {
+    color: $sc-white;
+    background-color: $sc-orange;
+    padding: 20px;
+  }
+
+  div#signin_message {
+    display: flex;
+    align-items: center;
+
+    button#sign-in-button {
+      background-color: $sc-white;
+      border-color: $sc-light-grey;
+    }
+  }
+}
