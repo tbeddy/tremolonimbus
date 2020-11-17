@@ -16,7 +16,9 @@ export default () => {
         </button>
       </Link>
       <div id="signin_message">
-        <p>Already have an account?</p>
+        <p id="message3">
+          Already have an account?
+        </p>
         <Link to="/login">
           <button id="sign-in-button">
             Sign in
