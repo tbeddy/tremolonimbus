@@ -1,0 +1,8 @@
+@import './core.scss';
+
+.greeting-bar {
+  display: flex;
+  justify-content: space-between;
+  background-color: $sc-dark-grey;
+  color: $sc-white;
+}
