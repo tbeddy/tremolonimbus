@@ -5,6 +5,11 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <script type="text/javascript">
+      window.logoURL = "<%= image_url('sclogo.png') %>";
+      window.logoWithNameURL = "<%= image_url('sclogo_w_name.png') %>";
+    </script>
+
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
   </head>
