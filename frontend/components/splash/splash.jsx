@@ -1,7 +1,6 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';;
 
-export default () => {
+export default ({ openModal }) => {
   return (
     <div id="splash">
       <p id="message1">
@@ -10,12 +9,10 @@ export default () => {
       <p id="message2">
         Save tracks, follow artists and build playlists. All for free.
       </p>
-      <Link to="/signup">
-        <button
-          className="create-account-button"
-          onClick={() => openModal('signup')}
-        >Create account</button>
-      </Link>
+      <button
+        className="create-account-button"
+        onClick={() => openModal('signup')}
+      >Create account</button>
       <div id="signin_message">
         <p id="message3">
           Already have an account?
@@ -25,71 +22,6 @@ export default () => {
           onClick={() => openModal('login')}
         >Sign in</button>
       </div>
-      <p>a</p>
-      <p>a</p>
-      <p>a</p>
-      <p>a</p>
-      <p>a</p>
-      <p>a</p>
-      <p>a</p>
-      <p>a</p>
-      <p>a</p>
-      <p>a</p>
-      <p>a</p>
-      <p>a</p>
-      <p>a</p>
-      <p>a</p>
-      <p>a</p>
-      <p>a</p>
-      <p>a</p>
-      <p>a</p>
-      <p>a</p>
-      <p>a</p>
-      <p>a</p>
-      <p>a</p>
-      <p>a</p>
-      <p>a</p>
-      <p>a</p>
-      <p>a</p>
-      <p>a</p>
-      <p>a</p>
-      <p>a</p>
-      <p>a</p>
-      <p>a</p>
-      <p>a</p>
-      <p>a</p>
-      <p>a</p>
-      <p>a</p>
-      <p>a</p>
-      <p>a</p>
-      <p>a</p>
-      <p>a</p>
-      <p>a</p>
-      <p>a</p>
-      <p>a</p>
-      <p>a</p>
-      <p>a</p>
-      <p>a</p>
-      <p>a</p>
-      <p>a</p>
-      <p>a</p>
-      <p>a</p>
-      <p>a</p>
-      <p>a</p>
-      <p>a</p>
-      <p>a</p>
-      <p>a</p>
-      <p>a</p>
-      <p>a</p>
-      <p>a</p>
-      <p>a</p>
-      <p>a</p>
-      <p>a</p>
-      <p>a</p>
-      <p>a</p>
-      <p>a</p>
-      <p>a</p>
-      <p>a</p>
     </div>
   )
 }
