@@ -25,7 +25,7 @@ function Modal({ modal, closeModal }) {
         {component}
       </div>
     </div>
-  );
+  )
 }
 
 const mStP = state => {

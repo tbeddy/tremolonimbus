@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import SessionForm from './session_form';
 import { login } from '../../actions/session_actions';
+import { closeModal } from '../../actions/modal_actions';
 
 const mStP = (state, ownProps) => {
   return {
@@ -11,7 +12,8 @@ const mStP = (state, ownProps) => {
 
 const mDtP = (dispatch, ownProps) => {
   return {
-    processForm: (user) => dispatch(login(user))
+    processForm: (user) => dispatch(login(user)),
+    closeModal: () => dispatch(closeModal())
   }
 }
 

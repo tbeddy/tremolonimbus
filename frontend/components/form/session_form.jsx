@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 class SessionForm extends React.Component {
   constructor(props) {
@@ -21,57 +20,50 @@ class SessionForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.processForm({ user: this.state });
+    this.props.processForm({ user: this.state })
+      .then(this.props.closeModal);
   }
 
   render() {
     const header = this.props.formType === "signup" ? "Sign Up" : "Log In";
-    const otherLink = this.props.formType === "signup" ? "login" : "signup";
     const errorList = this.props.errors.session.map((error, idx) => (
       <li key={idx}>
         {error}
       </li>
     ));
     const emailInput = this.props.formType === "login" ? null : (
-      <div>
-        <label>Email:
-          <input
-            type="text"
-            value={this.state.email}
-            onChange={this.handleChange('email')}
-          />
-        </label>
-        <br />
-      </div>
+      <input
+        type="text"
+        value={this.state.email}
+        placeholder="Your Email"
+        onChange={this.handleChange('email')}
+      />
     );
     return (
-      <>
-        <h3>{header}</h3>
-        <Link to={`/${otherLink}`} />
+      <div className="form-container">
         <ul>
           {errorList}
         </ul>
-        <form onSubmit={this.handleSubmit}>
-          <label>Username:
-            <input
-              type="text"
-              value={this.state.username}
-              onChange={this.handleChange('username')}
-            />
-          </label>
-          <br />
+        <form
+          className="session-form"
+          onSubmit={this.handleSubmit}
+        >
+          <input
+            type="text"
+            value={this.state.username}
+            placeholder="Your Username"
+            onChange={this.handleChange('username')}
+          />
           {emailInput}
-          <label>Password:
-            <input
-              type="password"
-              value={this.state.password}
-              onChange={this.handleChange('password')}
-            />
-            <br />
-            <button>{header}</button>
-          </label>
+          <input
+            type="password"
+            value={this.state.password}
+            placeholder="Your Password"
+            onChange={this.handleChange('password')}
+          />
+          <button>{header}</button>
         </form>
-      </>
+      </div>
     )
   }
 }
