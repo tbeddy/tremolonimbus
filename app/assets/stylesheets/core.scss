@@ -5,12 +5,17 @@ $sc-light-black: #CBCBCB;
 $sc-dark-black: #111111;
 $sc-white: #FFFFFF;
 
+$sidebar-padding: 17%;
+
 #app-div {
   background: $sc-light-grey;
   font-family: Arial, Helvetica, sans-serif;
-  padding-left: 15%;
-  padding-right: 15%;
   height: 100vh;
+}
+
+.content {
+  padding-left: $sidebar-padding;
+  padding-right: $sidebar-padding;
 }
 
 button {

@@ -6,9 +6,24 @@
   align-items: center;
   background-color: $sc-dark-grey;
   color: $sc-white;
+  height: 45px;
+  padding-left: $sidebar-padding;
+  padding-right: $sidebar-padding;
 
-  .sign-in-button {
-    background-color: rgba($color: #000000, $alpha: 0.0);;
-    color: $sc-white;
+  a {
+    height: inherit;
+    img.logo-img {
+      height: inherit;
+    }
+  }
+
+  .nav-buttons {
+    .sign-in-button {
+      background-color: rgba($color: #000000, $alpha: 0.0);;
+      color: $sc-white;
+    }
+  
+    .create-account-button {
+    }
   }
 }
