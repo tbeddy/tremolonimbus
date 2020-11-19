@@ -7,6 +7,11 @@ import SignupFormContainer from '../form/signup_form_container';
 class Modal extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      modalBackgroundClassName: "background-fade-in",
+      modalChildClassName: "modal-descend"
+    }
   }
 
   render() {
@@ -28,8 +33,9 @@ class Modal extends React.Component {
     return (
       <div>
         <a id="modal-x-out" onClick={closeModal}>×</a>
-        <div className="modal-background background-fade-in" onClick={closeModal}>
-          <div className="modal-child modal-descend"
+        <div className={`modal-background ${this.state.modalBackgroundClassName}`}
+             onClick={closeModal}>
+          <div className={`modal-child ${this.state.modalChildClassName}`}
                onClick={e => e.stopPropagation()}>
             {component}
           </div>
