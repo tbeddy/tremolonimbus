@@ -10,6 +10,32 @@
   z-index: 10;
 }
 
+.background-fade-in {
+  animation: fade-in 0.4s 1;
+}
+
+.background-fade-out {
+  animation: fade-out 1s 1;
+}
+
+@keyframes fade-in {
+  0% {
+    background: rgba($sc-light-grey, 0.0);
+  }
+  100% {
+    background: rgba($sc-light-grey, 0.8);
+  }
+}
+
+@keyframes fade-out {
+  0%, 50% {
+    background: rgba($sc-light-grey, 0.8);
+  }
+  100% {
+    background: rgba($sc-light-grey, 0.0);
+  }
+}
+
 .modal-child {
   position: absolute;
   top: 40%;
@@ -18,6 +44,35 @@
   height: 500px;
   width: 400px;
   background-color: $sc-white;
+}
+
+.modal-descend {
+  animation: descend 0.7s 1;
+}
+
+.modal-ascend {
+  animation: ascend 0.7s 1;
+}
+
+@keyframes descend {
+  0%, 50% {
+    top: -50%;
+  }
+  100% {
+    bottom: 0;
+  }
+}
+
+@keyframes ascend {
+  0%, 70%  {
+    bottom: 0%;
+  }
+  35% {
+    top: 50%;
+  }
+  100% {
+    top: -50%;
+  }
 }
 
 #modal-x-out {

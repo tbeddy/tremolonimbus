@@ -4,34 +4,39 @@ import { closeModal } from '../../actions/modal_actions';
 import LoginFormContainer from '../form/login_form_container';
 import SignupFormContainer from '../form/signup_form_container';
 
-function Modal({ modal, closeModal }) {
-  if (!modal) {
-    return null;
+class Modal extends React.Component {
+  constructor(props) {
+    super(props);
   }
-  let component;
-  switch (modal) {
-    case 'login':
-      component = <LoginFormContainer />;
-      break;
-    case 'signup':
-      component = <SignupFormContainer />;
-      break;
-    default:
+
+  render() {
+    const { modal, closeModal } = this.props;
+    if (!modal) {
       return null;
-  }
-  return (
-    <div>
-      <a
-        id="modal-x-out"
-        onClick={closeModal}
-      >×</a>
-      <div className="modal-background" onClick={closeModal}>
-        <div className="modal-child" onClick={e => e.stopPropagation()}>
-          {component}
+    }
+    let component;
+    switch (modal) {
+      case 'login':
+        component = <LoginFormContainer />;
+        break;
+      case 'signup':
+        component = <SignupFormContainer />;
+        break;
+      default:
+        return null;
+    }
+    return (
+      <div>
+        <a id="modal-x-out" onClick={closeModal}>×</a>
+        <div className="modal-background background-fade-in" onClick={closeModal}>
+          <div className="modal-child modal-descend"
+               onClick={e => e.stopPropagation()}>
+            {component}
+          </div>
         </div>
       </div>
-    </div>
-  )
+    )
+  }
 }
 
 const mStP = state => {
