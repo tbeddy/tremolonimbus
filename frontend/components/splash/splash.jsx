@@ -3,6 +3,10 @@ import React from 'react';
 export default ({ openModal }) => {
   return (
     <div id="splash">
+      <img
+        className="concert-img"
+        src={window.audienceURL}
+      />
       <p id="message1">
         Thanks for listening. Now join in.
       </p>
