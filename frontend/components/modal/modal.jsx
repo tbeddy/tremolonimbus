@@ -12,10 +12,25 @@ class Modal extends React.Component {
       modalBackgroundClassName: "background-fade-in",
       modalChildClassName: "modal-descend"
     }
+
+    this.disappearAndCloseModal = this.disappearAndCloseModal.bind(this);
+  }
+
+  disappearAndCloseModal() {
+    this.setState({
+      modalBackgroundClassName: "background-fade-out",
+      modalChildClassName: "modal-ascend"
+    }, () => setTimeout(() => {
+      this.props.closeModal();
+      this.setState({
+        modalBackgroundClassName: "background-fade-in",
+        modalChildClassName: "modal-descend"
+      });
+    }, 600))
   }
 
   render() {
-    const { modal, closeModal } = this.props;
+    const { modal } = this.props;
     if (!modal) {
       return null;
     }
@@ -32,9 +47,9 @@ class Modal extends React.Component {
     }
     return (
       <div>
-        <a id="modal-x-out" onClick={closeModal}>×</a>
+        <a id="modal-x-out" onClick={this.disappearAndCloseModal}>×</a>
         <div className={`modal-background ${this.state.modalBackgroundClassName}`}
-             onClick={closeModal}>
+             onClick={this.disappearAndCloseModal}>
           <div className={`modal-child ${this.state.modalChildClassName}`}
                onClick={e => e.stopPropagation()}>
             {component}
