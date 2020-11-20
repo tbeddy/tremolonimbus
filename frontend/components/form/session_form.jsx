@@ -10,6 +10,7 @@ class SessionForm extends React.Component {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.setUpDemoUser = this.setUpDemoUser.bind(this);
   }
 
   handleChange(type) {
@@ -24,10 +25,17 @@ class SessionForm extends React.Component {
       .then(this.props.closeModal);
   }
 
+  setUpDemoUser() {
+    this.setState({
+      username: "demo user",
+      password: "password"
+    });
+  }
+
   render() {
     const header = this.props.formType === "signup" ? "Sign Up" : "Log In";
     const errorList = this.props.errors.session.map((error, idx) => (
-      <li key={idx}>
+      <li key={idx} className="session-error">
         {error}
       </li>
     ));
@@ -39,11 +47,13 @@ class SessionForm extends React.Component {
         onChange={this.handleChange('email')}
       />
     );
+    const demoUserButton = this.props.formType === "signup" ? null : (
+      <button onClick={this.setUpDemoUser}>
+        Demo User
+      </button>
+    );
     return (
       <div className="form-container">
-        <ul>
-          {errorList}
-        </ul>
         <img
           className="form-logo"
           src={window.logoInverseURL}
@@ -66,6 +76,10 @@ class SessionForm extends React.Component {
             onChange={this.handleChange('password')}
           />
           <button>{header}</button>
+          {demoUserButton}
+          <ul>
+            {errorList}
+          </ul>
         </form>
       </div>
     )
