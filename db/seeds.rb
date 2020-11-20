@@ -8,8 +8,8 @@
 
 require 'open-uri'
 
-roald_dahl_audio = open('https://tremolonimbus-seeds.us-east-1.amazonaws.com/roald_dahl_lobby.mp3')
-podium_audio = open('https://tremolonimbus-seeds.us-east-1.amazonaws.com/podium_music.mp3')
+roald_dahl_audio = open('https://tremolonimbus-seeds.s3.amazonaws.com/roald_dahl_lobby.mp3')
+podium_audio = open('https://tremolonimbus-seeds.s3.amazonaws.com/podium_music.mp3')
 
 User.create([
   { username: "demo user", email: "fake@email.com", password: "password" },
