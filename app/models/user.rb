@@ -6,6 +6,10 @@ class User < ApplicationRecord
   validates :username, :email, :password_digest, presence: true
   validates :username, :email, :session_token, uniqueness: true
   validates :password, length: { minimum: 6, allow_nil: true }
+
+  has_many :tracks,
+    foreign_key: :uploader_id,
+    class_name: :Track
   
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)
