@@ -37,10 +37,12 @@ class Modal extends React.Component {
     let component;
     switch (modal) {
       case 'login':
-        component = <LoginFormContainer />;
+        component = <LoginFormContainer
+          disappearAndCloseModal={this.disappearAndCloseModal}/>;
         break;
       case 'signup':
-        component = <SignupFormContainer />;
+        component = <SignupFormContainer
+          disappearAndCloseModal={this.disappearAndCloseModal}/>;
         break;
       default:
         return null;
