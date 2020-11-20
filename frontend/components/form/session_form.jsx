@@ -44,6 +44,10 @@ class SessionForm extends React.Component {
         <ul>
           {errorList}
         </ul>
+        <img
+          className="form-logo"
+          src={window.logoInverseURL}
+        />
         <form
           className="session-form"
           onSubmit={this.handleSubmit}

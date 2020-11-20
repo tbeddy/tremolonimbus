@@ -13,7 +13,10 @@ form.session-form {
   padding-right: 10px;
   
   input {
-    margin: 10px;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    height: 40px;
   }
 
   button {
@@ -21,5 +24,14 @@ form.session-form {
     color: $sc-white;
     margin: 10px;
     border: none;
+    height: 40px;
+    font-size: 15px;
   }
+}
+
+img.form-logo {
+  height: 130px;
+  width: 220px;
+  display: block;
+  margin: auto;
 }
