@@ -7,29 +7,52 @@ import SignupFormContainer from '../form/signup_form_container';
 class Modal extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      modalBackgroundClassName: "background-fade-in",
+      modalChildClassName: "modal-descend"
+    }
+
+    this.disappearAndCloseModal = this.disappearAndCloseModal.bind(this);
+  }
+
+  disappearAndCloseModal() {
+    this.setState({
+      modalBackgroundClassName: "background-fade-out",
+      modalChildClassName: "modal-ascend"
+    }, () => setTimeout(() => {
+      this.props.closeModal();
+      this.setState({
+        modalBackgroundClassName: "background-fade-in",
+        modalChildClassName: "modal-descend"
+      });
+    }, 600))
   }
 
   render() {
-    const { modal, closeModal } = this.props;
+    const { modal } = this.props;
     if (!modal) {
       return null;
     }
     let component;
     switch (modal) {
       case 'login':
-        component = <LoginFormContainer />;
+        component = <LoginFormContainer
+          disappearAndCloseModal={this.disappearAndCloseModal}/>;
         break;
       case 'signup':
-        component = <SignupFormContainer />;
+        component = <SignupFormContainer
+          disappearAndCloseModal={this.disappearAndCloseModal}/>;
         break;
       default:
         return null;
     }
     return (
       <div>
-        <a id="modal-x-out" onClick={closeModal}>×</a>
-        <div className="modal-background background-fade-in" onClick={closeModal}>
-          <div className="modal-child modal-descend"
+        <a id="modal-x-out" onClick={this.disappearAndCloseModal}>×</a>
+        <div className={`modal-background ${this.state.modalBackgroundClassName}`}
+             onClick={this.disappearAndCloseModal}>
+          <div className={`modal-child ${this.state.modalChildClassName}`}
                onClick={e => e.stopPropagation()}>
             {component}
           </div>

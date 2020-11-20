@@ -22,7 +22,7 @@ class SessionForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.processForm({ user: this.state })
-      .then(this.props.closeModal);
+      .then(this.props.disappearAndCloseModal);
   }
 
   setUpDemoUser() {
