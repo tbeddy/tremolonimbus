@@ -1,12 +1,15 @@
 @import './core.scss';
 
 .greeting-bar {
+  position: fixed;
+  top: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: $sc-dark-grey;
   color: $sc-white;
   height: 45px;
+  width: 100%;
   padding-left: $sidebar-padding;
   padding-right: $sidebar-padding;
   height: 5vh;
