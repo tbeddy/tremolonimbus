@@ -29,5 +29,18 @@
   
     .create-account-button {
     }
+
+    .upload-link {
+    }
+  }
+}
+
+.nav-button {
+  padding-left: 10px;
+  padding-right: 10px;
+  color: $sc-light-black;
+  
+  &:hover {
+    color: $sc-white;
   }
 }

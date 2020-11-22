@@ -11,6 +11,12 @@ export default ({ currentUser, logout, openModal }) => {
         />
       </Link>
       <div className="nav-buttons">
+        <Link
+          to="/upload"
+          className="upload-link nav-button"
+        >
+          Upload
+        </Link>
         <span>{currentUser.username}</span>
         <button onClick={logout}>Log Out</button>
       </div>

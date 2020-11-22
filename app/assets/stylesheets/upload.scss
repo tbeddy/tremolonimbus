@@ -1,0 +1,71 @@
+@import './core.scss';
+
+.upload-page {
+  background-color: $sc-white;
+  align-items: stretch;
+  height: 95vh;
+}
+
+.upload-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  height: 500px;
+  border: 2px solid $sc-light-grey;
+}
+
+.upload-controls {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .upload-message {
+    font-size: 25px;
+  }
+  
+  .upload-button {
+    color: $sc-white;
+    background-color: $sc-orange;
+    border: none;
+    font-size: 15px;
+    padding: 10px 30px;
+    margin: 10px;
+    width: 300px;
+  }
+  
+  .hidden-input {
+    visibility: hidden;
+    height: 0;
+    width: 0;
+  }
+}
+
+.upload-form {
+  .submit-buttons {
+    .cancel-button {
+      color: $sc-dark-black;
+      background-color: $sc-white;
+      border: none;
+      font-size: 15px;
+      padding: 10px 30px;
+      margin: 10px;
+    }
+
+    .save-button {
+      color: $sc-white;
+      background-color: $sc-orange;
+      border: none;
+      font-size: 15px;
+      padding: 10px 30px;
+      margin: 10px;
+    }
+  }
+}
