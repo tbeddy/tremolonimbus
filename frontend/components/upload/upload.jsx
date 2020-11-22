@@ -48,13 +48,13 @@ class Upload extends React.Component {
     const uploadControls = (
       <div className="upload-controls">
         <p className="upload-message">
-          Drag and drop your track here
+          Upload your track here
         </p>
         <div className="upload-button">
           <label
             className="input-label"
             htmlFor="upload"
-          >or choose the file to upload</label>
+          >choose the file to upload</label>
           <input
             id="upload"
             type="file"
@@ -66,7 +66,7 @@ class Upload extends React.Component {
     );
     const uploadForm = (
       <form className="upload-form">
-        <p>File: {file === null ? "Nothing selecyed" : file.name}</p>
+        <p>File: {file === null ? "Nothing selected" : file.name}</p>
         <label
           htmlFor="title-input"
           className="title-label"
