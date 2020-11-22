@@ -13,6 +13,7 @@ class Player extends React.Component {
     this.playOrPause = this.playOrPause.bind(this);
     this.seekAudio = this.seekAudio.bind(this);
     this.changeSeekPosition = this.changeSeekPosition.bind(this);
+    this.toMinutesAndSeconds = this.toMinutesAndSeconds.bind(this);
   }
 
   componentDidMount() {
@@ -61,6 +62,17 @@ class Player extends React.Component {
     this.updateBar();
   }
 
+  toMinutesAndSeconds(n) {
+    const rounded = Math.floor(n);
+    if (isNaN(rounded)) return null;
+    let minutes = Math.floor(rounded / 60);
+    let seconds = rounded % 60;
+    if (seconds < 10) {
+      seconds = `0${seconds}`;
+    }
+    return `${minutes}:${seconds}`;
+  }
+
   render() {
     return (
       <div className="page-player">
@@ -89,6 +101,14 @@ class Player extends React.Component {
             className="orange-bar"
             style={{ width: `${this.state.percentDone}%` }}
           ></div>
+          <div className="track-times">
+            <div className="current-time">
+              {this.toMinutesAndSeconds(this.state.currentTime)}
+            </div>
+            <div className="duration">
+              {this.toMinutesAndSeconds(this.state.audio.duration)}
+            </div>
+          </div>
         </div>
       </div>
     )

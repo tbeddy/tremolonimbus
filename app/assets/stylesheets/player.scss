@@ -53,3 +53,27 @@
   background-color: $sc-hover-orange;
   height: inherit;
 }
+
+.track-times {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  .current-time {
+    background-color: $sc-dark-black;
+    color: $sc-orange;
+    font-size: 15px;
+    height: 15px;
+    margin-top: -15px;
+    padding: 1px;
+  }
+  
+  .duration {
+    background-color: $sc-dark-black;
+    color: $sc-light-grey;
+    font-size: 15px;
+    height: 15px;
+    margin-top: -15px;
+    padding: 1px;
+  }
+}
