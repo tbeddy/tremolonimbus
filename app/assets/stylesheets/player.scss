@@ -1,0 +1,55 @@
+@import './core.scss';
+
+.page-player {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  height: 100px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 40px;
+  background: transparent;
+}
+
+.play-pause-button {
+  background-color: $sc-orange;
+  color: $sc-white;
+  height: 40px;
+  width: 40px;
+  border: none;
+  border-radius: 50%;
+}
+
+.track-info-and-button {
+  display: flex;
+}
+
+.artist-name {
+  color: $sc-light-black;
+  font-size: 12px;
+}
+
+.track-name {
+  color: $sc-dark-grey;
+  font-size: 18px;
+}
+
+.grey-bar {
+  background-color: $sc-light-black;
+  width: auto;
+  height: 50px;
+
+  &:hover {
+    background-color: $sc-hover-grey;
+  }
+}
+
+.orange-bar {
+  background-color: $sc-orange;
+  height: inherit;
+}
+
+.hover-orange-bar {
+  background-color: $sc-hover-orange;
+  height: inherit;
+}
