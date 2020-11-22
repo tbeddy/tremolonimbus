@@ -21,6 +21,11 @@ class Player extends React.Component {
     this.barInterval = setInterval(() => this.updateBar(), 10);
   }
 
+  componentWillUnmount() {
+    clearInterval(this.timeInterval);
+    clearInterval(this.barInterval);
+  }
+
   updateTime() {
     this.setState({
       currentTime: Math.floor(this.state.audio.currentTime)
