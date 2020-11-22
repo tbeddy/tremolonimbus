@@ -5,7 +5,7 @@ import LoginFormContainer from './form/login_form_container';
 import SignupFormContainer from './form/signup_form_container';
 import SplashContainer from './splash/splash_container';
 import Modal from './modal/modal';
-import Stream from './stream/stream';
+import StreamContainer from './stream/stream_container';
 import { AuthRoute , ProtectedRoute } from '../util/route_util';
 
 const App = () => (
@@ -21,7 +21,7 @@ const App = () => (
       <AuthRoute path="/signin" component={LoginFormContainer} />
       <AuthRoute path="/signup" component={SignupFormContainer} />
       <AuthRoute exact path="/" component={SplashContainer} />
-      <ProtectedRoute path="/stream" component={Stream} />
+      <ProtectedRoute path="/stream" component={StreamContainer} />
     </div>
   </div>
 );
