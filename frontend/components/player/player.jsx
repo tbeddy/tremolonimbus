@@ -86,7 +86,9 @@ class Player extends React.Component {
             className="play-pause-button"
             onClick={this.playOrPause}
           >
-            {this.state.playing ? "Pause" : "▶"}
+            <img
+              src={this.state.playing ? window.pauseWhiteURL : window.playWhiteURL}
+            />
           </button>
           <div>
             <p className="artist-name">
