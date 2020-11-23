@@ -7,6 +7,7 @@ import SplashContainer from './splash/splash_container';
 import Modal from './modal/modal';
 import StreamContainer from './stream/stream_container';
 import UploadContainer from './upload/upload_container';
+import ContinuousPlayerContainer from './continuous_player/continous_player_container';
 import { AuthRoute , ProtectedRoute } from '../util/route_util';
 
 const App = () => (
@@ -25,6 +26,10 @@ const App = () => (
       <ProtectedRoute path="/stream" component={StreamContainer} />
       <ProtectedRoute exact path="/upload" component={UploadContainer} />
     </div>
+
+    <footer>
+      <ContinuousPlayerContainer />
+    </footer>
   </div>
 );
 
