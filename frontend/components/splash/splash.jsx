@@ -26,6 +26,20 @@ export default ({ openModal }) => {
           onClick={() => openModal('login')}
         >Sign in</button>
       </div>
+      <div>
+        <a href="https://github.com/tbeddy/tremolonimbus">
+          <img
+            className="outside-logo"
+            src={window.githubURL}
+          />
+        </a>
+        <a href="https://www.linkedin.com/in/timcmbedford">
+          <img
+            className="outside-logo"
+            src={window.linkedInURL}
+          />
+        </a>
+      </div>
     </div>
   )
 }
