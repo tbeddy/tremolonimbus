@@ -71,8 +71,8 @@ class Player extends React.Component {
 
   seekAudio() {
     const trackAudio = document.getElementById("audio");
-    const { seekPosition } = this.props;
-    trackAudio.currentTime = seekPosition * this.state.duration;
+    const { seekPosition } = this.state;
+    trackAudio.currentTime = seekPosition * trackAudio.duration;
     this.updateTime();
     this.updateBar();
   }
