@@ -52,6 +52,8 @@
 .current-track-details {
   display: flex;
   flex-direction: column;
+  height: inherit;
+  width: 100px;
 
   .current-artist-name {
     color: $sc-light-black;
