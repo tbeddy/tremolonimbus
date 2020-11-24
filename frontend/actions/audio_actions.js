@@ -3,6 +3,7 @@ export const PLAY_TRACK = "PLAY_TRACK";
 export const PAUSE_TRACK = "PAUSE_TRACK";
 export const SEEK_TRACK = "SEEK_TRACK";
 export const CHANGE_VOLUME = "CHANGE_VOLUME";
+export const TOGGLE_LOOP = "TOGGLE_LOOP";
 
 export const clearTrack = () => {
   return {
@@ -35,5 +36,11 @@ export const changeVolume = volume => {
   return {
     type: CHANGE_VOLUME,
     volume
+  }
+}
+
+export const toggleLoop = () => {
+  return {
+    type: TOGGLE_LOOP
   }
 }

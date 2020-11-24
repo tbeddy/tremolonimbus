@@ -14,15 +14,15 @@
   border-top: solid $sc-border-grey 1px;
 }
 
-.continuous-play-pause-button {
+.continuous-play-pause-button, .continuous-loop-button {
   height: auto;
   border: none;
   align-self: stretch;
+}
 
-  img {
-    height: 20px;
-    width: 20px;
-  }
+.player-icon {
+  height: 20px;
+  width: 20px;
 }
 
 .current-start-time {

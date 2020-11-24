@@ -16,6 +16,7 @@ class ContinuousPlayer extends React.Component {
     this.playOrPause = this.playOrPause.bind(this);
     this.seekAudio = this.seekAudio.bind(this);
     this.changeSeekPosition = this.changeSeekPosition.bind(this);
+    this.toggleLoop = this.toggleLoop.bind(this);
   }
 
   componentDidMount() {
@@ -24,7 +25,8 @@ class ContinuousPlayer extends React.Component {
 
     const trackAudio = document.getElementById("audio");
     trackAudio.addEventListener("ended", () => {
-      this.props.clearTrack();
+      // debugger
+      if (!this.props.looping) this.props.clearTrack();
     })
   }
 
@@ -73,6 +75,10 @@ class ContinuousPlayer extends React.Component {
     this.updateBar();
   }
 
+  toggleLoop() {
+    this.props.toggleLoop();
+  }
+
   render() {
     const continuousPlayer = (
       <div className="continuous-player">
@@ -81,7 +87,17 @@ class ContinuousPlayer extends React.Component {
           onClick={this.playOrPause}
         >
           <img
+            className="player-icon"
             src={this.props.playing ? window.pauseBlackURL : window.playBlackURL}
+          />
+        </button>
+        <button
+          className="continuous-loop-button"
+          onClick={this.toggleLoop}
+        >
+          <img
+            className="player-icon"
+            src={this.props.looping ? window.loopOrangeURL : window.loopBlackURL}
           />
         </button>
         <span className="current-start-time">

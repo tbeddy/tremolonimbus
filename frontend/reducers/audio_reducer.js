@@ -3,13 +3,15 @@ import {
   PLAY_TRACK,
   PAUSE_TRACK,
   SEEK_TRACK,
-  CHANGE_VOLUME
+  CHANGE_VOLUME,
+  TOGGLE_LOOP
 } from '../actions/audio_actions';
 
 const initialState = {
   id: null,
   playing: false,
-  currentTime: 0
+  currentTime: 0,
+  looping: false
 }
 
 export default (state = initialState, action) => {
@@ -25,6 +27,8 @@ export default (state = initialState, action) => {
       return Object.assign({}, state, { currentTime: action.time });
     case CHANGE_VOLUME:
       return Object.assign({}, state, { volume: action.volume });
+    case TOGGLE_LOOP:
+      return Object.assign({}, state, { looping: !state.looping });
     default:
       return state;
   }
