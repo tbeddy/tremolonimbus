@@ -31,7 +31,7 @@ class SessionForm extends React.Component {
 
   setUpDemoUser() {
     this.setState({
-      username: "demo user",
+      username: "demo_user",
       password: "password"
     });
   }

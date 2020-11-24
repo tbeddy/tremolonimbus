@@ -12,7 +12,7 @@ roald_dahl_audio = open('https://tremolonimbus-seeds.s3.amazonaws.com/roald_dahl
 podium_audio = open('https://tremolonimbus-seeds.s3.amazonaws.com/podium_music.mp3')
 
 User.create([
-  { username: "demo user", email: "fake@email.com", password: "password" },
+  { username: "demo_user", email: "fake@email.com", password: "password" },
   { username: "bob", email: "bob@gmail.com", password: "password1" },
   { username: "kathy", email: "kathy@gmail.com", password: "password2" },
   { username: "roald_dahl", email: "dahl@gmail.com", password: "g14ntp3ach" },
