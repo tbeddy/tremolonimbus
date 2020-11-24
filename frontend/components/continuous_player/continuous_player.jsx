@@ -25,7 +25,6 @@ class ContinuousPlayer extends React.Component {
 
     const trackAudio = document.getElementById("audio");
     trackAudio.addEventListener("ended", () => {
-      // debugger
       if (!this.props.looping) this.props.clearTrack();
     })
   }
@@ -80,6 +79,7 @@ class ContinuousPlayer extends React.Component {
   }
 
   render() {
+    const trackAudio = document.getElementById("audio");
     const continuousPlayer = (
       <div className="continuous-player">
         <button
@@ -113,9 +113,9 @@ class ContinuousPlayer extends React.Component {
             style={{ width: `${this.state.percentDone}%` }}
           ></div>
         </div>
-        {/* <span className="current-end-time">
-          {toMinutesAndSeconds(this.state.audio.duration)}
-        </span> */}
+        <span className="current-end-time">
+          {trackAudio ? toMinutesAndSeconds(trackAudio.duration) : "0:00"}
+        </span>
         <div className="current-track-details">
           <p className="current-artist-name">
             Artist
@@ -127,7 +127,6 @@ class ContinuousPlayer extends React.Component {
       </div>
     );
     const { track } = this.props;
-    const trackAudio = document.getElementById("audio");
     if (this.props.playing) {
       trackAudio.play().catch(_ => trackAudio.play());
     } else if (trackAudio !== null) {
