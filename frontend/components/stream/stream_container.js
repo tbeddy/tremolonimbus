@@ -3,8 +3,9 @@ import { fetchTracks } from '../../actions/track_actions';
 import Stream from './stream';
 
 const mStP = state => {
+  // Puts tracks in reverse order
   return {
-    tracks: Object.values(state.entities.tracks)
+    tracks: Object.values(state.entities.tracks).sort((a, b) => b.id - a.id)
   }
 }
 
