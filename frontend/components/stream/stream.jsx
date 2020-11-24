@@ -1,5 +1,5 @@
 import React from 'react';
-import Player from '../player/player';
+import PlayerContainer from '../player/player_container';
 
 class Stream extends React.Component {
   constructor(props) {
@@ -7,13 +7,15 @@ class Stream extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchTracks();
+    if (this.props.tracks.length === 0) {
+      this.props.fetchTracks();
+    }
   }
 
   render() {
     const trackList = this.props.tracks.map(track => (
       <li key={track.id}>
-        <Player url={track.url} title={track.title} />
+        <PlayerContainer {...track} />
       </li>
     ));
     return (
