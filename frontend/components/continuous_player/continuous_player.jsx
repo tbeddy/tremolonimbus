@@ -104,14 +104,18 @@ class ContinuousPlayer extends React.Component {
           {toMinutesAndSeconds(this.state.currentTime)}
         </span>
         <div
-          className="current-grey-bar"
+          className="containing-bar"
           onClick={this.seekAudio}
           onMouseMove={this.changeSeekPosition}
         >
           <div
-            className="current-orange-bar"
-            style={{ width: `${this.state.percentDone}%` }}
-          ></div>
+            className="current-grey-bar"
+          >
+            <div
+              className="current-orange-bar"
+              style={{ width: `${this.state.percentDone}%` }}
+            ></div>
+          </div>
         </div>
         <span className="current-end-time">
           {trackAudio ? toMinutesAndSeconds(trackAudio.duration) : "0:00"}

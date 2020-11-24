@@ -39,15 +39,6 @@ class Player extends React.Component {
 
   updateBar() {
     const trackAudio = document.getElementById("audio");
-    // if (this.props.playing) {
-    //   this.setState({
-    //     percentDone: 100 * (trackAudio.currentTime / trackAudio.duration)
-    //   });
-    // } else if (this.props.currentTrackId !== this.props.id) {
-    //   this.setState({
-    //     percentDone: 0
-    //   });
-    // }
     if (this.props.currentTrackId !== this.props.id) {
       this.setState({
         percentDone: 0
