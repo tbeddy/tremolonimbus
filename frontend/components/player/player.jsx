@@ -39,13 +39,22 @@ class Player extends React.Component {
 
   updateBar() {
     const trackAudio = document.getElementById("audio");
-    if (this.props.playing) {
-      this.setState({
-        percentDone: 100 * (trackAudio.currentTime / trackAudio.duration)
-      });
-    } else if (this.props.currentTrackId !== this.props.id) {
+    // if (this.props.playing) {
+    //   this.setState({
+    //     percentDone: 100 * (trackAudio.currentTime / trackAudio.duration)
+    //   });
+    // } else if (this.props.currentTrackId !== this.props.id) {
+    //   this.setState({
+    //     percentDone: 0
+    //   });
+    // }
+    if (this.props.currentTrackId !== this.props.id) {
       this.setState({
         percentDone: 0
+      });
+    } else {
+      this.setState({
+        percentDone: 100 * (trackAudio.currentTime / trackAudio.duration)
       });
     }
   }
@@ -70,6 +79,9 @@ class Player extends React.Component {
   }
 
   seekAudio() {
+    if (this.props.currentTrackId !== this.props.id) {
+      this.props.playTrack(this.props.id);
+    }
     const trackAudio = document.getElementById("audio");
     const { seekPosition } = this.state;
     trackAudio.currentTime = seekPosition * trackAudio.duration;
@@ -78,13 +90,6 @@ class Player extends React.Component {
   }
 
   render() {
-    let orangeBarWidth;
-    orangeBarWidth = this.state.percentDone;
-    // if (this.props.currentTrackId === this.props.id) {
-    //   orangeBarWidth = this.state.percentDone;
-    // } else {
-    //   orangeBarWidth = 0;
-    // }
     return (
       <div className="page-player">
         <div className="track-info-and-button">
@@ -112,7 +117,7 @@ class Player extends React.Component {
         >
           <div
             className="orange-bar"
-            style={{ width: `${orangeBarWidth}%` }}
+            style={{ width: `${this.state.percentDone}%` }}
           ></div>
           <div className="track-times">
             <div className="current-time">
