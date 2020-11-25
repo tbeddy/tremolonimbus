@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { toMinutesAndSeconds } from '../../util/player_util';
 
 class Player extends React.Component {
@@ -97,7 +98,9 @@ class Player extends React.Component {
               Artist
             </p>
             <p className="track-name">
-              {this.props.title}
+              <Link to={`/tracks/${this.props.id}`}>
+                {this.props.title}
+              </Link>
             </p>
           </div>
         </div>
