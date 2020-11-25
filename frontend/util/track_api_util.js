@@ -5,6 +5,13 @@ export const fetchTracks = () => {
   })
 }
 
+export const fetchTrack = trackId => {
+  return $.ajax({
+    method: "GET",
+    url: `/api/tracks/${trackId}`
+  })
+}
+
 export const createTrack = track => {
   return $.ajax({
     method: "POST",

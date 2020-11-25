@@ -5,6 +5,12 @@ class Api::TracksController < ApplicationController
   end
 
   def show
+    @track = Track.find_by(id: params[:id])
+    if @track
+      render "/api/tracks/show"
+    else
+      render json: ["Missing track"], status: 404
+    end
   end
 
   def create

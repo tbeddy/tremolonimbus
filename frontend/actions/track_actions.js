@@ -22,6 +22,11 @@ export const fetchTracks = () => dispatch => {
     .then(tracks => dispatch(receiveTracks(tracks)))
 }
 
+export const fetchTrack = trackId => dispatch => {
+  return APIUtil.fetchTrack(trackId)
+    .then(track => dispatch(receiveTrack(track)))
+}
+
 export const createTrack = track => dispatch => {
   return APIUtil.createTrack(track)
     .then(track => dispatch(receiveTrack(track)))

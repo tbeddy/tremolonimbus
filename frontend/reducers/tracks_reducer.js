@@ -9,7 +9,6 @@ export default (state = {}, action) => {
     case RECEIVE_TRACKS:
       return action.tracks;
     case RECEIVE_TRACK:
-      debugger
       return Object.assign({}, state, {[action.track.id]: action.track});
     default:
       return state;
