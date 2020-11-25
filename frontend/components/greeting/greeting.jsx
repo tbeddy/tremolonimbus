@@ -1,44 +1,51 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import LoggedInNavButtons from './logged_in_navbuttons';
+import LoggedOutNavButtons from './logged_out_navbuttons';
 
-export default ({ currentUser, logout, openModal }) => {
-  return currentUser ? (
-    <div className="greeting-bar">
-      <Link to="/">
-        <img
-          className="logo-img"
-          src={window.logoURL}
-        />
-      </Link>
-      <div className="nav-buttons">
-        <Link
-          to="/upload"
-          className="upload-link nav-button"
-        >
-          Upload
+class Greeting extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  search(e) {
+    e.preventDefault();
+  }
+  
+  render() {
+    const { currentUser, logout, openModal } = this.props;
+    const navButtons = currentUser ? (
+      <LoggedInNavButtons logout={logout} currentUser={currentUser} />
+    ) : (
+      <LoggedOutNavButtons openModal={openModal} />
+    );
+    return (
+      <div className="greeting-bar">
+        <Link to="/">
+          <img
+            className="logo-img"
+            src={currentUser ? window.logoURL : window.logoWithNameURL}
+          />
         </Link>
-        <span>{currentUser.username}</span>
-        <button onClick={logout}>Log Out</button>
+        <div className="search">
+          <form>
+            <input
+              type="text"
+              placeholder="Search"
+            />
+            <button
+              onClick={this.toggleDotsDropdown}
+            >
+              <img
+                src={window.searchGreyURL}
+              ></img>
+            </button>
+          </form>
+        </div>
+        {navButtons}
       </div>
-    </div>
-  ) : (
-    <div className="greeting-bar">
-      <Link to="/">
-        <img
-          className="logo-img"
-          src={window.logoWithNameURL}
-        />
-      </Link>
-      <div className="nav-buttons">
-        <button
-          className="sign-in-button"
-          onClick={() => openModal('login')}
-        >Sign in</button>
-        <button
-          className="create-account-button"
-          onClick={() => openModal('signup')}
-        >Create account</button>
-      </div>
-    </div>
-  );
+    )
+  }
 }
+
+export default Greeting;

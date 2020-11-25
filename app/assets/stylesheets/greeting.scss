@@ -22,6 +22,8 @@
   }
 
   .nav-buttons {
+    display: flex;
+    align-items: center;
     .sign-in-button {
       background-color: rgba($color: #000000, $alpha: 0.0);;
       color: $sc-white;
@@ -35,12 +37,83 @@
   }
 }
 
+.search {
+  flex: 1;
+  padding-left: 20px;
+  padding-right: 20px;
+
+  
+  form {
+    display: flex;
+    flex-direction: row;
+    height: 30px;
+    width: 100%;
+
+    input {
+      flex: 1;
+      width: 100%;
+      border-radius: 5px;
+      border: none;
+      background-color: $sc-light-grey;
+
+      &:focus {
+        background-color: $sc-white;
+      }
+    }
+
+    button {
+      margin-left: -30px;
+      background: transparent;
+      border: none;
+      z-index: 20;
+      
+      img {
+        height: 15px;
+        width: 15px;
+      }
+    }
+  }
+}
+
 .nav-button {
   padding-left: 10px;
   padding-right: 10px;
   color: $sc-light-black;
+  vertical-align: middle;
   
   &:hover {
     color: $sc-white;
   }
+}
+
+.three-dots {
+  height: 35px;
+  width: 50px;
+}
+
+.dots-dropdown {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 5vh;
+  right: $sidebar-padding;
+  border: solid $sc-border-grey 1px;
+  border-top: none;
+  width: 200px;
+  background-color: $sc-white;
+}
+
+.signout-button {
+  background-color: inherit;
+  border: none;
+  text-align: left;
+  font-size: 20px;
+
+  &:hover {
+    background-color: $sc-light-grey;
+  }
+}
+
+.black-back {
+  background-color: $sc-dark-black;
 }
