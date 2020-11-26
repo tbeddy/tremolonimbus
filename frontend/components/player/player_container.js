@@ -2,11 +2,14 @@ import { connect } from 'react-redux';
 import Player from './player';
 import {
   playTrack,
-  pauseTrack
+  pauseTrack,
+  clearTrack
 } from '../../actions/audio_actions';
+import { deleteTrack } from '../../actions/track_actions';
 
-const mStP = ({ audio }, ownProps) => {
+const mStP = ({ session, audio }, ownProps) => {
   return {
+    isCurrentUsersTrack: session.id === ownProps.uploader_id,
     currentTrackId: audio.id,
     playing: audio.playing && ownProps.id === audio.id,
     currentTime: audio.currentTime
@@ -16,7 +19,9 @@ const mStP = ({ audio }, ownProps) => {
 const mDtP = dispatch => {
   return {
     playTrack: trackId => dispatch(playTrack(trackId)),
-    pauseTrack: trackId => dispatch(pauseTrack(trackId))
+    pauseTrack: trackId => dispatch(pauseTrack(trackId)),
+    deleteTrack: trackId => dispatch(deleteTrack(trackId)),
+    clearTrack: () => dispatch(clearTrack())
   }
 }
 

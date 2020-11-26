@@ -21,3 +21,10 @@ export const createTrack = track => {
     processData: false
   })
 }
+
+export const deleteTrack = trackId => {
+  return $.ajax({
+    method: "DELETE",
+    url: `/api/tracks/${trackId}`
+  })
+}

@@ -1,9 +1,22 @@
 import React from 'react';
 import Player from '../player/player';
 import { toMinutesAndSeconds } from '../../util/player_util';
+import { withRouter } from 'react-router-dom';
 
 class TrackPagePlayer extends Player {
+  deleteTrackandRedirect() {
+    this.deleteTrack().then(() => this.props.history.push("/"));
+  }
+
   render() {
+    const deleteButton = !this.props.isCurrentUsersTrack ? null : (
+      <button
+        className="delete-track-button"
+        onClick={this.deleteTrackandRedirect.bind(this)}
+      >
+        Delete track
+      </button>
+    );
     return (
       <div className="track-page-player">
         <div className="track-info-and-button">
@@ -42,9 +55,12 @@ class TrackPagePlayer extends Player {
             </div> */}
           </div>
         </div>
+        <div className="track-buttons">
+          {deleteButton}
+        </div>
       </div>
     )
   }
 }
 
-export default TrackPagePlayer;
+export default withRouter(TrackPagePlayer);

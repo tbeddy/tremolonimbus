@@ -17,6 +17,7 @@ class Player extends React.Component {
     this.playOrPause = this.playOrPause.bind(this);
     this.seekAudio = this.seekAudio.bind(this);
     this.changeSeekPosition = this.changeSeekPosition.bind(this);
+    this.deleteTrack = this.deleteTrack.bind(this);
   }
 
   componentDidMount() {
@@ -81,7 +82,22 @@ class Player extends React.Component {
     this.updateBar();
   }
 
+  deleteTrack() {
+    if (this.props.currentTrackId === this.props.id) {
+      this.props.clearTrack();
+    }
+    return this.props.deleteTrack(this.props.id);
+  }
+
   render() {
+    const deleteButton = !this.props.isCurrentUsersTrack ? null : (
+      <button
+        className="delete-track-button"
+        onClick={this.deleteTrack}
+      >
+        Delete track
+      </button>
+    );
     return (
       <div className="page-player">
         <div className="track-info-and-button">
@@ -121,6 +137,9 @@ class Player extends React.Component {
               {toMinutesAndSeconds(this.state.duration)}
             </div> */}
           </div>
+        </div>
+        <div className="track-buttons">
+          {deleteButton}
         </div>
       </div>
     )

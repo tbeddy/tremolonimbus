@@ -22,6 +22,12 @@ class Api::TracksController < ApplicationController
     end
   end
 
+  def destroy
+    @track = Track.find_by(id: params[:id])
+    @track.destroy
+    render json: {id: params[:id]}
+  end
+
   private
   
   def track_params
