@@ -1,4 +1,5 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 
 class Upload extends React.Component {
   constructor(props) {
@@ -26,7 +27,10 @@ class Upload extends React.Component {
     fileData.append('track[title]', this.state.title);
     fileData.append('track[uploader_id]', this.props.currentUserId);
     fileData.append('track[audio]', this.state.file);
-    this.props.createTrack(fileData);
+    const result = this.props.createTrack(fileData);
+    result.then(({ track }) => {
+      this.props.history.push(`/tracks/${track.id}`);
+    })
   }
 
   handleChange(type) {
@@ -91,7 +95,7 @@ class Upload extends React.Component {
     return (
       <div className="upload-page">
         <div className="upload-box">
-        {this.state.file === null ? uploadControls : uploadForm}
+          {this.state.file === null ? uploadControls : uploadForm}
         </div>
       </div>
     )
