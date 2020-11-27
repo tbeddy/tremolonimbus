@@ -7,10 +7,11 @@ import {
   toggleLoop
 } from '../../actions/audio_actions';
 
-const mStP = ({ audio, entities }) => {
+const mStP = ({ session, audio, entities }) => {
   const track = entities.tracks[audio.id];
   return {
     id: audio.id,
+    isCurrentUsersTrack: track && session.id === track.uploader_id,
     playing: audio.playing,
     currentTime: audio.currentTime,
     looping: audio.looping,
@@ -23,7 +24,8 @@ const mDtP = dispatch => {
     playTrack: trackId => dispatch(playTrack(trackId)),
     pauseTrack: trackId => dispatch(pauseTrack(trackId)),
     clearTrack: () => dispatch(clearTrack()),
-    toggleLoop: () => dispatch(toggleLoop())
+    toggleLoop: () => dispatch(toggleLoop()),
+    updateTrack: track => dispatch(updateTrack(track)) 
   }
 };
 

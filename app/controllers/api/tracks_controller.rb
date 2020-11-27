@@ -28,9 +28,18 @@ class Api::TracksController < ApplicationController
     render json: {id: params[:id]}
   end
 
+  def update
+    @track = Track.find_by(id: params[:id])
+    if @track.update_attributes(track_params)
+      render "/api/tracks/show"
+    else
+      render json: ["Update failed"], status: 404
+    end
+  end
+
   private
   
   def track_params
-    params.require(:track).permit(:title, :uploader_id, :audio)
+    params.require(:track).permit(:title, :uploader_id, :audio, :play_count)
   end
 end

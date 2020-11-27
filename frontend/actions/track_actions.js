@@ -44,3 +44,8 @@ export const deleteTrack = trackId => dispatch => {
   return APIUtil.deleteTrack(trackId)
     .then(trackId => dispatch(removeTrack(trackId)))
 }
+
+export const updateTrack = track => dispatch => {
+  return APIUtil.updateTrack(track)
+    .then(track => dispatch(receiveTrack(track)))
+}

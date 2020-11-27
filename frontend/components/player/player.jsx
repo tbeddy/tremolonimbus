@@ -41,7 +41,7 @@ class Player extends React.Component {
 
   updateBar() {
     const trackAudio = document.getElementById("audio");
-    if (this.props.currentTrackId !== this.props.id) {
+    if (!this.props.isCurrentTrack) {
       this.setState({
         percentDone: 0
       });
@@ -56,6 +56,12 @@ class Player extends React.Component {
     if (this.props.playing) {
       this.props.pauseTrack(this.props.id);
     } else {
+      if (!this.props.isCurrentUsersTrack && !this.props.isCurrentTrack) {
+        this.props.updateTrack({
+          id: this.props.id,
+          play_count: this.props.play_count + 1
+        });
+      }
       this.props.playTrack(this.props.id);
     }
   }
@@ -72,7 +78,7 @@ class Player extends React.Component {
   }
 
   seekAudio() {
-    if (this.props.currentTrackId !== this.props.id) {
+    if (!this.props.isCurrentTrack) {
       this.props.playTrack(this.props.id);
     }
     const trackAudio = document.getElementById("audio");
