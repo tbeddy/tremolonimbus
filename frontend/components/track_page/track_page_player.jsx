@@ -14,7 +14,9 @@ class TrackPagePlayer extends Player {
         {toMinutesAndSeconds(this.state.currentTime)}
       </div>
     );
-    const deleteButton = !this.props.isCurrentUsersTrack ? null : (
+    const deleteButton = !this.props.isCurrentUsersTrack ? (
+      <div></div>
+    ) : (
       <button
         className="delete-track-button"
         onClick={this.deleteTrack}
