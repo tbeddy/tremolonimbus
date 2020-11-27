@@ -7,7 +7,7 @@ import {
 } from '../../actions/audio_actions';
 import {
   deleteTrack,
-  raisePlayCount
+  updateTrack
 } from '../../actions/track_actions';
 
 const mStP = ({ session, audio }, ownProps) => {
@@ -26,7 +26,7 @@ const mDtP = dispatch => {
     pauseTrack: trackId => dispatch(pauseTrack(trackId)),
     deleteTrack: trackId => dispatch(deleteTrack(trackId)),
     clearTrack: () => dispatch(clearTrack()),
-    raisePlayCount: track => dispatch(raisePlayCount(track))
+    updateTrack: track => dispatch(updateTrack(track))
   }
 }
 

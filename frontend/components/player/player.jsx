@@ -96,6 +96,11 @@ class Player extends React.Component {
   }
 
   render() {
+    const currentTime = !this.props.isCurrentTrack ? null : (
+      <div className="current-time">
+        {toMinutesAndSeconds(this.state.currentTime)}
+      </div>
+    );
     const deleteButton = !this.props.isCurrentUsersTrack ? (
       <div></div>
     ) : (
@@ -139,9 +144,7 @@ class Player extends React.Component {
             style={{ width: `${this.state.percentDone}%` }}
           ></div>
           <div className="track-times">
-            <div className="current-time">
-              {toMinutesAndSeconds(this.state.currentTime)}
-            </div>
+            {currentTime}
             {/* <div className="duration">
               {toMinutesAndSeconds(this.state.duration)}
             </div> */}

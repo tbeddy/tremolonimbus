@@ -9,6 +9,11 @@ class TrackPagePlayer extends Player {
   }
 
   render() {
+    const currentTime = !this.props.isCurrentTrack ? null : (
+      <div className="current-time">
+        {toMinutesAndSeconds(this.state.currentTime)}
+      </div>
+    );
     const deleteButton = !this.props.isCurrentUsersTrack ? null : (
       <button
         className="delete-track-button"
@@ -48,9 +53,7 @@ class TrackPagePlayer extends Player {
             style={{ width: `${this.state.percentDone}%` }}
           ></div>
           <div className="track-track-times">
-            <div className="current-time">
-              {toMinutesAndSeconds(this.state.currentTime)}
-            </div>
+            {currentTime}
             {/* <div className="duration">
               {toMinutesAndSeconds(this.state.duration)}
             </div> */}
