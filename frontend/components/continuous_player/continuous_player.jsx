@@ -30,7 +30,6 @@ class ContinuousPlayer extends React.Component {
 
     document.addEventListener('keyup', event => {
       if (event.code === 'Space') {
-        // console.log('Space pressed')
         this.playOrPause();
       }
     });
