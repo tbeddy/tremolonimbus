@@ -12,9 +12,10 @@ class TrackPagePlayer extends Player {
     const deleteButton = !this.props.isCurrentUsersTrack ? null : (
       <button
         className="delete-track-button"
-        onClick={this.deleteTrackandRedirect.bind(this)}
+        onClick={this.deleteTrack}
       >
-        Delete track
+        <img src={window.trashBlackURL} />
+        <span>Delete track</span>
       </button>
     );
     return (
