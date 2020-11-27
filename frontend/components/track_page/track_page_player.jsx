@@ -58,6 +58,10 @@ class TrackPagePlayer extends Player {
         </div>
         <div className="track-buttons">
           {deleteButton}
+          <div className="play-count">
+            <img src={window.playGreyURL} />
+            {this.props.play_count}
+          </div>
         </div>
       </div>
     )

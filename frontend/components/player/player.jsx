@@ -90,7 +90,9 @@ class Player extends React.Component {
   }
 
   render() {
-    const deleteButton = !this.props.isCurrentUsersTrack ? null : (
+    const deleteButton = !this.props.isCurrentUsersTrack ? (
+      <div></div>
+    ) : (
       <button
         className="delete-track-button"
         onClick={this.deleteTrack}
@@ -141,6 +143,10 @@ class Player extends React.Component {
         </div>
         <div className="track-buttons">
           {deleteButton}
+          <div className="play-count">
+            <img src={window.playGreyURL} />
+            {this.props.play_count}
+          </div>
         </div>
       </div>
     )

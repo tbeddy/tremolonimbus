@@ -83,7 +83,10 @@
   }
 }
 
-.track-buttons {  
+.track-buttons {
+  display: flex;
+  justify-content: space-between;
+
   button {
     display: flex;
     flex-direction: row;
@@ -100,5 +103,15 @@
     &:hover {
       border: solid $sc-hover-grey 1px;
     }
+  }
+}
+
+.play-count {
+  color: $sc-arrow-grey;
+  font-size: 20px;
+
+  img {
+    height: 17px;
+    width: 17px;
   }
 }
