@@ -26,7 +26,14 @@ class ContinuousPlayer extends React.Component {
     const trackAudio = document.getElementById("audio");
     trackAudio.addEventListener("ended", () => {
       if (!this.props.looping) this.props.clearTrack();
-    })
+    });
+
+    document.addEventListener('keyup', event => {
+      if (event.code === 'Space') {
+        // console.log('Space pressed')
+        this.playOrPause();
+      }
+    });
   }
 
   componentWillUnmount() {
@@ -49,6 +56,7 @@ class ContinuousPlayer extends React.Component {
   }
 
   playOrPause() {
+    if (this.props.id === null) return;
     const trackAudio = document.getElementById("audio");
     if (this.props.playing) {
       trackAudio.pause();
