@@ -95,7 +95,8 @@ class Player extends React.Component {
         className="delete-track-button"
         onClick={this.deleteTrack}
       >
-        Delete track
+        <img src={window.trashBlackURL} />
+        <span>Delete track</span>
       </button>
     );
     return (

@@ -82,3 +82,23 @@
     padding: 1px;
   }
 }
+
+.track-buttons {  
+  button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: $sc-white;
+    border: solid $sc-light-black 1px;
+    padding: 3px 5px;
+
+    img {
+      height: 17px;
+      width: 17px;
+    }
+
+    &:hover {
+      border: solid $sc-hover-grey 1px;
+    }
+  }
+}
