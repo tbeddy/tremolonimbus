@@ -7,9 +7,7 @@ class Stream extends React.Component {
   }
 
   componentDidMount() {
-    if (this.props.tracks.length === 0) {
-      this.props.fetchTracks();
-    }
+    this.props.fetchTracks();
   }
 
   render() {
