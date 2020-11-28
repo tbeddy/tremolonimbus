@@ -18,6 +18,7 @@
   width: 40px;
   border: none;
   border-radius: 50%;
+  margin: 2px 2px;
 
   img {
     height: 20px;
@@ -32,17 +33,20 @@
 .artist-name {
   color: $sc-light-black;
   font-size: 12px;
+  margin: 2px 2px;
 }
 
 .track-name {
   color: $sc-dark-grey;
   font-size: 18px;
+  margin: 2px 2px;
 }
 
 .grey-bar {
   background-color: $sc-light-black;
   width: auto;
   height: 50px;
+  margin: 2px 2px;
 
   &:hover {
     background-color: $sc-hover-grey;
@@ -86,6 +90,7 @@
 .track-buttons {
   display: flex;
   justify-content: space-between;
+  margin: 2px 2px;
 
   button {
     display: flex;
