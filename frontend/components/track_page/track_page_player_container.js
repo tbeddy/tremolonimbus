@@ -10,13 +10,14 @@ import {
   updateTrack
 } from '../../actions/track_actions';
 
-const mStP = ({ session, audio }, ownProps) => {
+const mStP = ({ session, audio, entities }, ownProps) => {
   return {
     isCurrentUsersTrack: session.id === ownProps.uploader_id,
     currentTrackId: audio.id,
     isCurrentTrack: ownProps.id === audio.id,
     playing: audio.playing && ownProps.id === audio.id,
-    currentTime: audio.currentTime
+    currentTime: audio.currentTime,
+    uploader: entities.users[ownProps.uploader_id]
   }
 };
 

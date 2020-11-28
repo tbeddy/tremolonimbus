@@ -129,8 +129,8 @@ class ContinuousPlayer extends React.Component {
         </span>
         <div className="current-track-details">
           <p className="current-artist-name">
-            Artist
-            </p>
+            {this.props.track ? this.props.uploader.username : "Artist"}
+          </p>
           <p className="current-track-name">
             {this.props.track ? this.props.track.title : "Title"}
           </p>
