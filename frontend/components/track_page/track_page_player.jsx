@@ -38,7 +38,7 @@ class TrackPagePlayer extends Player {
           </button>
           <div>
             <p className="track-artist-name">
-              {this.props.uploader.username}
+              {this.props.id ? this.props.uploader.username : "Artist"}
             </p>
             <p className="track-track-name">
               {this.props.title}
