@@ -7,6 +7,7 @@ class Upload extends React.Component {
 
     this.state = {
       title: "",
+      description: "",
       file: null
     }
 
@@ -27,6 +28,9 @@ class Upload extends React.Component {
     fileData.append('track[title]', this.state.title);
     fileData.append('track[uploader_id]', this.props.currentUserId);
     fileData.append('track[audio]', this.state.file);
+    if (this.state.description !== "") {
+      fileData.append('track[description]', this.state.description);
+    }
     const result = this.props.createTrack(fileData);
     result.then(({ track }) => {
       this.props.history.push(`/tracks/${track.id}`);
@@ -74,11 +78,21 @@ class Upload extends React.Component {
         <label
           htmlFor="title-input"
           className="title-label"
-        >Title</label>
+        >Title
+        </label>
         <input
           id="title-input"
           type="text"
           onChange={this.handleChange("title")}
+        />
+        <label
+          htmlFor="description-input"
+          className="description-label"
+        >Description</label>
+        <textarea
+          id="description-input"
+          type="text"
+          onChange={this.handleChange("description")}
         />
         <div className="submit-buttons">
           <button

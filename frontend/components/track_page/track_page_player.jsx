@@ -68,6 +68,7 @@ class TrackPagePlayer extends Player {
             {this.props.play_count}
           </div>
         </div>
+        {this.props.description ? this.props.description : null}
       </div>
     )
   }

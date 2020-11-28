@@ -49,6 +49,9 @@
 }
 
 .upload-form {
+  display: flex;
+  flex-direction: column;
+
   .submit-buttons {
     .cancel-button {
       color: $sc-dark-black;
