@@ -26,49 +26,60 @@ class TrackPagePlayer extends Player {
       </button>
     );
     return (
-      <div className="track-page-player">
-        <div className="track-info-and-button">
-          <button
-            className="track-play-pause-button"
-            onClick={this.playOrPause}
-          >
-            <img
-              src={this.props.playing ? window.pauseWhiteURL : window.playWhiteURL}
-            />
-          </button>
-          <div>
-            <p className="track-artist-name">
-              {this.props.id ? this.props.uploader.username : "Artist"}
-            </p>
-            <p className="track-track-name">
-              {this.props.title}
-            </p>
-          </div>
-        </div>
-        <div
-          className="track-grey-bar"
-          onClick={this.seekAudio}
-          onMouseMove={this.changeSeekPosition}
-        >
+      <div>
+        <div className="track-background">
+          <div className="track-page-player">
+            <div className="track-info-and-button">
+              <button
+                className="track-play-pause-button"
+                onClick={this.playOrPause}
+              >
+                <img
+                  src={this.props.playing ? window.pauseWhiteURL : window.playWhiteURL}
+                />
+              </button>
+              <div>
+                <div className="track-artist-name">
+                  <p>
+                    {this.props.id ? this.props.uploader.username : "Artist"}
+                  </p>
+                </div>
+                <br/>
+                <div className="track-track-name">
+                  <p>
+                    {this.props.title}
+                  </p>
+                </div>
+              </div>
+            </div>
           <div
-            className="orange-bar"
-            style={{ width: `${this.state.percentDone}%` }}
-          ></div>
-          <div className="track-track-times">
-            {currentTime}
-            {/* <div className="duration">
-              {toMinutesAndSeconds(this.state.duration)}
-            </div> */}
+            className="track-grey-bar"
+            onClick={this.seekAudio}
+            onMouseMove={this.changeSeekPosition}
+          >
+            <div
+              className="orange-bar"
+              style={{ width: `${this.state.percentDone}%` }}
+            ></div>
+            <div className="track-track-times">
+              {currentTime}
+              {/* <div className="duration">
+                {toMinutesAndSeconds(this.state.duration)}
+              </div> */}
+            </div>
           </div>
         </div>
-        <div className="track-buttons">
-          {deleteButton}
-          <div className="play-count">
-            <img src={window.playGreyURL} />
-            {this.props.play_count}
-          </div>
         </div>
-        {this.props.description ? this.props.description : null}
+        <div className="other-than-player">
+          <div className="track-buttons">
+            {deleteButton}
+            <div className="play-count">
+              <img src={window.playGreyURL} />
+              {this.props.play_count}
+            </div>
+          </div>
+          {this.props.description ? this.props.description : null}
+        </div>
       </div>
     )
   }

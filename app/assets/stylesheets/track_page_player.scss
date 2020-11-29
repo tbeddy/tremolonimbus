@@ -1,17 +1,17 @@
 @import './core.scss';
 
+.track-background {
+  background-image: linear-gradient(to right,
+  green, blue, purple);
+}
+
 .track-page-player {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   width: auto;
   height: 300px;
-  margin-left: 20px;
-  margin-right: 20px;
-  margin-top: 40px;
-  // background: transparent;
-  background-image: linear-gradient(to right,
-    $sc-white, $sc-orange, $sc-hover-orange, $sc-dark-grey);
+  margin: 0px 40px;
 }
 
 .track-play-pause-button {
@@ -21,6 +21,7 @@
   width: 60px;
   border: none;
   border-radius: 50%;
+  margin: 5px 5px;
 
   img {
     height: 40px;
@@ -28,28 +29,35 @@
   }
 }
 
-// .track-info-and-button {
-//   display: flex;
-// }
+.track-info-and-button {
+  display: flex;
+  margin-top: 20px;
+}
 
 .track-artist-name {
+  display: inline-block;
   color: $sc-light-black;
   font-size: 18px;
   background-color: $sc-dark-black;
   padding: 5px;
+  margin: 5px 5px;
 }
 
+
 .track-track-name {
+  display: inline-block;
   color: $sc-white;
   font-size: 30px;
   background-color: $sc-dark-black;
   padding: 5px;
+  margin: 5px 5px;
 }
 
 .track-grey-bar {
   background-color: $sc-light-black;
   width: auto;
   height: 100px;
+  margin: 20px 5px;
 
   &:hover {
     background-color: $sc-hover-grey;
@@ -88,4 +96,8 @@
     margin-top: -15px;
     padding: 1px;
   }
+}
+
+.other-than-player {
+  margin: 10px 40px;
 }
