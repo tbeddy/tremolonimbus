@@ -22,9 +22,9 @@ const App = () => (
     <div className="content">
       <Switch>
         <Route path="/tracks/:trackId" component={TrackPageContainer} />
-        <AuthRoute path="/login" component={LoginFormContainer} />
-        <AuthRoute path="/signin" component={LoginFormContainer} />
-        <AuthRoute path="/signup" component={SignupFormContainer} />
+        {/* <AuthRoute path="/login" component={LoginFormContainer} /> */}
+        {/* <AuthRoute path="/signin" component={LoginFormContainer} /> */}
+        {/* <AuthRoute path="/signup" component={SignupFormContainer} /> */}
         <AuthRoute exact path="/" component={SplashContainer} />
         <ProtectedRoute path="/stream" component={StreamContainer} />
         <ProtectedRoute exact path="/upload" component={UploadContainer} />
