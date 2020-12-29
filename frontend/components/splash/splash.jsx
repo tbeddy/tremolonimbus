@@ -27,25 +27,25 @@ export default ({ openModal }) => {
         >Sign in</button>
       </div>
       <div>
-        <a href="https://github.com/tbeddy/tremolonimbus">
+        <a href="https://github.com/tbeddy/tremolonimbus" target="_blank">
           <img
             className="outside-logo"
             src={window.githubURL}
           />
         </a>
-        <a href="https://angel.co/u/timcmbedford">
+        <a href="https://angel.co/u/timcmbedford" target="_blank">
           <img
             className="outside-logo"
             src={window.angelListURL}
           />
         </a>
-        <a href="https://www.linkedin.com/in/timcmbedford">
+        <a href="https://www.linkedin.com/in/timcmbedford" target="_blank">
           <img
             className="outside-logo"
             src={window.linkedInURL}
           />
         </a>
-        <a href="https://tbeddy.github.io">
+        <a href="https://tbeddy.github.io" target="_blank">
           <img
             className="outside-logo"
             src={window.resumeURL}
