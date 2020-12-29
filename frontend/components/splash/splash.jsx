@@ -33,16 +33,22 @@ export default ({ openModal }) => {
             src={window.githubURL}
           />
         </a>
+        <a href="https://angel.co/u/timcmbedford">
+          <img
+            className="outside-logo"
+            src={window.angelListURL}
+          />
+        </a>
         <a href="https://www.linkedin.com/in/timcmbedford">
           <img
             className="outside-logo"
             src={window.linkedInURL}
           />
         </a>
-        <a href="https://angel.co/u/timcmbedford">
+        <a href="https://tbeddy.github.io">
           <img
             className="outside-logo"
-            src={window.angelListURL}
+            src={window.resumeURL}
           />
         </a>
       </div>
