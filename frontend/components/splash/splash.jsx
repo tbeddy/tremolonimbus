@@ -39,6 +39,12 @@ export default ({ openModal }) => {
             src={window.linkedInURL}
           />
         </a>
+        <a href="https://angel.co/u/timcmbedford">
+          <img
+            className="outside-logo"
+            src={window.angelListURL}
+          />
+        </a>
       </div>
     </div>
   )
