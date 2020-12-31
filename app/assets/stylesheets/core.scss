@@ -14,14 +14,13 @@ $sidebar-padding: 17%;
 #app-div {
   background: $sc-light-grey;
   font-family: Arial, Helvetica, sans-serif;
-  height: 100vh;
 }
 
 .content {
   padding-left: $sidebar-padding;
   padding-right: $sidebar-padding;
   padding-top: 45px;
-  height: 95vh;
+  height: 100%;
 }
 
 button {

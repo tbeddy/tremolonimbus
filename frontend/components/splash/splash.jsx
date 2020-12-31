@@ -19,7 +19,7 @@ export default ({ openModal, fetchTracks, tracks }) => {
         src={window.audienceURL}
       />
       <p id="check-out-message">
-        Check out what creators have already uploaded to the platform.
+        Check out what creators have already uploaded to the platform:
       </p>
       <ul>
         {trackList}
@@ -43,7 +43,7 @@ export default ({ openModal, fetchTracks, tracks }) => {
           onClick={() => openModal('login')}
         >Sign in</button>
       </div>
-      <div>
+      <div id="splash-logo-links">
         <a href="https://github.com/tbeddy/tremolonimbus" target="_blank">
           <img
             className="outside-logo"
