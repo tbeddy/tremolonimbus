@@ -1,11 +1,19 @@
 import { connect } from 'react-redux';
 import Splash from "./splash";
 import { openModal } from "../../actions/modal_actions";
+import { fetchSplashTracks } from "../../actions/track_actions";
 
-const mDtP = dispath => {
+const mStP = ({ entities }) => {
   return {
-    openModal: modal => dispath(openModal(modal))
+    tracks: Object.values(entities.tracks)
   }
 }
 
-export default connect(null, mDtP)(Splash);
+const mDtP = dispath => {
+  return {
+    openModal: modal => dispath(openModal(modal)),
+    fetchTracks: () => dispath(fetchSplashTracks())
+  }
+}
+
+export default connect(mStP, mDtP)(Splash);

@@ -37,6 +37,11 @@ export const fetchTrack = trackId => dispatch => {
     .then(track => dispatch(receiveTrack(track)))
 }
 
+export const fetchSplashTracks = () => dispatch => {
+  return APIUtil.fetchSplashTracks()
+    .then(tracks => dispatch(receiveTracks(tracks)))
+}
+
 export const createTrack = track => dispatch => {
   return APIUtil.createTrack(track)
     .then(track => dispatch(receiveTrack(track)))

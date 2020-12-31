@@ -12,6 +12,14 @@ export const fetchTrack = trackId => {
   })
 }
 
+export const fetchSplashTracks = () => {
+  return $.ajax({
+    method: "GET",
+    url: "/api/tracks",
+    data: {splash: true}
+  })
+}
+
 export const createTrack = track => {
   return $.ajax({
     method: "POST",

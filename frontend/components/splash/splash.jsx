@@ -1,12 +1,29 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import PlayerContainer from '../player/player_container';
 
-export default ({ openModal }) => {
+export default ({ openModal, fetchTracks, tracks }) => {
+  useEffect(() => {
+    fetchTracks();
+  }, []);
+
+  const trackList = tracks.map(track => (
+    <li key={track.id}>
+      <PlayerContainer {...track} />
+    </li>
+  ));
+
   return (
     <div id="splash">
       <img
         className="concert-img"
         src={window.audienceURL}
       />
+      <p id="check-out-message">
+        Check out what creators have already uploaded to the platform.
+      </p>
+      <ul>
+        {trackList}
+      </ul>
       <p id="message1">
         Thanks for listening. Now join in.
       </p>
