@@ -88,53 +88,57 @@ class ContinuousPlayer extends React.Component {
   render() {
     const trackAudio = document.getElementById("audio");
     const continuousPlayer = (
-      <div className="continuous-player">
-        <button
-          className="continuous-play-pause-button"
-          onClick={this.playOrPause}
-        >
-          <img
-            className="player-icon"
-            src={this.props.playing ? window.pauseBlackURL : window.playBlackURL}
-          />
-        </button>
-        <button
-          className="continuous-loop-button"
-          onClick={this.toggleLoop}
-        >
-          <img
-            className="player-icon"
-            src={this.props.looping ? window.loopOrangeURL : window.loopBlackURL}
-          />
-        </button>
-        <span className="current-start-time">
-          {toMinutesAndSeconds(this.state.currentTime)}
-        </span>
-        <div
-          className="containing-bar"
-          onClick={this.seekAudio}
-          onMouseMove={this.changeSeekPosition}
-        >
+      <div className="continuous-player-and-sidebars">
+        <div className="sidebar continuous-player-sidebar" />
+        <div className="continuous-player">
+          <button
+            className="continuous-play-pause-button"
+            onClick={this.playOrPause}
+          >
+            <img
+              className="player-icon"
+              src={this.props.playing ? window.pauseBlackURL : window.playBlackURL}
+            />
+          </button>
+          <button
+            className="continuous-loop-button"
+            onClick={this.toggleLoop}
+          >
+            <img
+              className="player-icon"
+              src={this.props.looping ? window.loopOrangeURL : window.loopBlackURL}
+            />
+          </button>
+          <span className="current-start-time">
+            {toMinutesAndSeconds(this.state.currentTime)}
+          </span>
           <div
-            className="current-grey-bar"
+            className="containing-bar"
+            onClick={this.seekAudio}
+            onMouseMove={this.changeSeekPosition}
           >
             <div
-              className="current-orange-bar"
-              style={{ width: `${this.state.percentDone}%` }}
-            ></div>
+              className="current-grey-bar"
+            >
+              <div
+                className="current-orange-bar"
+                style={{ width: `${this.state.percentDone}%` }}
+              ></div>
+            </div>
+          </div>
+          <span className="current-end-time">
+            {trackAudio ? toMinutesAndSeconds(trackAudio.duration) : "0:00"}
+          </span>
+          <div className="current-track-details">
+            <p className="current-artist-name">
+              {this.props.track ? this.props.uploader.username : "Artist"}
+            </p>
+            <p className="current-track-name">
+              {this.props.track ? this.props.track.title : "Title"}
+            </p>
           </div>
         </div>
-        <span className="current-end-time">
-          {trackAudio ? toMinutesAndSeconds(trackAudio.duration) : "0:00"}
-        </span>
-        <div className="current-track-details">
-          <p className="current-artist-name">
-            {this.props.track ? this.props.uploader.username : "Artist"}
-          </p>
-          <p className="current-track-name">
-            {this.props.track ? this.props.track.title : "Title"}
-          </p>
-        </div>
+        <div className="sidebar continuous-player-sidebar" />
       </div>
     );
     const { track } = this.props;

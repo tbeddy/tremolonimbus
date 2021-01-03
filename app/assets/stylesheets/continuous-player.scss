@@ -1,17 +1,28 @@
 @import './core.scss';
 
+.continuous-player-and-sidebars {
+  display: flex;
+  flex-direction: row;
+  position: fixed;
+  bottom: 0;
+  height: 45px;
+  width: 100%;
+  border-top: solid $sc-border-grey 1px;
+}
+
 .continuous-player {
   display: flex;
   flex-direction: row;
   align-items: center;
-  position: fixed;
-  bottom: 0;
   width: 100%;
-  height: 5vh; // or 45px?
+  height: inherit;
   background-color: $sc-light-grey;
-  padding-left: $sidebar-padding;
-  padding-right: $sidebar-padding;
-  border-top: solid $sc-border-grey 1px;
+  flex: 0 0 1200px;
+}
+
+.continuous-player-sidebar {
+  background-color: $sc-light-grey;
+  height: inherit;
 }
 
 .continuous-play-pause-button, .continuous-loop-button {

@@ -9,17 +9,28 @@ $sc-border-grey: #CECECECE;
 $sc-dark-black: #111111;
 $sc-white: #FFFFFF;
 
-$sidebar-padding: 17%;
-
 #app-div {
   background: $sc-light-grey;
   font-family: Arial, Helvetica, sans-serif;
 }
 
+#content-and-sidebars, header, footer {
+  display: flex;
+  flex-direction: row;
+}
+
+.sidebar {
+  flex: 1 1 auto;
+}
+
 .content {
-  padding-left: $sidebar-padding;
-  padding-right: $sidebar-padding;
   padding-top: 45px;
+  height: 100%;
+  flex: 0 0 1200px;
+}
+
+.content-sidebar {
+  background: $sc-light-grey;
   height: 100%;
 }
 

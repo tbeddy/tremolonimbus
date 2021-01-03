@@ -20,29 +20,33 @@ class Greeting extends React.Component {
       <LoggedOutNavButtons openModal={openModal} />
     );
     return (
-      <div className="greeting-bar">
-        <Link to="/">
-          <img
-            className="logo-img"
-            src={currentUser ? window.logoURL : window.logoWithNameURL}
-          />
-        </Link>
-        <div className="search">
-          <form>
-            <input
-              type="text"
-              placeholder="Search"
+      <div className="greeting-bar-and-sidebars">
+        <div className="sidebar navbar-sidebar" />
+        <div className="greeting-bar">
+          <Link to="/">
+            <img
+              className="logo-img"
+              src={currentUser ? window.logoURL : window.logoWithNameURL}
             />
-            <button
-              onClick={this.toggleDotsDropdown}
-            >
-              <img
-                src={window.searchGreyURL}
-              ></img>
-            </button>
-          </form>
+          </Link>
+          <div className="search">
+            <form>
+              <input
+                type="text"
+                placeholder="Search"
+              />
+              <button
+                onClick={this.toggleDotsDropdown}
+              >
+                <img
+                  src={window.searchGreyURL}
+                ></img>
+              </button>
+            </form>
+          </div>
+          {navButtons}
         </div>
-        {navButtons}
+        <div className="sidebar navbar-sidebar" />
       </div>
     )
   }
