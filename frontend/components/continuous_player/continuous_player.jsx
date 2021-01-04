@@ -129,6 +129,15 @@ class ContinuousPlayer extends React.Component {
           <span className="current-end-time">
             {trackAudio ? toMinutesAndSeconds(trackAudio.duration) : "0:00"}
           </span>
+          <button
+            className="volume-button"
+            onClick={null}
+          >
+            <img
+              className="player-icon"
+              src={window.volumeUpURL}
+            />
+          </button>
           <div className="current-track-details">
             <p className="current-artist-name">
               {this.props.track ? this.props.uploader.username : "Artist"}

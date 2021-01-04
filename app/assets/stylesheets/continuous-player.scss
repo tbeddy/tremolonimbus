@@ -25,10 +25,16 @@
   height: inherit;
 }
 
-.continuous-play-pause-button, .continuous-loop-button {
+.continuous-play-pause-button,
+.continuous-loop-button,
+.volume-button {
   height: auto;
   border: none;
   align-self: stretch;
+}
+
+.volume-button {
+  padding-right: 20px;
 }
 
 .player-icon {
