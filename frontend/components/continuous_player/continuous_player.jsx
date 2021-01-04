@@ -7,7 +7,8 @@ class ContinuousPlayer extends React.Component {
 
     this.state = {
       currentTime: 0,
-      percentDone: 0
+      percentDone: 0,
+      volumeSliderOpen: false
     };
 
     this.timeInterval = null;
@@ -17,6 +18,9 @@ class ContinuousPlayer extends React.Component {
     this.seekAudio = this.seekAudio.bind(this);
     this.changeSeekPosition = this.changeSeekPosition.bind(this);
     this.toggleLoop = this.toggleLoop.bind(this);
+    this.changeVolume = this.changeVolume.bind(this);
+    this.openVolumeSlider = this.openVolumeSlider.bind(this);
+    this.closeVolumeSlider = this.closeVolumeSlider.bind(this);
   }
 
   componentDidMount() {
@@ -45,6 +49,19 @@ class ContinuousPlayer extends React.Component {
     this.setState({
       currentTime: Math.floor(trackAudio.currentTime)
     });
+  }
+
+  openVolumeSlider() {
+    this.setState({ volumeSliderOpen: true });
+  }
+
+  closeVolumeSlider() {
+    this.setState({ volumeSliderOpen: false });
+  }
+
+  changeVolume(e) {
+    const trackAudio = document.getElementById("audio");
+    trackAudio.volume = e.currentTarget.value;
   }
 
   updateBar() {
@@ -87,6 +104,14 @@ class ContinuousPlayer extends React.Component {
 
   render() {
     const trackAudio = document.getElementById("audio");
+    const volumeSlider = !this.state.volumeSliderOpen ? null : (
+      <div id="volume-slider-container">
+        <input id="volume-slider" type="range"
+          min="0.0" max="1.0" step="0.01"
+          onChange={this.changeVolume}
+        />
+      </div>
+    )
     const continuousPlayer = (
       <div className="continuous-player-and-sidebars">
         <div className="sidebar continuous-player-sidebar" />
@@ -131,12 +156,14 @@ class ContinuousPlayer extends React.Component {
           </span>
           <button
             className="volume-button"
-            onClick={null}
+            onMouseEnter={this.openVolumeSlider}
+            onMouseLeave={this.closeVolumeSlider}
           >
             <img
               className="player-icon"
               src={window.volumeUpURL}
             />
+            {volumeSlider}
           </button>
           <div className="current-track-details">
             <p className="current-artist-name">
