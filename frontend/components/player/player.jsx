@@ -125,7 +125,9 @@ class Player extends React.Component {
           </button>
           <div>
             <p className="artist-name">
-              {this.props.uploader.username}
+              <Link to={`/users/${this.props.uploader.id}`}>
+                {this.props.uploader.username}
+              </Link>
             </p>
             <p className="track-name">
               <Link to={`/tracks/${this.props.id}`}>
