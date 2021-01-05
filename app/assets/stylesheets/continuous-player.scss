@@ -61,7 +61,7 @@
   }
 
   &::-webkit-slider-runnable-track {
-    height: 1px;
+    height: 2px;
     background-color: $sc-orange;
   }
 
@@ -73,11 +73,11 @@
     border-radius: 50%;
     background-color: $sc-orange;
     cursor: pointer;
-    margin-top: -3.5px;
+    margin-top: -3px;
   }
 
   &::-moz-range-track {
-    height: 1px;
+    height: 2px;
     background-color: $sc-orange;
   }
 
