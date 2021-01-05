@@ -9,10 +9,18 @@ class Api::UsersController < ApplicationController
     end
   end
 
+  def show
+    @user = User.includes(:tracks).find_by(id: params[:id])
+    if @user
+      render :show
+    else
+      render json: ["Missing user"], status: 404
+    end
+  end
+
   private
 
   def user_params
     params.require(:user).permit(:username, :password, :email)
   end
-
 end

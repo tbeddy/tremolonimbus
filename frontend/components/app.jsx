@@ -9,6 +9,7 @@ import StreamContainer from './stream/stream_container';
 import UploadContainer from './upload/upload_container';
 import ContinuousPlayerContainer from './continuous_player/continous_player_container';
 import TrackPageContainer from './track_page/track_page_container';
+import ProfilePageContainer from './profile_page/profile_page_container';
 import { AuthRoute , ProtectedRoute } from '../util/route_util';
 
 const App = () => (
@@ -24,6 +25,7 @@ const App = () => (
       <div className="content">
         <Switch>
           <Route path="/tracks/:trackId" component={TrackPageContainer} />
+          <Route path="/users/:userId" component={ProfilePageContainer} />
           {/* <AuthRoute path="/login" component={LoginFormContainer} /> */}
           {/* <AuthRoute path="/signin" component={LoginFormContainer} /> */}
           {/* <AuthRoute path="/signup" component={SignupFormContainer} /> */}

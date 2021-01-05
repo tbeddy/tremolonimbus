@@ -6,7 +6,7 @@ class Api::TracksController < ApplicationController
   end
 
   def show
-    @track = Track.find_by(id: params[:id])
+    @track = Track.includes(:uploader).find_by(id: params[:id])
     if @track
       render "/api/tracks/show"
     else
