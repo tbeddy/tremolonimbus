@@ -102,6 +102,21 @@ class ContinuousPlayer extends React.Component {
     this.props.toggleLoop();
   }
 
+  volumeIcon() {
+    const trackAudio = document.getElementById("audio");
+    if (trackAudio === null) return null;
+    const currentVolume = trackAudio.volume;
+    if (currentVolume >= 0.66) {
+      return window.volumeUpURL;
+    } else if ((currentVolume < 0.66) && (currentVolume >= 0.33)) {
+      return window.volumeMiddleURL;
+    } else if ((currentVolume < 0.33) && (currentVolume > 0)) {
+      return window.volumeLowURL;
+    } else {
+      return window.volumeMuteURL;
+    }
+  }
+
   render() {
     const trackAudio = document.getElementById("audio");
     const volumeSlider = !this.state.volumeSliderOpen ? null : (
@@ -111,7 +126,8 @@ class ContinuousPlayer extends React.Component {
           onChange={this.changeVolume}
         />
       </div>
-    )
+    );
+    
     const continuousPlayer = (
       <div className="continuous-player-and-sidebars">
         <div className="sidebar continuous-player-sidebar" />
@@ -161,7 +177,7 @@ class ContinuousPlayer extends React.Component {
           >
             <img
               className="player-icon"
-              src={window.volumeUpURL}
+              src={this.volumeIcon()}
             />
             {volumeSlider}
           </button>
