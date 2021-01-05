@@ -1,7 +1,7 @@
 import React from 'react';
 import Player from '../player/player';
 import { toMinutesAndSeconds } from '../../util/player_util';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 
 class TrackPagePlayer extends Player {
   deleteTrackandRedirect() {
@@ -9,6 +9,7 @@ class TrackPagePlayer extends Player {
   }
 
   render() {
+    if (!this.props.id) return null; 
     const currentTime = !this.props.isCurrentTrack ? null : (
       <div className="current-time">
         {toMinutesAndSeconds(this.state.currentTime)}
@@ -41,7 +42,9 @@ class TrackPagePlayer extends Player {
               <div>
                 <div className="track-artist-name">
                   <p>
-                    {this.props.id ? this.props.uploader.username : "Artist"}
+                    <Link to={`/users/${this.props.uploader.id}`}>
+                      {this.props.uploader.username}
+                    </Link>
                   </p>
                 </div>
                 <br/>
