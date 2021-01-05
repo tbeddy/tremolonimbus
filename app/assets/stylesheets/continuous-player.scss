@@ -60,6 +60,10 @@
     outline: none;
   }
 
+  &:hover {
+    cursor: pointer;
+  }
+
   &::-webkit-slider-runnable-track {
     height: 2px;
     background-color: $sc-orange;
