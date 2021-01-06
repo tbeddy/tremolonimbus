@@ -13,6 +13,9 @@ class TrackPage extends React.Component {
     return (
       <div className="track-page">
         <TrackPagePlayerContainer {...track} />
+        <div className="description-and-comments">
+          {track.description ? track.description : null}
+        </div>
       </div>
     )
   }
