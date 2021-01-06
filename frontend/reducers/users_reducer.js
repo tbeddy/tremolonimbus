@@ -13,7 +13,7 @@ export default (state = {}, action) => {
     case RECEIVE_TRACKS:
       return Object.assign({}, state, action.users);
     case RECEIVE_TRACK:
-      return Object.assign({}, state, action.user);
+      return Object.assign({}, state, action.users);
     case RECEIVE_USER:
       return Object.assign({}, state, { [action.user.id]: action.user });
     default:
