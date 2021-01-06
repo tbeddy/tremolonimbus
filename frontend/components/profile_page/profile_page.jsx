@@ -1,4 +1,5 @@
 import React from 'react';
+import users_reducer from '../../reducers/users_reducer';
 import PlayerContainer from '../player/player_container';
 
 class ProfilePage extends React.Component {
@@ -17,8 +18,16 @@ class ProfilePage extends React.Component {
       </li>
     ));
     return (
-      <div className="stream">
-        <p id="stream-top-message">
+      <div className="profile-page">
+        <div className="profile-header">
+          <div className="profile-picture" />
+          <div className="profile-info">
+            <div className="profile-name">
+              {this.props.user.username}
+            </div>
+          </div>
+        </div>
+        <p className="recent-header">
           Recent
         </p>
         <ul>
