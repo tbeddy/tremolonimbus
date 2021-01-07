@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import TrackPagePlayerContainer from './track_page_player_container'
 
 class TrackPage extends React.Component {
@@ -54,7 +55,9 @@ class TrackPage extends React.Component {
           <div className="comment" key={id}>
             <div className="comment-layer">
               <p className="comment-username">
-                {user.username}
+                <Link to={`/users/${user.id}`}>
+                  {user.username}
+                </Link>
               </p>
             </div>
             <div className="comment-layer">
