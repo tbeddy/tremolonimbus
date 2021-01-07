@@ -21,7 +21,7 @@ const receiveTrack = ({ track, users, comments }) => {
   }
 }
 
-const removeTrack = ({ id }) => {
+const removeTrack = id => {
   return {
     type: REMOVE_TRACK,
     id
@@ -50,7 +50,7 @@ export const createTrack = track => dispatch => {
 
 export const deleteTrack = trackId => dispatch => {
   return APIUtil.deleteTrack(trackId)
-    .then(trackId => dispatch(removeTrack(trackId)))
+    .then(_ => dispatch(removeTrack(trackId)))
 }
 
 export const updateTrack = track => dispatch => {
