@@ -39,9 +39,14 @@ class TrackPage extends React.Component {
   render() {
     const { track, comments } = this.props;
     const commentList = comments.length === 0 ? (
-      <div className="empty-comments-messages">
-        <p>Seems a little quiet over here</p>
-        <p>Be the first to comment on this track</p>
+      <div className="empty-comments-container">
+        <img src={window.chatNoCommentsURL} />
+        <p id="no-comment-message1">
+          Seems a little quiet over here
+        </p>
+        <p id="no-comment-message2">
+          Be the first to comment on this track
+        </p>
       </div>
     ) : (
       <div className="comment-list">

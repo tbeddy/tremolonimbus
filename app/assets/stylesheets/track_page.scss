@@ -8,3 +8,25 @@
 .description-and-comments {
   margin: 50px 40px;
 }
+
+.empty-comments-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  img {
+    height: 250px;
+    width: 250px;
+  }
+
+  #no-comment-message1 {
+    color: $sc-dark-grey;
+    font-size: 20px;
+    margin: 10px;
+  }
+
+  #no-comment-message2 {
+    color: $sc-arrow-grey;
+    font-size: 18px;
+  }
+}
