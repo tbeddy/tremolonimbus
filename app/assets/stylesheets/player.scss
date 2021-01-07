@@ -111,12 +111,23 @@
   }
 }
 
-.play-count {
+.track-data {
+  display: flex;
+  flex-direction: row;
+}
+
+.play-count, .comment-count {
   color: $sc-arrow-grey;
-  font-size: 20px;
+  font-size: 14px;
+  margin: 0px 5px;
 
   img {
-    height: 17px;
-    width: 17px;
+    height: 12px;
+    width: 12px;
+    margin: 0px 2px;
   }
+}
+
+.comment-count img {
+  margin: 0px 4px;
 }

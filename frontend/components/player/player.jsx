@@ -154,9 +154,15 @@ class Player extends React.Component {
         </div>
         <div className="track-buttons">
           {deleteButton}
-          <div className="play-count">
-            <img src={window.playGreyURL} />
-            {this.props.play_count}
+          <div className="track-data">
+            <div className="play-count">
+              <img src={window.playGreyURL} />
+              {this.props.play_count}
+            </div>
+            <div className="comment-count">
+              <img src={window.chatURL} />
+              {this.props.comments.length}
+            </div>
           </div>
         </div>
       </div>

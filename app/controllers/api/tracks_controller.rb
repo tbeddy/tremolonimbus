@@ -1,6 +1,6 @@
 class Api::TracksController < ApplicationController
   def index
-    @tracks = Track.order('created_at DESC')
+    @tracks = Track.includes(:uploader, :comments).order('created_at DESC')
     @tracks = @tracks.sample(3) if params["splash"]
     render :index
   end

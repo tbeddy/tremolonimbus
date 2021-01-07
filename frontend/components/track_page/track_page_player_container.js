@@ -9,6 +9,7 @@ import {
   deleteTrack,
   updateTrack
 } from '../../actions/track_actions';
+import { selectCommentsforTrack } from '../../util/selectors';
 
 const mStP = ({ session, audio, entities }, ownProps) => {
   return {
@@ -17,7 +18,8 @@ const mStP = ({ session, audio, entities }, ownProps) => {
     isCurrentTrack: ownProps.id === audio.id,
     playing: audio.playing && ownProps.id === audio.id,
     currentTime: audio.currentTime,
-    uploader: entities.users[ownProps.uploader_id]
+    uploader: entities.users[ownProps.uploader_id],
+    comments: selectCommentsforTrack(entities, ownProps.id)
   }
 };
 
