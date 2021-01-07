@@ -1,5 +1,6 @@
 import React from 'react';
 import { toMinutesAndSeconds } from '../../util/player_util';
+import { Link } from 'react-router-dom';
 
 class ContinuousPlayer extends React.Component {
   constructor(props) {
@@ -183,10 +184,18 @@ class ContinuousPlayer extends React.Component {
           </button>
           <div className="current-track-details">
             <p className="current-artist-name">
-              {this.props.track ? this.props.uploader.username : "Artist"}
+              {!this.props.track ? "Artist" : (
+                <Link to={`/users/${this.props.uploader.id}`}>
+                  {this.props.track ? this.props.uploader.username : "Artist"}
+                </Link>
+              )}
             </p>
             <p className="current-track-name">
-              {this.props.track ? this.props.track.title : "Title"}
+              {!this.props.track ? "Title" : (
+                <Link to={`/tracks/${this.props.track.id}`}>
+                  {this.props.track ? this.props.track.title : "Title"}
+                </Link>
+              )}
             </p>
           </div>
         </div>
