@@ -24,7 +24,19 @@
 }
 
 .comment-header {
-  color: $sc-arrow-grey;
+  display: flex;
+  flex-direction: row;
+
+   p {
+     color: $sc-arrow-grey;
+     font-size: 15px;
+   }
+
+   img {
+     height: 15px;
+     width: 15px;
+     margin-right: 5px;
+   }
 }
 
 .comment {

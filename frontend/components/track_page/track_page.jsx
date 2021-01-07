@@ -44,9 +44,12 @@ class TrackPage extends React.Component {
       </div>
     ) : (
       <div className="comment-list">
-        <p className="comment-header">
-          {`${comments.length} comment${comments.length === 1 ? "" : "s"}`}
-        </p>
+        <div className="comment-header">
+            <img src={window.chatURL} />
+          <p>
+            {`${comments.length} comment${comments.length === 1 ? "" : "s"}`}
+          </p>
+        </div>
         {comments.map(({ id, body, user }) => (
           <div className="comment" key={id}>
             <div className="comment-layer">
