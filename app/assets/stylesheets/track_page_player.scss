@@ -41,6 +41,10 @@
   background-color: $sc-dark-black;
   padding: 5px;
   margin: 5px 5px;
+
+  &:hover {
+    color: $sc-light-grey;
+  }
 }
 
 

@@ -31,9 +31,13 @@
 }
 
 .artist-name {
-  color: $sc-light-black;
+  color: $sc-arrow-grey;
   font-size: 12px;
   margin: 2px 2px;
+
+  &:hover {
+    color: $sc-dark-grey;
+  }
 }
 
 .track-name {
