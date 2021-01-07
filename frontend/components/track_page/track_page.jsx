@@ -14,9 +14,7 @@ class TrackPage extends React.Component {
   }
 
   componentDidMount() {
-    if (Object.keys(this.props.track).length === 0) {
-      this.props.fetchTrack(this.props.match.params.trackId);
-    }
+    this.props.fetchTrack(this.props.match.params.trackId);
   }
 
   updateCommentInput(e) {

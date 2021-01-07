@@ -16,7 +16,9 @@ export default (state = {}, action) => {
       });
       return newTracks;
     case RECEIVE_TRACK:
-      return Object.assign({}, state, {[action.track.id]: action.track});
+      const { track } = action;
+      if (state[track.id]) track.url = state[track.id].url;
+      return Object.assign({}, state, {[track.id]: track});
     case REMOVE_TRACK:
       const newState = Object.assign({}, state);
       delete newState[action.id];
