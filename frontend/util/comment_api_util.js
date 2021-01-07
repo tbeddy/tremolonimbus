@@ -5,3 +5,10 @@ export const createComment = comment => {
     data: {comment}
   })
 }
+
+export const deleteComment = commentId => {
+  return $.ajax({
+    method: "DELETE",
+    url: `/api/comments/${commentId}`
+  })
+}

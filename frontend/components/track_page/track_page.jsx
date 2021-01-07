@@ -45,9 +45,15 @@ class TrackPage extends React.Component {
     ) : (
       <div className="comment-list">
         <p>{`${comments.length} comment${comments.length === 1 ? "" : "s"}`}</p>
-        {comments.map(({ id, body, user: { username } }) => (
+        {comments.map(({ id, body, user }) => (
           <div key={id}>
-            <p>{username}: {body}</p>
+            <p>{user.username}: {body}
+              <span> {this.props.currentUser !== user.id ? null : (
+                <button onClick={() => this.props.deleteComment(id)}>
+                  Delete
+                </button>
+              )}</span>
+            </p>
           </div>
         ))}
       </div>
