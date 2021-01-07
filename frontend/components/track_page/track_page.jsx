@@ -44,16 +44,31 @@ class TrackPage extends React.Component {
       </div>
     ) : (
       <div className="comment-list">
-        <p>{`${comments.length} comment${comments.length === 1 ? "" : "s"}`}</p>
+        <p className="comment-header">
+          {`${comments.length} comment${comments.length === 1 ? "" : "s"}`}
+        </p>
         {comments.map(({ id, body, user }) => (
-          <div key={id}>
-            <p>{user.username}: {body}
-              <span> {this.props.currentUser !== user.id ? null : (
-                <button onClick={() => this.props.deleteComment(id)}>
-                  Delete
-                </button>
-              )}</span>
-            </p>
+          <div className="comment" key={id}>
+            <div className="comment-layer">
+              <p className="comment-username">
+                {user.username}
+              </p>
+            </div>
+            <div className="comment-layer">
+              <p className="comment-body">
+                {body}
+              </p>
+              {this.props.currentUser !== user.id ? (
+                <div></div>
+              ) : (
+                <button
+                className="delete-comment-button"
+                onClick={() => this.props.deleteComment(id)}
+              >
+                <img src={window.trashBlackURL} />
+              </button>
+              )}
+            </div>
           </div>
         ))}
       </div>
@@ -65,8 +80,8 @@ class TrackPage extends React.Component {
           <div className="description">
             {track.description ? track.description : null}
           </div>
-          <div className="comment-input">
-            <form onSubmit={this.submitComment}>
+          <div className="comment-input-container">
+            <form className="comment-input" onSubmit={this.submitComment}>
               <input
                 type="text"
                 placeholder="Write a comment"

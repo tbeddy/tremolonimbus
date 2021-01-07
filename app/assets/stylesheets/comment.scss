@@ -1,0 +1,75 @@
+@import './core.scss';
+
+.comment-input-container {
+  background-color: $sc-light-grey;
+  margin: 20px 0px;
+  height: 40px;
+  width: 100%;
+}
+
+.comment-input {
+  display: inline-block;
+  height: 30px;
+  width: inherit;
+  padding: 5px;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  input {
+    height: inherit;
+    width: inherit;
+  }
+}
+
+.comment-header {
+  color: $sc-arrow-grey;
+}
+
+.comment {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 5px 0px;
+}
+
+.comment-layer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.comment-username {
+  color: $sc-arrow-grey;
+  font-size: 13px;
+
+  &:hover {
+    color: $sc-dark-black;
+  }
+}
+
+.comment-body {
+  color: $sc-dark-black;
+  font-size: 13px;
+}
+
+.delete-comment-button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: $sc-white;
+  height: 25px;
+  width: 25px;
+  border: solid $sc-light-black 1px;
+  padding: 3px 5px;
+
+  img {
+    height: 17px;
+    width: 17px;
+  }
+
+  &:hover {
+    border: solid $sc-hover-grey 1px;
+  }
+}
