@@ -2,10 +2,37 @@ import React from 'react';
 import TrackPagePlayerContainer from './track_page_player_container'
 
 class TrackPage extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      commentInput: ""
+    }
+
+    this.updateCommentInput = this.updateCommentInput.bind(this);
+    this.submitComment = this.submitComment.bind(this);
+  }
+
   componentDidMount() {
     if (Object.keys(this.props.track).length === 0) {
       this.props.fetchTrack(this.props.match.params.trackId);
     }
+  }
+
+  updateCommentInput(e) {
+    this.setState({ commentInput: e.currentTarget.value });
+  }
+
+  submitComment(e) {
+    e.preventDefault();
+    const commentData = {
+      body: this.state.commentInput,
+      author_id: this.props.currentUser,
+      track_id: this.props.track.id
+    };
+    this.props.createComment(commentData)
+      .then(_ => {
+        this.setState({ commentInput: "" })
+      });
   }
 
   render() {
@@ -18,9 +45,9 @@ class TrackPage extends React.Component {
     ) : (
       <div className="comment-list">
         <p>{`${comments.length} comment${comments.length === 1 ? "" : "s"}`}</p>
-        {comments.map(({ id, body, user }) => (
+        {comments.map(({ id, body, user: { username } }) => (
           <div key={id}>
-            <p>{user.username}: {body}</p>
+            <p>{username}: {body}</p>
           </div>
         ))}
       </div>
@@ -31,6 +58,16 @@ class TrackPage extends React.Component {
         <div className="description-and-comments">
           <div className="description">
             {track.description ? track.description : null}
+          </div>
+          <div className="comment-input">
+            <form onSubmit={this.submitComment}>
+              <input
+                type="text"
+                placeholder="Write a comment"
+                value={this.state.commentInput}
+                onChange={this.updateCommentInput}
+              />
+            </form>
           </div>
           <div className="comments">
             {commentList}
