@@ -155,14 +155,18 @@ class Player extends React.Component {
         <div className="track-buttons">
           {deleteButton}
           <div className="track-data">
-            <div className="play-count">
-              <img src={window.playGreyURL} />
-              {this.props.play_count}
-            </div>
-            <div className="comment-count">
-              <img src={window.chatURL} />
-              {this.props.comments.length}
-            </div>
+            {this.props.play_count === 0 ? null : (
+              <div className="play-count">
+                <img src={window.playGreyURL} />
+                {this.props.play_count}
+              </div>
+            )}
+            {this.props.comments.length === 0 ? null : (
+              <div className="comment-count">
+                <img src={window.chatURL} />
+                {this.props.comments.length}
+              </div>
+            )}
           </div>
         </div>
       </div>
