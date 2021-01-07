@@ -102,12 +102,14 @@
 
 .current-start-time {
   color: $sc-orange;
+  font-size: 12px;
   padding-left: 30px;
   padding-right: 10px;
 }
 
 .current-end-time {
   color: $sc-dark-black;
+  font-size: 12px;
   padding-left: 10px;
   padding-right: 30px;
 }
@@ -135,16 +137,27 @@
 .current-track-details {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   height: inherit;
   width: 100px;
+  padding: 7px 0px;
+
+  .current-artist-name, .current-track-name {
+    font-size: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    &:hover {
+      color: $sc-dark-black;
+    }
+  }
 
   .current-artist-name {
-    color: $sc-light-black;
-    font-size: 13px;
+    color: $sc-arrow-grey;
   }
 
   .current-track-name {
-    color: $sc-dark-grey;
-    font-size: 15px;
+    color: $sc-hover-grey;
   }
 }
