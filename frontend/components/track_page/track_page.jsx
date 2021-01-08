@@ -36,7 +36,7 @@ class TrackPage extends React.Component {
   }
 
   render() {
-    const { track, comments } = this.props;
+    const { track, comments, currentUser } = this.props;
     const commentList = comments.length === 0 ? (
       <div className="empty-comments-container">
         <img src={window.chatNoCommentsURL} />
@@ -73,7 +73,7 @@ class TrackPage extends React.Component {
                 <p className="comment-body">
                   {body}
                 </p>
-                {this.props.currentUser !== user.id ? (
+                {currentUser !== user.id ? (
                   <div></div>
                 ) : (
                   <button
@@ -96,16 +96,18 @@ class TrackPage extends React.Component {
           <div className="description">
             {track.description ? track.description : null}
           </div>
-          <div className="comment-input-container">
-            <form className="comment-input" onSubmit={this.submitComment}>
-              <input
-                type="text"
-                placeholder="Write a comment"
-                value={this.state.commentInput}
-                onChange={this.updateCommentInput}
-              />
-            </form>
-          </div>
+          {!currentUser ? null : (
+            <div className="comment-input-container">
+              <form className="comment-input" onSubmit={this.submitComment}>
+                <input
+                  type="text"
+                  placeholder="Write a comment"
+                  value={this.state.commentInput}
+                  onChange={this.updateCommentInput}
+                />
+              </form>
+            </div>
+          )}
           <div className="comments">
             {commentList}
           </div>
