@@ -11,7 +11,7 @@ export const selectCommentsforTrack = ({ comments, users }, trackId) => {
 export const selectTracksforUser = ({ tracks }, userId) => {
   if (!tracks) return [];
   return Object.values(tracks).filter(
-    ({ author_id }) => author_id == userId);
+    ({ uploader_id }) => uploader_id == userId);
 }
 
 export const reduceTracks = (state, tracks) => {
