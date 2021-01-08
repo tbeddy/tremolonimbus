@@ -98,10 +98,15 @@ class TrackPage extends React.Component {
           </div>
           {!currentUser ? null : (
             <div className="comment-input-container">
-              <form className="comment-input" onSubmit={this.submitComment}>
+              <div
+                className="comment-input-picture"
+                style={{ "backgroundImage": generateProfilePicture(currentUser) }}
+              />
+              <form onSubmit={this.submitComment}>
                 <input
                   type="text"
                   placeholder="Write a comment"
+                  className="comment-input"
                   value={this.state.commentInput}
                   onChange={this.updateCommentInput}
                 />
