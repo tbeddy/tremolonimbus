@@ -2,13 +2,30 @@
 
 .page-player {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   width: auto;
-  height: 100px;
+  height: auto;
   margin-left: 20px;
   margin-right: 20px;
   margin-top: 40px;
   background: transparent;
+}
+
+.page-player-picture {
+  height: 150px;
+  width: 150px;
+  flex: 0 0 150px;
+  margin-right: 10px;
+}
+
+.page-player-except-picture {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  height: 150px;
+  background: transparent;
+  flex: 1 1 auto;
 }
 
 .play-pause-button {
@@ -28,6 +45,7 @@
 
 .track-info-and-button {
   display: flex;
+  flex-direction: row;
 }
 
 .artist-name {
