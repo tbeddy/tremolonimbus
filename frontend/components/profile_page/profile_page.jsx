@@ -1,5 +1,4 @@
 import React from 'react';
-import users_reducer from '../../reducers/users_reducer';
 import PlayerContainer from '../player/player_container';
 
 class ProfilePage extends React.Component {
@@ -12,7 +11,9 @@ class ProfilePage extends React.Component {
   }
 
   render() {
-    const trackList = this.props.tracks.map(track => (
+    const { tracks, user } = this.props;
+    if (!user) return null;
+    const trackList = (tracks === undefined) ? null : tracks.map(track => (
       <li key={track.id}>
         <PlayerContainer {...track} />
       </li>
@@ -23,7 +24,7 @@ class ProfilePage extends React.Component {
           <div className="profile-picture" />
           <div className="profile-info">
             <div className="profile-name">
-              {this.props.user.username}
+              {user.username}
             </div>
           </div>
         </div>

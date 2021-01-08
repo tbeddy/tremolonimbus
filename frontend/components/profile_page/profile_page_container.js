@@ -1,13 +1,14 @@
 import { connect } from 'react-redux';
 import { fetchUser } from '../../actions/user_actions';
 import ProfilePage from './profile_page';
+import { selectTracksforUser } from '../../util/selectors';
 
 const mStP = (state, ownProps) => {
   const id = ownProps.match.params.userId;
   return {
     id,
     user: state.entities.users[id],
-    tracks: Object.values(state.entities.tracks).sort((a, b) => b.id - a.id)
+    tracks: selectTracksforUser(state.entities, id).sort((a, b) => b.id - a.id)
   }
 }
 
