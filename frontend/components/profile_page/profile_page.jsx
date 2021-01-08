@@ -1,5 +1,9 @@
 import React from 'react';
 import PlayerContainer from '../player/player_container';
+import {
+  generateProfilePicture,
+  generateProfileBackground
+} from '../../util/pic_util';
 
 class ProfilePage extends React.Component {
   constructor(props) {
@@ -11,7 +15,7 @@ class ProfilePage extends React.Component {
   }
 
   render() {
-    const { tracks, user } = this.props;
+    const { id, tracks, user } = this.props;
     if (!user) return null;
     const trackList = (tracks === undefined) ? null : tracks.map(track => (
       <li key={track.id}>
@@ -20,8 +24,14 @@ class ProfilePage extends React.Component {
     ));
     return (
       <div className="profile-page">
-        <div className="profile-header">
-          <div className="profile-picture" />
+        <div
+          className="profile-header"
+          style={{ "backgroundImage": generateProfileBackground(id) }}
+        >
+          <div
+            className="profile-picture"
+            style={{ "backgroundImage": generateProfilePicture(id) }}
+          />
           <div className="profile-info">
             <div className="profile-name">
               {user.username}
