@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import TrackPagePlayerContainer from './track_page_player_container'
+import TrackPagePlayerContainer from './track_page_player_container';
+import { generateProfilePicture } from '../../util/pic_util';
 
 class TrackPage extends React.Component {
   constructor(props) {
@@ -56,27 +57,33 @@ class TrackPage extends React.Component {
         </div>
         {comments.map(({ id, body, user }) => (
           <div className="comment" key={id}>
-            <div className="comment-layer">
-              <p className="comment-username">
-                <Link to={`/users/${user.id}`}>
-                  {user.username}
-                </Link>
-              </p>
-            </div>
-            <div className="comment-layer">
-              <p className="comment-body">
-                {body}
-              </p>
-              {this.props.currentUser !== user.id ? (
-                <div></div>
-              ) : (
-                <button
-                className="delete-comment-button"
-                onClick={() => this.props.deleteComment(id)}
-              >
-                <img src={window.trashBlackURL} />
-              </button>
-              )}
+            <div
+              className="comment-picture"
+              style={{ "backgroundImage": generateProfilePicture(user.id) }}
+            />
+            <div className="comment-except-picture">
+              <div className="comment-layer">
+                <p className="comment-username">
+                  <Link to={`/users/${user.id}`}>
+                    {user.username}
+                  </Link>
+                </p>
+              </div>
+              <div className="comment-layer">
+                <p className="comment-body">
+                  {body}
+                </p>
+                {this.props.currentUser !== user.id ? (
+                  <div></div>
+                ) : (
+                  <button
+                  className="delete-comment-button"
+                  onClick={() => this.props.deleteComment(id)}
+                >
+                  <img src={window.trashBlackURL} />
+                </button>
+                )}
+              </div>
             </div>
           </div>
         ))}
