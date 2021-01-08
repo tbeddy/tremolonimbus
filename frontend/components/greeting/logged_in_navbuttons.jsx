@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { generateProfilePicture } from '../../util/pic_util';
 
 class LoggedInNavButtons extends React.Component {
   constructor(props) {
@@ -33,8 +34,12 @@ class LoggedInNavButtons extends React.Component {
           to="/upload"
           className="upload-link nav-button"
         >Upload</Link>
-        <div>
-          <span>{this.props.currentUser.username}</span>
+        <div className="navbar-current-user">
+          <div
+            className="navbar-profile-picture"
+            style={{ "backgroundImage": generateProfilePicture(this.props.currentUser.id) }}
+          />
+          <p>{this.props.currentUser.username}</p>
         </div>
         <div className={this.state.nameDropdownOpen ? "black-back" : ""}>
           <img
