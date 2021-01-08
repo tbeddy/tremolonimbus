@@ -1,6 +1,7 @@
 import React from 'react';
-import { toMinutesAndSeconds } from '../../util/player_util';
 import { Link } from 'react-router-dom';
+import { toMinutesAndSeconds } from '../../util/player_util';
+import { generateProfilePicture } from '../../util/pic_util';
 
 class ContinuousPlayer extends React.Component {
   constructor(props) {
@@ -128,7 +129,6 @@ class ContinuousPlayer extends React.Component {
         />
       </div>
     );
-    
     const continuousPlayer = (
       <div className="continuous-player-and-sidebars">
         <div className="sidebar continuous-player-sidebar" />
@@ -183,20 +183,28 @@ class ContinuousPlayer extends React.Component {
             {volumeSlider}
           </button>
           <div className="current-track-details">
-            <p className="current-artist-name">
-              {!this.props.track ? "Artist" : (
-                <Link to={`/users/${this.props.uploader.id}`}>
-                  {this.props.track ? this.props.uploader.username : "Artist"}
-                </Link>
-              )}
-            </p>
-            <p className="current-track-name">
-              {!this.props.track ? "Title" : (
-                <Link to={`/tracks/${this.props.track.id}`}>
-                  {this.props.track ? this.props.track.title : "Title"}
-                </Link>
-              )}
-            </p>
+            {!this.props.track ? null : (
+              <div
+                className="current-track-picture"
+                style={{ "backgroundImage": generateProfilePicture(this.props.uploader.id) }}
+              />
+            )}
+            <div className="current-track-text">
+              <p className="current-artist-name">
+                {!this.props.track ? "Artist" : (
+                  <Link to={`/users/${this.props.uploader.id}`}>
+                    {this.props.track ? this.props.uploader.username : "Artist"}
+                  </Link>
+                )}
+              </p>
+              <p className="current-track-name">
+                {!this.props.track ? "Title" : (
+                  <Link to={`/tracks/${this.props.track.id}`}>
+                    {this.props.track ? this.props.track.title : "Title"}
+                  </Link>
+                )}
+              </p>
+            </div>
           </div>
         </div>
         <div className="sidebar continuous-player-sidebar" />

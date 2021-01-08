@@ -137,17 +137,30 @@
 
 .current-track-details {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: inherit;
-  width: 100px;
-  padding: 7px 0px;
+  flex-direction: row;
+  align-items: center;
+  width: 200px;
+
+  .current-track-picture {
+    height: 25px;
+    width: 25px;
+    margin-right: 5px;
+    flex: 0 0 25px;
+  }
+  
+  .current-track-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: inherit;
+    padding: 7px 0px;
+  }
 
   .current-artist-name, .current-track-name {
-    font-size: 12px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    font-size: 12px;
 
     &:hover {
       color: $sc-dark-black;
