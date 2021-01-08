@@ -33,11 +33,11 @@ class ContinuousPlayer extends React.Component {
       if (!this.props.looping) this.props.clearTrack();
     });
 
-    document.addEventListener('keyup', event => {
-      if (event.code === 'Space') {
-        this.playOrPause();
-      }
-    });
+    // document.addEventListener('keyup', event => {
+    //   if (event.code === 'Space') {
+    //     this.playOrPause();
+    //   }
+    // });
   }
 
   componentWillUnmount() {
