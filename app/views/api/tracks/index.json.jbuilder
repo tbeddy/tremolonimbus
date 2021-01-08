@@ -11,10 +11,16 @@
     end
   end
 
-  json.comments do
-    track.comments.each do |comment|
+  track.comments.each do |comment|
+    json.comments do
       json.set! comment.id do
         json.partial! "/api/comments/comment", comment: comment
+      end
+    end
+
+    json.users do
+      json.set! comment.author_id do
+        json.extract! comment.author, :id, :username
       end
     end
   end
