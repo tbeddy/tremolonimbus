@@ -1,7 +1,11 @@
 import React from 'react';
+import { withRouter, Link } from 'react-router-dom';
 import Player from '../player/player';
 import { toMinutesAndSeconds } from '../../util/player_util';
-import { withRouter, Link } from 'react-router-dom';
+import {
+  generateProfilePicture,
+  generateProfileBackground
+} from '../../util/pic_util';
 
 class TrackPagePlayer extends Player {
   deleteTrackandRedirect() {
@@ -28,50 +32,61 @@ class TrackPagePlayer extends Player {
     );
     return (
       <div>
-        <div className="track-background">
+        <div
+          className="track-background"
+          style={{ "backgroundImage": generateProfileBackground(this.props.uploader.id) }}
+        >
           <div className="track-page-player">
-            <div className="track-info-and-button">
-              <button
-                className="track-play-pause-button"
-                onClick={this.playOrPause}
-              >
-                <img
-                  src={this.props.playing ? window.pauseWhiteURL : window.playWhiteURL}
-                />
-              </button>
-              <div>
-                <div className="track-artist-name">
-                  <p>
-                    <Link to={`/users/${this.props.uploader.id}`}>
-                      {this.props.uploader.username}
-                    </Link>
-                  </p>
+            <div className="track-page-player-except-picture">
+              <div className="track-info-and-button">
+                <button
+                  className="track-play-pause-button"
+                  onClick={this.playOrPause}
+                >
+                  <img
+                    src={this.props.playing ? window.pauseWhiteURL : window.playWhiteURL}
+                  />
+                </button>
+                <div>
+                  <div className="track-artist-name">
+                    <p>
+                      <Link to={`/users/${this.props.uploader.id}`}>
+                        {this.props.uploader.username}
+                      </Link>
+                    </p>
+                  </div>
+                  <br/>
+                  <div className="track-track-name">
+                    <p>
+                      {this.props.title}
+                    </p>
+                  </div>
                 </div>
-                <br/>
-                <div className="track-track-name">
-                  <p>
-                    {this.props.title}
-                  </p>
+              </div>
+              <div
+                className="track-grey-bar"
+                onClick={this.seekAudio}
+                onMouseMove={this.changeSeekPosition}
+              >
+                <div
+                  className="orange-bar"
+                  style={{ width: `${this.state.percentDone}%` }}
+                ></div>
+                <div className="track-track-times">
+                  {currentTime}
+                  {/* <div className="duration">
+                    {toMinutesAndSeconds(this.state.duration)}
+                  </div> */}
                 </div>
               </div>
             </div>
-          <div
-            className="track-grey-bar"
-            onClick={this.seekAudio}
-            onMouseMove={this.changeSeekPosition}
-          >
-            <div
-              className="orange-bar"
-              style={{ width: `${this.state.percentDone}%` }}
-            ></div>
-            <div className="track-track-times">
-              {currentTime}
-              {/* <div className="duration">
-                {toMinutesAndSeconds(this.state.duration)}
-              </div> */}
-            </div>
+            {!this.props.uploader ? null : (
+              <div
+                className="track-page-player-picture"
+                style={{ "backgroundImage": generateProfilePicture(this.props.uploader.id) }}
+              />
+            )}
           </div>
-        </div>
         </div>
         <div className="other-than-player">
           <div className="track-buttons">

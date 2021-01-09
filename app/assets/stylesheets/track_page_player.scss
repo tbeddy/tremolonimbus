@@ -1,17 +1,29 @@
 @import './core.scss';
 
 .track-background {
-  background-image: linear-gradient(to right,
-  green, blue, purple);
 }
 
 .track-page-player {
+  flex-direction: row;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   width: auto;
   height: 300px;
   margin: 0px 40px;
+}
+
+.track-page-player-picture {
+  height: 260px;
+  width: 260px;
+  flex: 0 0 260px;
+  align-self: center;
+  margin-left: 20px;
+}
+
+.track-page-player-except-picture {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1 1 auto;
 }
 
 .track-play-pause-button {

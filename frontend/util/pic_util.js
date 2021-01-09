@@ -10,10 +10,10 @@ const generateColors = userId => {
 
 export const generateProfilePicture = userId => {
   const [c1, c2] = generateColors(userId);
-  return `linear-gradient(to bottom right, ${c1}, ${c2}`
+  return `linear-gradient(to top left, ${c1}, ${c2}`
 }
 
 export const generateProfileBackground = userId => {
   const [c1, c2] = generateColors(userId);
-  return `linear-gradient(to left, ${c1}, ${c2}`
+  return `linear-gradient(to right, ${c1}, ${c2}`
 }
