@@ -24,7 +24,7 @@ class TrackPagePlayer extends Player {
     ) : (
       <button
         className="delete-track-button"
-        onClick={this.deleteTrack}
+        onClick={this.deleteTrackandRedirect.bind(this)}
       >
         <img src={window.trashBlackURL} />
         <span>Delete track</span>
