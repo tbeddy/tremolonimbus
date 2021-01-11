@@ -1,5 +1,10 @@
 @import './core.scss';
 
+.form-container {
+  height: 400px;
+  width: 400px;
+}
+
 form.session-form {
   position: absolute;
   top: 20%;

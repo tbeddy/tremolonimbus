@@ -41,8 +41,8 @@
   top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
-  height: 400px;
-  width: 400px;
+  height: min-content;
+  width: min-content;
   background-color: $sc-white;
 }
 
