@@ -61,10 +61,12 @@ export default props => {
           </p>
           <div className="submit-buttons">
             <button
+              type="button"
               onClick={props.cancelAction}
               className="cancel-button"
             >Cancel</button>
             <button
+              type="button"
               onClick={handleSubmit}
               className="save-button"
             >Save</button>
