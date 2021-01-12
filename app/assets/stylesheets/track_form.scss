@@ -1,0 +1,56 @@
+@import './core.scss';
+
+.track-form-container {
+  height: auto;
+  width: 850px;
+}
+
+.track-form {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 20px;
+  
+  .form-item {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0px;
+  }
+
+  #description-input {
+    resize: vertical;
+  }
+
+  .track-form-bottom {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    .required-field-message {
+      font-size: 12px;
+    }
+
+    .submit-buttons {
+      .cancel-button {
+        color: $sc-dark-black;
+        background-color: $sc-white;
+        border: none;
+        font-size: 15px;
+        padding: 10px 30px;
+      }
+  
+      .save-button {
+        color: $sc-white;
+        background-color: $sc-orange;
+        border: none;
+        font-size: 15px;
+        padding: 5px 10px;
+      }
+    }
+  }
+}
+
+.required-asterisk {
+  color: $sc-required-red;
+}

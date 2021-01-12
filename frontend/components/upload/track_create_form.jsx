@@ -24,38 +24,53 @@ export default props => {
   }
 
   return (
-    <form className="upload-form">
-      <p>File: {!file ? "Nothing selected" : file.name}</p>
-      <label
-        htmlFor="title-input"
-        className="title-label"
-      >Title</label>
-      <input
-        id="title-input"
-        type="text"
-        value={title}
-        onChange={e => setTitle(e.currentTarget.value)}
-      />
-      <label
-        htmlFor="description-input"
-        className="description-label"
-      >Description</label>
-      <textarea
-        id="description-input"
-        type="text"
-        value={description}
-        onChange={e => setDescription(e.currentTarget.value)}
-      />
-      <div className="submit-buttons">
-        <button
-          onClick={props.cancelAction}
-          className="cancel-button"
-        >Cancel</button>
-        <button
-          onClick={handleSubmit}
-          className="save-button"
-        >Save</button>
-      </div>
-    </form>
+    <div className="track-form-container">
+      <form className="track-form">
+        <p>File: {!file ? "Nothing selected" : file.name}</p>
+        <div className="form-item">
+          <label
+            htmlFor="title-input"
+            className="title-label"
+          >
+            Title <span className="required-asterisk">*</span>
+          </label>
+          <input
+            id="title-input"
+            type="text"
+            value={title}
+            placeholder="Name your track"
+            onChange={e => setTitle(e.currentTarget.value)}
+          />
+        </div>
+        <div className="form-item">
+          <label
+            htmlFor="description-input"
+            className="description-label"
+          >Description</label>
+          <textarea
+            id="description-input"
+            type="text"
+            value={description}
+            placeholder="Describe your track"
+            onChange={e => setDescription(e.currentTarget.value)}
+          />
+        </div>
+        <div className="track-form-bottom">
+          <p className="required-field-message">
+            <span className="required-asterisk">*</span> Required fields
+          </p>
+          <div className="submit-buttons">
+            <button
+              onClick={props.cancelAction}
+              className="cancel-button"
+            >Cancel</button>
+            <button
+              onClick={handleSubmit}
+              className="save-button"
+            >Save</button>
+          </div>
+        </div>
+      </form>
+    </div>
   )
 };

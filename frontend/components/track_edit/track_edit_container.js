@@ -13,7 +13,8 @@ const mStP = ({ session, entities }, ownProps) => {
 
 const mDtP = (dispatch, ownProps) => {
   return {
-    updateTrack: (track, id) => dispatch(updateTrack(track, id))
+    updateTrack: (track, id) => dispatch(updateTrack(track, id)),
+    cancelAction: () => dispatch(ownProps.disappearAndCloseModal)
   }
 };
 
