@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { closeModal } from '../../actions/modal_actions';
 import LoginFormContainer from '../form/login_form_container';
 import SignupFormContainer from '../form/signup_form_container';
+import TrackEditContainer from '../track_edit/track_edit_container';
 
 class Modal extends React.Component {
   constructor(props) {
@@ -30,19 +31,25 @@ class Modal extends React.Component {
   }
 
   render() {
-    const { modal } = this.props;
-    if (!modal) {
-      return null;
-    }
+    const { modal, entity } = this.props;
+    if (!modal) return null;
     let component;
     switch (modal) {
       case 'login':
         component = <LoginFormContainer
-          disappearAndCloseModal={this.disappearAndCloseModal}/>;
+          disappearAndCloseModal={this.disappearAndCloseModal}
+        />;
         break;
       case 'signup':
         component = <SignupFormContainer
-          disappearAndCloseModal={this.disappearAndCloseModal}/>;
+          disappearAndCloseModal={this.disappearAndCloseModal}
+        />;
+        break;
+      case 'trackEdit':
+        component = <TrackEditContainer
+          id={entity}
+          disappearAndCloseModal={this.disappearAndCloseModal}
+        />;
         break;
       default:
         return null;
@@ -62,9 +69,11 @@ class Modal extends React.Component {
   }
 }
 
-const mStP = state => {
+const mStP = ({ ui, entities }) => {
   return {
-    modal: state.ui.modal
+    modal: ui.modal.type,
+    entity: ui.modal.entity,
+    tracks: entities.tracks
   };
 };
 

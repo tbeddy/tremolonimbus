@@ -22,13 +22,22 @@ class TrackPagePlayer extends Player {
     const deleteButton = !this.props.isCurrentUsersTrack ? (
       <div></div>
     ) : (
-      <button
-        className="delete-track-button"
-        onClick={this.deleteTrackandRedirect.bind(this)}
-      >
-        <img src={window.trashBlackURL} />
-        <span>Delete track</span>
-      </button>
+      <div className="track-buttons">
+        <button
+          className="delete-track-button"
+          onClick={() => this.props.openModal("trackEdit", this.props.id)}
+        >
+          <img src={window.pencilURL} />
+          <span>Edit</span>
+        </button>
+        <button
+          className="delete-track-button"
+          onClick={this.deleteTrackandRedirect.bind(this)}
+        >
+          <img src={window.trashBlackURL} />
+          <span>Delete track</span>
+        </button>
+      </div>
     );
     return (
       <div>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import TrackForm from './track_form';
+import TrackCreateForm from './track_create_form';
 
 export default props => {
   const [file, setFile] = useState(null);
@@ -28,10 +28,12 @@ export default props => {
     <div className="upload-page">
       <div className="upload-box">
         {file === null ? uploadControls :
-          <TrackForm
+          <TrackCreateForm
             {...props}
+            currentUserId={props.currentUserId}
+            createTrack={props.createTrack}
             file={file} title={""} description={""}
-            forgetFile={() => setFile(null)}
+            cancelAction={() => setFile(null)}
           />
         }
       </div>
