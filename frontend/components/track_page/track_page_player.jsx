@@ -19,7 +19,7 @@ class TrackPagePlayer extends Player {
         {toMinutesAndSeconds(this.state.currentTime)}
       </div>
     );
-    const deleteButton = !this.props.isCurrentUsersTrack ? (
+    const deleteAndEditButtons = !this.props.isCurrentUsersTrack ? (
       <div></div>
     ) : (
       <div className="track-buttons">
@@ -99,7 +99,7 @@ class TrackPagePlayer extends Player {
         </div>
         <div className="other-than-player">
           <div className="track-buttons">
-            {deleteButton}
+            {deleteAndEditButtons}
             <div className="track-data">
               {this.props.play_count === 0 ? null : (
                 <div className="play-count">

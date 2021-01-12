@@ -9,6 +9,7 @@ import {
   deleteTrack,
   updateTrack
 } from '../../actions/track_actions';
+import { openModal } from '../../actions/modal_actions';
 import { selectCommentsforTrack } from '../../util/selectors';
 
 const mStP = ({ session, audio, entities }, ownProps) => {
@@ -29,7 +30,8 @@ const mDtP = dispatch => {
     pauseTrack: trackId => dispatch(pauseTrack(trackId)),
     deleteTrack: trackId => dispatch(deleteTrack(trackId)),
     clearTrack: () => dispatch(clearTrack()),
-    updateTrack: track => dispatch(updateTrack(track))
+    updateTrack: track => dispatch(updateTrack(track)),
+    openModal: (modal, entity) => dispatch(openModal(modal, entity))
   }
 }
 

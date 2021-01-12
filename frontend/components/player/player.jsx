@@ -102,16 +102,25 @@ class Player extends React.Component {
         {toMinutesAndSeconds(this.state.currentTime)}
       </div>
     );
-    const deleteButton = !this.props.isCurrentUsersTrack ? (
+    const deleteAndEditButtons = !this.props.isCurrentUsersTrack ? (
       <div></div>
     ) : (
-      <button
-        className="delete-track-button"
-        onClick={this.deleteTrack}
-      >
-        <img src={window.trashBlackURL} />
-        <span>Delete track</span>
-      </button>
+      <div className="track-buttons">
+        <button
+          className="delete-track-button"
+          onClick={() => this.props.openModal("trackEdit", this.props.id)}
+        >
+          <img src={window.pencilURL} />
+          <span>Edit</span>
+        </button>
+        <button
+          className="delete-track-button"
+          onClick={this.deleteTrack}
+        >
+          <img src={window.trashBlackURL} />
+          <span>Delete track</span>
+        </button>
+      </div>
     );
     return (
       <div className="page-player">
@@ -159,7 +168,7 @@ class Player extends React.Component {
             </div>
           </div>
           <div className="track-buttons">
-            {deleteButton}
+            {deleteAndEditButtons}
             <div className="track-data">
               {this.props.play_count === 0 ? null : (
                 <div className="play-count">
