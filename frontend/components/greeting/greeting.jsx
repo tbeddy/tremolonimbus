@@ -29,7 +29,7 @@ class Greeting extends React.Component {
               src={currentUser ? window.logoURL : window.logoWithNameURL}
             />
           </Link>
-          <div className="search">
+          {/* <div className="search">
             <form>
               <input
                 type="text"
@@ -43,7 +43,7 @@ class Greeting extends React.Component {
                 ></img>
               </button>
             </form>
-          </div>
+          </div> */}
           {navButtons}
         </div>
         <div className="sidebar navbar-sidebar" />
