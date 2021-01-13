@@ -11,6 +11,7 @@ const initialState = {
   id: null,
   playing: false,
   currentTime: 0,
+  volume: 1.0,
   looping: false
 }
 
@@ -18,7 +19,9 @@ export default (state = initialState, action) => {
   Object.freeze(state);
   switch (action.type) {
     case CLEAR_TRACK:
-      return initialState;
+      return Object.assign({}, initialState, {
+        volume: state.volume
+      });
     case PLAY_TRACK:
       return Object.assign({}, state, { id: action.trackId, playing: true });
     case PAUSE_TRACK:

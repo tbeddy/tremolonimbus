@@ -4,7 +4,8 @@ import {
   playTrack,
   pauseTrack,
   clearTrack,
-  toggleLoop
+  toggleLoop,
+  changeVolume
 } from '../../actions/audio_actions';
 
 const mStP = ({ session, audio, entities }) => {
@@ -27,6 +28,7 @@ const mDtP = dispatch => {
     pauseTrack: trackId => dispatch(pauseTrack(trackId)),
     clearTrack: () => dispatch(clearTrack()),
     toggleLoop: () => dispatch(toggleLoop()),
+    changeVolume: volume => dispatch(changeVolume(volume)),
     updateTrack: track => dispatch(updateTrack(track)) 
   }
 };

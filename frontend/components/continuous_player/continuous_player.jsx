@@ -13,6 +13,8 @@ class ContinuousPlayer extends React.Component {
       volumeSliderOpen: false
     };
 
+    this.audio = React.createRef();
+
     this.timeInterval = null;
     this.barInterval = null;
 
@@ -44,6 +46,10 @@ class ContinuousPlayer extends React.Component {
   componentWillUnmount() {
     clearInterval(this.timeInterval);
     clearInterval(this.barInterval);
+  }
+
+  componentDidUpdate() {
+    if (!!this.props.track) this.audio.current.volume = this.props.volume;
   }
 
   updateTime() {
@@ -105,9 +111,7 @@ class ContinuousPlayer extends React.Component {
   }
 
   volumeIcon() {
-    const trackAudio = document.getElementById("audio");
-    if (trackAudio === null) return null;
-    const currentVolume = trackAudio.volume;
+    const currentVolume = this.props.volume;
     if (currentVolume >= 0.66) {
       return window.volumeUpURL;
     } else if ((currentVolume < 0.66) && (currentVolume >= 0.33)) {
@@ -125,7 +129,8 @@ class ContinuousPlayer extends React.Component {
       <div id="volume-slider-container">
         <input id="volume-slider" type="range"
           min="0.0" max="1.0" step="0.01"
-          onChange={this.changeVolume}
+          value={this.props.volume}
+          onChange={e => this.props.changeVolume(e.currentTarget.value)}
         />
       </div>
     );
@@ -221,6 +226,7 @@ class ContinuousPlayer extends React.Component {
         <audio
           id="audio"
           src={track === undefined ? null : track.url}
+          ref={this.audio}
         ></audio>
         {(this.props.id === null) ? null : continuousPlayer}
       </div>
