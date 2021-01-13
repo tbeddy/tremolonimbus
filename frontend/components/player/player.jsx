@@ -58,10 +58,9 @@ class Player extends React.Component {
       this.props.pauseTrack(this.props.id);
     } else {
       if (!this.props.isCurrentUsersTrack && !this.props.isCurrentTrack) {
-        this.props.updateTrack({
-          id: this.props.id,
-          play_count: this.props.play_count + 1
-        });
+        const fileData = new FormData();
+        fileData.append('track[play_count]', this.props.play_count + 1);
+        this.props.updateTrack(fileData, this.props.id);
       }
       this.props.playTrack(this.props.id);
     }

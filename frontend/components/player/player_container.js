@@ -30,7 +30,7 @@ const mDtP = dispatch => {
     pauseTrack: trackId => dispatch(pauseTrack(trackId)),
     deleteTrack: trackId => dispatch(deleteTrack(trackId)),
     clearTrack: () => dispatch(clearTrack()),
-    updateTrack: track => dispatch(updateTrack(track)),
+    updateTrack: (track, id) => dispatch(updateTrack(track, id)),
     openModal: (modal, entity) => dispatch(openModal(modal, entity))
   }
 }
