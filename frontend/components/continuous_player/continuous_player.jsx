@@ -21,7 +21,6 @@ class ContinuousPlayer extends React.Component {
     this.playOrPause = this.playOrPause.bind(this);
     this.seekAudio = this.seekAudio.bind(this);
     this.changeSeekPosition = this.changeSeekPosition.bind(this);
-    this.toggleLoop = this.toggleLoop.bind(this);
     this.changeVolume = this.changeVolume.bind(this);
     this.openVolumeSlider = this.openVolumeSlider.bind(this);
     this.closeVolumeSlider = this.closeVolumeSlider.bind(this);
@@ -103,10 +102,6 @@ class ContinuousPlayer extends React.Component {
     this.updateBar();
   }
 
-  toggleLoop() {
-    this.props.toggleLoop();
-  }
-
   volumeIcon() {
     const currentVolume = this.props.volume;
     if (currentVolume >= 0.66) {
@@ -146,7 +141,7 @@ class ContinuousPlayer extends React.Component {
           </button>
           <button
             className="continuous-loop-button"
-            onClick={this.toggleLoop}
+            onClick={this.props.toggleLoop}
           >
             <img
               className="player-icon"
