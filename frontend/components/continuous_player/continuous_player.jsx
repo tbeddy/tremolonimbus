@@ -31,8 +31,7 @@ class ContinuousPlayer extends React.Component {
     this.timeInterval = setInterval(() => this.updateTime(), 1000);
     this.barInterval = setInterval(() => this.updateBar(), 10);
 
-    const trackAudio = document.getElementById("audio");
-    trackAudio.addEventListener("ended", () => {
+    this.audio.current.addEventListener("ended", () => {
       if (!this.props.looping) this.props.clearTrack();
     });
 
@@ -53,9 +52,8 @@ class ContinuousPlayer extends React.Component {
   }
 
   updateTime() {
-    const trackAudio = document.getElementById("audio");
     this.setState({
-      currentTime: Math.floor(trackAudio.currentTime)
+      currentTime: Math.floor(this.audio.current.currentTime)
     });
   }
 
@@ -68,25 +66,24 @@ class ContinuousPlayer extends React.Component {
   }
 
   changeVolume(e) {
-    const trackAudio = document.getElementById("audio");
-    trackAudio.volume = e.currentTarget.value;
+    this.audio.current.volume = e.currentTarget.value;
   }
 
   updateBar() {
-    const trackAudio = document.getElementById("audio");
+    const audio = this.audio.current;
     this.setState({
-      percentDone: 100 * (trackAudio.currentTime / trackAudio.duration)
+      percentDone: 100 * (audio.currentTime / audio.duration)
     });
   }
 
   playOrPause() {
     if (this.props.id === null) return;
-    const trackAudio = document.getElementById("audio");
+    const audio = this.audio.current;
     if (this.props.playing) {
-      trackAudio.pause();
+      audio.pause();
       this.props.pauseTrack(this.props.id);
     } else {
-      trackAudio.play();
+      audio.play();
       this.props.playTrack(this.props.id);
     }
   }
@@ -99,9 +96,9 @@ class ContinuousPlayer extends React.Component {
   }
 
   seekAudio() {
-    const trackAudio = document.getElementById("audio");
+    const audio = this.audio.current;
     const { seekPosition } = this.state;
-    trackAudio.currentTime = seekPosition * trackAudio.duration;
+    audio.currentTime = seekPosition * audio.duration;
     this.updateTime();
     this.updateBar();
   }
@@ -124,7 +121,7 @@ class ContinuousPlayer extends React.Component {
   }
 
   render() {
-    const trackAudio = document.getElementById("audio");
+    const audio = this.audio.current;
     const volumeSlider = !this.state.volumeSliderOpen ? null : (
       <div id="volume-slider-container">
         <input id="volume-slider" type="range"
@@ -174,7 +171,7 @@ class ContinuousPlayer extends React.Component {
             </div>
           </div>
           <span className="current-end-time">
-            {trackAudio ? toMinutesAndSeconds(trackAudio.duration) : "0:00"}
+            {audio ? toMinutesAndSeconds(audio.duration) : "0:00"}
           </span>
           <button
             className="volume-button"
@@ -217,9 +214,9 @@ class ContinuousPlayer extends React.Component {
     );
     const { track } = this.props;
     if (this.props.playing) {
-      trackAudio.play().catch(_ => trackAudio.play());
-    } else if (trackAudio !== null) {
-      trackAudio.pause();
+      audio.play().catch(_ => audio.play());
+    } else if (audio !== null) {
+      audio.pause();
     }
     return (
       <div>
