@@ -31,6 +31,17 @@ class ContinuousPlayer extends React.Component {
     this.timeInterval = setInterval(() => this.updateTime(), 1000);
     this.barInterval = setInterval(() => this.updateBar(), 10);
 
+    const volume = localStorage.getItem('volume');
+    const muted = localStorage.getItem('muted');
+    const trackId = localStorage.getItem('trackId');
+
+    if (volume) this.props.changeVolume(volume);
+    if (muted) this.props.toggleMute(muted);
+    if (trackId) {
+      this.props.fetchTrack(trackId)
+        .then(({ track }) => this.props.pauseTrack(track.id));
+    }
+
     this.audio.current.addEventListener("ended", () => {
       if (!this.props.looping) this.props.clearTrack();
     });

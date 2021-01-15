@@ -8,6 +8,7 @@ import {
   changeVolume,
   toggleMute
 } from '../../actions/audio_actions';
+import { fetchTrack } from '../../actions/track_actions';
 
 const mStP = ({ session, audio, entities }) => {
   const track = entities.tracks[audio.id];
@@ -32,7 +33,8 @@ const mDtP = dispatch => {
     toggleLoop: () => dispatch(toggleLoop()),
     changeVolume: volume => dispatch(changeVolume(volume)),
     toggleMute: () => dispatch(toggleMute()),
-    updateTrack: track => dispatch(updateTrack(track)) 
+    updateTrack: track => dispatch(updateTrack(track)),
+    fetchTrack: trackId => dispatch(fetchTrack(trackId))
   }
 };
 
