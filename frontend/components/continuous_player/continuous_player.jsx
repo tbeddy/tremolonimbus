@@ -64,8 +64,9 @@ class ContinuousPlayer extends React.Component {
     this.setState({ volumeSliderOpen: false });
   }
 
-  changeVolume(e) {
-    this.audio.current.volume = e.currentTarget.value;
+  changeVolume(volume) {
+    this.props.changeVolume(volume);
+    localStorage.setItem('volume', volume);
   }
 
   updateBar() {
@@ -122,7 +123,7 @@ class ContinuousPlayer extends React.Component {
         <input id="volume-slider" type="range"
           min="0.0" max="1.0" step="0.01"
           value={this.props.volume}
-          onChange={e => this.props.changeVolume(e.currentTarget.value)}
+          onChange={e => this.changeVolume(e.currentTarget.value)}
         />
       </div>
     );
