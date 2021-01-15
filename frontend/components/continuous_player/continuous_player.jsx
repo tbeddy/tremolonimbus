@@ -78,7 +78,7 @@ class ContinuousPlayer extends React.Component {
 
   changeVolume(volume) {
     this.props.changeVolume(volume);
-    if (this.props.muted) this.props.toggleMute();
+    if (this.props.muted) this.toggleMute();
     localStorage.setItem('volume', volume);
   }
 
