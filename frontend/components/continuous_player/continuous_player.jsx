@@ -43,7 +43,10 @@ class ContinuousPlayer extends React.Component {
     }
 
     this.audio.current.addEventListener("ended", () => {
-      if (!this.props.looping) this.props.clearTrack();
+      if (!this.props.looping) {
+        this.props.clearTrack();
+        localStorage.removeItem('trackId');
+      }
     });
 
     // document.addEventListener('keyup', event => {
