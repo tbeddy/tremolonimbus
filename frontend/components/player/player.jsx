@@ -64,6 +64,7 @@ class Player extends React.Component {
       }
       this.props.playTrack(this.props.id);
     }
+    localStorage.setItem('trackId', this.props.id);
   }
 
   changeSeekPosition(e) {

@@ -24,6 +24,7 @@ class ContinuousPlayer extends React.Component {
     this.changeVolume = this.changeVolume.bind(this);
     this.openVolumeSlider = this.openVolumeSlider.bind(this);
     this.closeVolumeSlider = this.closeVolumeSlider.bind(this);
+    this.toggleMute = this.toggleMute.bind(this);
   }
 
   componentDidMount() {
@@ -67,6 +68,11 @@ class ContinuousPlayer extends React.Component {
   changeVolume(volume) {
     this.props.changeVolume(volume);
     localStorage.setItem('volume', volume);
+  }
+
+  toggleMute() {
+    this.props.toggleMute();
+    localStorage.setItem('muted', !this.props.muted);
   }
 
   updateBar() {
@@ -177,7 +183,7 @@ class ContinuousPlayer extends React.Component {
             <img
               className="player-icon"
               src={this.volumeIcon()}
-              onClick={this.props.toggleMute}
+              onClick={this.toggleMute}
             />
             {volumeSlider}
           </button>

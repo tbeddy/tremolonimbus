@@ -18,6 +18,7 @@ const mStP = ({ session, audio, entities }) => {
     currentTime: audio.currentTime,
     volume: audio.muted ? 0.0 : audio.volume,
     looping: audio.looping,
+    muted: audio.muted,
     track: track,
     uploader: track ? entities.users[track.uploader_id] : null
   }
