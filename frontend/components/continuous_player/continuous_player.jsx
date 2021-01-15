@@ -176,6 +176,7 @@ class ContinuousPlayer extends React.Component {
             <img
               className="player-icon"
               src={this.volumeIcon()}
+              onClick={this.props.toggleMute}
             />
             {volumeSlider}
           </button>

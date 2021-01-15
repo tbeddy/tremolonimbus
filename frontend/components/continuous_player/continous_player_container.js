@@ -5,7 +5,8 @@ import {
   pauseTrack,
   clearTrack,
   toggleLoop,
-  changeVolume
+  changeVolume,
+  toggleMute
 } from '../../actions/audio_actions';
 
 const mStP = ({ session, audio, entities }) => {
@@ -15,7 +16,7 @@ const mStP = ({ session, audio, entities }) => {
     isCurrentUsersTrack: track && session.id === track.uploader_id,
     playing: audio.playing,
     currentTime: audio.currentTime,
-    volume: audio.volume,
+    volume: audio.muted ? 0.0 : audio.volume,
     looping: audio.looping,
     track: track,
     uploader: track ? entities.users[track.uploader_id] : null
@@ -29,6 +30,7 @@ const mDtP = dispatch => {
     clearTrack: () => dispatch(clearTrack()),
     toggleLoop: () => dispatch(toggleLoop()),
     changeVolume: volume => dispatch(changeVolume(volume)),
+    toggleMute: () => dispatch(toggleMute()),
     updateTrack: track => dispatch(updateTrack(track)) 
   }
 };
