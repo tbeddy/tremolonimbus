@@ -36,7 +36,7 @@ class ContinuousPlayer extends React.Component {
     const trackId = localStorage.getItem('trackId');
 
     if (volume) this.props.changeVolume(volume);
-    if (muted) this.props.toggleMute(muted);
+    if (muted === 'true') this.props.toggleMute();
     if (trackId) {
       this.props.fetchTrack(trackId)
         .then(({ track }) => this.props.pauseTrack(track.id));
@@ -78,6 +78,7 @@ class ContinuousPlayer extends React.Component {
 
   changeVolume(volume) {
     this.props.changeVolume(volume);
+    if (this.props.muted) this.props.toggleMute();
     localStorage.setItem('volume', volume);
   }
 
