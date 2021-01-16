@@ -18,6 +18,7 @@ export default props => {
           <input
             id="upload"
             type="file"
+            accept="audio/*"
             className="hidden-input"
             onChange={e => setFile(e.currentTarget.files[0])}
           />
