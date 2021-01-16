@@ -56,7 +56,7 @@ class TrackPagePlayer extends Player {
                     src={this.props.playing ? window.pauseWhiteURL : window.playWhiteURL}
                   />
                 </button>
-                <div>
+                <div className="player-track-info">
                   <div className="track-artist-name">
                     <p>
                       <Link to={`/users/${this.props.uploader.id}`}>
@@ -64,7 +64,6 @@ class TrackPagePlayer extends Player {
                       </Link>
                     </p>
                   </div>
-                  <br/>
                   <div className="track-track-name">
                     <p>
                       {this.props.title}

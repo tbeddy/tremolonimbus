@@ -48,6 +48,12 @@
   flex-direction: row;
 }
 
+.player-track-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
 .artist-name {
   color: $sc-arrow-grey;
   font-size: 12px;

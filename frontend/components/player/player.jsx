@@ -138,7 +138,7 @@ class Player extends React.Component {
                 src={this.props.playing ? window.pauseWhiteURL : window.playWhiteURL}
               />
             </button>
-            <div>
+            <div className="player-track-info">
               <p className="artist-name">
                 <Link to={`/users/${this.props.uploader.id}`}>
                   {this.props.uploader.username}
