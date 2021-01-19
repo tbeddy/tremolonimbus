@@ -4,6 +4,7 @@ import { closeModal } from '../../actions/modal_actions';
 import LoginFormContainer from '../form/login_form_container';
 import SignupFormContainer from '../form/signup_form_container';
 import TrackEditContainer from '../track_edit/track_edit_container';
+import ProfileEditContainer from '../profile_edit/profile_edit_container';
 
 class Modal extends React.Component {
   constructor(props) {
@@ -48,6 +49,11 @@ class Modal extends React.Component {
       case 'trackEdit':
         component = <TrackEditContainer
           id={entity}
+          disappearAndCloseModal={this.disappearAndCloseModal}
+        />;
+        break;
+      case 'profileEdit':
+        component = <ProfileEditContainer
           disappearAndCloseModal={this.disappearAndCloseModal}
         />;
         break;

@@ -36,6 +36,36 @@
   margin: 5px 5px;
 }
 
+.profile-tabs-and-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.profile-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin: 2px 2px;
+
+  button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: $sc-white;
+    border: solid $sc-light-black 1px;
+    padding: 3px 5px;
+
+    img {
+      height: 20px;
+      width: 20px;
+    }
+
+    &:hover {
+      border: solid $sc-hover-grey 1px;
+    }
+  }
+}
+
 .recent-header {
   color: $sc-dark-black;
   font-size: 25px;
