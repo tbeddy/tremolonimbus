@@ -68,7 +68,7 @@ class Player extends React.Component {
   }
 
   changeSeekPosition(e) {
-    const { x, width } = e.target.getBoundingClientRect();
+    const { x, width } = e.currentTarget.getBoundingClientRect();
     this.setState({
       seekPosition: (e.clientX  - x) / width
     });
