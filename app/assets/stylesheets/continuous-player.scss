@@ -121,6 +121,10 @@
   align-items: center;
   flex: 1;
   height: 100%;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .current-grey-bar {
