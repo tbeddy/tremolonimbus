@@ -23,8 +23,6 @@ class ContinuousPlayer extends React.Component {
     this.seekAudio = this.seekAudio.bind(this);
     this.changeSeekPosition = this.changeSeekPosition.bind(this);
     this.changeVolume = this.changeVolume.bind(this);
-    this.openVolumeSlider = this.openVolumeSlider.bind(this);
-    this.closeVolumeSlider = this.closeVolumeSlider.bind(this);
     this.toggleMute = this.toggleMute.bind(this);
   }
 
@@ -70,14 +68,6 @@ class ContinuousPlayer extends React.Component {
     this.setState({
       currentTime: Math.floor(this.audio.current.currentTime)
     });
-  }
-
-  openVolumeSlider() {
-    this.setState({ volumeSliderOpen: true });
-  }
-
-  closeVolumeSlider() {
-    this.setState({ volumeSliderOpen: false });
   }
 
   changeVolume(volume) {
@@ -200,8 +190,8 @@ class ContinuousPlayer extends React.Component {
           </span>
           <button
             className="volume-button"
-            onMouseEnter={this.openVolumeSlider}
-            onMouseLeave={this.closeVolumeSlider}
+            onMouseEnter={() => this.setState({ volumeSliderOpen: true })}
+            onMouseLeave={() => this.setState({ volumeSliderOpen: false })}
           >
             <img
               className="player-icon"
