@@ -12,7 +12,7 @@ const mStP = ({ entities, session }, ownProps) => {
   return {
     track: entities.tracks[trackId] || {},
     comments: selectCommentsforTrack(entities, trackId),
-    currentUser: session.id
+    currentUserId: session.id
   }
 }
 

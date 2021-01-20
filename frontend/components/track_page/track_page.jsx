@@ -26,7 +26,7 @@ class TrackPage extends React.Component {
     e.preventDefault();
     const commentData = {
       body: this.state.commentInput,
-      author_id: this.props.currentUser,
+      author_id: this.props.currentUserId,
       track_id: this.props.track.id
     };
     this.props.createComment(commentData)
@@ -36,7 +36,7 @@ class TrackPage extends React.Component {
   }
 
   render() {
-    const { track, comments, currentUser } = this.props;
+    const { track, comments, currentUserId } = this.props;
     const commentList = comments.length === 0 ? (
       <div className="empty-comments-container">
         <img src={window.chatNoCommentsURL} />
@@ -73,7 +73,7 @@ class TrackPage extends React.Component {
                 <p className="comment-body">
                   {body}
                 </p>
-                {currentUser !== user.id ? (
+                {currentUserId !== user.id ? (
                   <div></div>
                 ) : (
                   <button
@@ -96,23 +96,21 @@ class TrackPage extends React.Component {
           <div className="description">
             {track.description ? track.description : null}
           </div>
-          {!currentUser ? null : (
-            <div className="comment-input-container">
-              <div
-                className="comment-input-picture"
-                style={{ "backgroundImage": generateProfilePicture(currentUser) }}
+          <div className="comment-input-container">
+            <div
+              className="comment-input-picture"
+              style={{ "backgroundImage": generateProfilePicture(currentUserId) }}
+            />
+            <form onSubmit={this.submitComment}>
+              <input
+                type="text"
+                placeholder="Write a comment"
+                className="comment-input"
+                value={this.state.commentInput}
+                onChange={this.updateCommentInput}
               />
-              <form onSubmit={this.submitComment}>
-                <input
-                  type="text"
-                  placeholder="Write a comment"
-                  className="comment-input"
-                  value={this.state.commentInput}
-                  onChange={this.updateCommentInput}
-                />
-              </form>
-            </div>
-          )}
+            </form>
+          </div>
           <div className="comments">
             {commentList}
           </div>
