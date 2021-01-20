@@ -8,27 +8,6 @@
 
 require 'open-uri'
 
-demo_audio_1 = open('https://tremolonimbus-seeds.s3.amazonaws.com/lobby_original.mp3')
-demo_audio_2 = open('https://tremolonimbus-seeds.s3.amazonaws.com/lobby_back_to_school.mp3')
-roald_dahl_audio = open('https://tremolonimbus-seeds.s3.amazonaws.com/roald_dahl_lobby.mp3')
-podium_audio = open('https://tremolonimbus-seeds.s3.amazonaws.com/podium_music.mp3')
-pumpkin_audio_1 = open('https://tremolonimbus-seeds.s3.amazonaws.com/halloween_countdown_30_seconds.mp3')
-pumpkin_audio_2 = open('https://tremolonimbus-seeds.s3.amazonaws.com/halloween_lobby.mp3')
-pumpkin_audio_3 = open('https://tremolonimbus-seeds.s3.amazonaws.com/halloween_lobby_2017.mp3')
-pumpkin_audio_4 = open('https://tremolonimbus-seeds.s3.amazonaws.com/halloween_lobby_2019.mp3')
-pumpkin_audio_5 = open('https://tremolonimbus-seeds.s3.amazonaws.com/halloween_lobby_2020.mp3')
-space_audio_1 = open('https://tremolonimbus-seeds.s3.amazonaws.com/lobby_space.mp3')
-space_audio_2 = open('https://tremolonimbus-seeds.s3.amazonaws.com/lobby_space_2.mp3')
-holiday_audio_1 = open('https://tremolonimbus-seeds.s3.amazonaws.com/lobby_holiday_2016.mp3')
-holiday_audio_2 = open('https://tremolonimbus-seeds.s3.amazonaws.com/lobby_holiday_2017.mp3')
-holiday_audio_3 = open('https://tremolonimbus-seeds.s3.amazonaws.com/lobby_holiday_2018.mp3')
-holiday_audio_4 = open('https://tremolonimbus-seeds.s3.amazonaws.com/lobby_holiday_special.mp3')
-adventurer_audio = open('https://tremolonimbus-seeds.s3.amazonaws.com/lobby_jungle.mp3')
-eightbit_audio_1 = open('https://tremolonimbus-seeds.s3.amazonaws.com/lobby_ghost_1.mp3')
-eightbit_audio_2 = open('https://tremolonimbus-seeds.s3.amazonaws.com/lobby_ghost_2.mp3')
-chill_audio_1 = open('https://tremolonimbus-seeds.s3.amazonaws.com/lobby_beatbox.mp3')
-chill_audio_2 = open('https://tremolonimbus-seeds.s3.amazonaws.com/lobby_reggae.mp3')
-
 User.create([
   { username: "demo_user", email: "fake@email.com", password: "password",
     displayname: "Demo User", firstname: "Some", lastname: "One",
@@ -107,44 +86,64 @@ Track.create([
     uploader_id: User.find_by(username: "demo_user").id }
 ])
 
+demo_audio_1 = open('https://tremolonimbus-seeds.s3.amazonaws.com/lobby_original.mp3')
 Track.find_by(title: "The Original").audio.attach(
   io: demo_audio_1, filename: "lobby_original.mp3")
+demo_audio_2 = open('https://tremolonimbus-seeds.s3.amazonaws.com/lobby_back_to_school.mp3')
 Track.find_by(title: "Back2Skool").audio.attach(
   io: demo_audio_2, filename: "lobby_back_to_school.mp3")
+roald_dahl_audio = open('https://tremolonimbus-seeds.s3.amazonaws.com/roald_dahl_lobby.mp3')
 Track.find_by(title: "Roald Dahls 100th Birthday").audio.attach(
   io: roald_dahl_audio, filename: "roald_dahl_lobby.mp3")
+podium_audio = open('https://tremolonimbus-seeds.s3.amazonaws.com/podium_music.mp3')
 Track.find_by(title: "Podium Theme Music").audio.attach(
   io: podium_audio, filename: "podium_music.mp3")
+pumpkin_audio_1 = open('https://tremolonimbus-seeds.s3.amazonaws.com/halloween_countdown_30_seconds.mp3')
 Track.find_by(title: "Halloween Countdown (30 Seconds)").audio.attach(
   io: pumpkin_audio_1, filename: "halloween_countdown_30_seconds.mp3")
+pumpkin_audio_2 = open('https://tremolonimbus-seeds.s3.amazonaws.com/halloween_lobby.mp3')
 Track.find_by(title: "Halloween Lobby").audio.attach(
   io: pumpkin_audio_2, filename: "halloween_lobby.mp3")
+pumpkin_audio_3 = open('https://tremolonimbus-seeds.s3.amazonaws.com/halloween_lobby_2017.mp3')
 Track.find_by(title: "Halloween Lobby 2017").audio.attach(
   io: pumpkin_audio_3, filename: "halloween_lobby_2017.mp3")
+pumpkin_audio_4 = open('https://tremolonimbus-seeds.s3.amazonaws.com/halloween_lobby_2019.mp3')
 Track.find_by(title: "Halloween Lobby 2019").audio.attach(
   io: pumpkin_audio_4, filename: "halloween_lobby_2019.mp3")
+pumpkin_audio_5 = open('https://tremolonimbus-seeds.s3.amazonaws.com/halloween_lobby_2020.mp3')
 Track.find_by(title: "Halloween Lobby 2020").audio.attach(
   io: pumpkin_audio_5, filename: "halloween_lobby_2020.mp3")
+space_audio_1 = open('https://tremolonimbus-seeds.s3.amazonaws.com/lobby_space.mp3')
 Track.find_by(title: "Space Lobby").audio.attach(
   io: space_audio_1, filename: "lobby_space.mp3")
+space_audio_2 = open('https://tremolonimbus-seeds.s3.amazonaws.com/lobby_space_2.mp3')
 Track.find_by(title: "2 Space 2 Lobby").audio.attach(
   io: space_audio_2, filename: "lobby_space_2.mp3")
+holiday_audio_1 = open('https://tremolonimbus-seeds.s3.amazonaws.com/lobby_holiday_2016.mp3')
 Track.find_by(title: "Holiday Lobby 2016").audio.attach(
   io: holiday_audio_1, filename: "lobby_holiday_2016.mp3")
+holiday_audio_2 = open('https://tremolonimbus-seeds.s3.amazonaws.com/lobby_holiday_2017.mp3')
 Track.find_by(title: "Holiday Lobby 2017").audio.attach(
   io: holiday_audio_2, filename: "lobby_holiday_2017.mp3")
+holiday_audio_3 = open('https://tremolonimbus-seeds.s3.amazonaws.com/lobby_holiday_2018.mp3')
 Track.find_by(title: "Holiday Lobby 2018").audio.attach(
   io: holiday_audio_3, filename: "lobby_holiday_2018.mp3")
+holiday_audio_4 = open('https://tremolonimbus-seeds.s3.amazonaws.com/lobby_holiday_special.mp3')
 Track.find_by(title: "Holiday Lobby Special").audio.attach(
   io: holiday_audio_4, filename: "lobby_holiday_special.mp3")
+adventurer_audio = open('https://tremolonimbus-seeds.s3.amazonaws.com/lobby_jungle.mp3')
 Track.find_by(title: "Jungle Lobby").audio.attach(
   io: adventurer_audio, filename: "lobby_jungle.mp3")
+eightbit_audio_1 = open('https://tremolonimbus-seeds.s3.amazonaws.com/lobby_ghost_1.mp3')
 Track.find_by(title: "Ghost Lobby").audio.attach(
   io: eightbit_audio_1, filename: "lobby_ghost_1.mp3")
+eightbit_audio_2 = open('https://tremolonimbus-seeds.s3.amazonaws.com/lobby_ghost_2.mp3')
 Track.find_by(title: "Ghost Lobby 2: More Ghosts").audio.attach(
   io: eightbit_audio_2, filename: "lobby_ghost_2.mp3")
+chill_audio_1 = open('https://tremolonimbus-seeds.s3.amazonaws.com/lobby_beatbox.mp3')
 Track.find_by(title: "Beatbox Lobby").audio.attach(
   io: chill_audio_1, filename: "lobby_beatbox.mp3")
+chill_audio_2 = open('https://tremolonimbus-seeds.s3.amazonaws.com/lobby_reggae.mp3')
 Track.find_by(title: "Reggae Lobby").audio.attach(
   io: chill_audio_2, filename: "lobby_reggae.mp3")
 
