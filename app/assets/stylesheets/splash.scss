@@ -4,7 +4,6 @@ div#splash {
   background-color: $sc-white;
   color: $sc-dark-black;
   text-align: center;
-  height: 100%;
 
   p#check-out-message {
     font-size: 25px;
@@ -41,10 +40,6 @@ div#splash {
       // TODO: put custom padding here
     }
   }
-}
-
-#splash-logo-links {
-  padding-bottom: 100px;
 }
 
 .outside-logo {

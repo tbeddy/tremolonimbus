@@ -3,7 +3,6 @@
 .upload-page {
   background-color: $sc-white;
   align-items: stretch;
-  height: 95vh;
 }
 
 .upload-box {
@@ -16,7 +15,7 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 50%;
+  width: 800px;
   height: 500px;
   border: 2px solid $sc-light-grey;
 }
