@@ -9,10 +9,10 @@ const mStP = ({ entities }) => {
   }
 }
 
-const mDtP = dispath => {
+const mDtP = dispatch => {
   return {
-    openModal: modal => dispath(openModal(modal)),
-    fetchTracks: () => dispath(fetchSplashTracks())
+    openModal: modal => dispatch(openModal(modal)),
+    fetchTracks: () => dispatch(fetchSplashTracks())
   }
 }
 

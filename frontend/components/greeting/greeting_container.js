@@ -9,10 +9,10 @@ const mStP = ({ entities, session }) => {
   }
 }
 
-const mDtP = dispath => {
+const mDtP = dispatch => {
   return {
-    logout: () => dispath(logout()),
-    openModal: modal => dispath(openModal(modal))
+    logout: () => dispatch(logout()),
+    openModal: modal => dispatch(openModal(modal))
   }
 }
 
