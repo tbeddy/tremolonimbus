@@ -101,7 +101,9 @@ class TrackPage extends React.Component {
               className="comment-input-picture"
               style={{ "backgroundImage": generateProfilePicture(currentUserId) }}
             />
-            <form onSubmit={this.submitComment}>
+            <form onSubmit={currentUserId ? this.submitComment : (
+              () => this.props.openModal('login')
+            )}>
               <input
                 type="text"
                 placeholder="Write a comment"

@@ -4,6 +4,7 @@ import {
   createComment,
   deleteComment
 } from '../../actions/comment_actions';
+import { openModal } from "../../actions/modal_actions";
 import TrackPage from '../track_page/track_page';
 import { selectCommentsforTrack } from '../../util/selectors';
 
@@ -20,7 +21,8 @@ const mDtP = dispatch => {
   return {
     fetchTrack: trackId => dispatch(fetchTrack(trackId)),
     createComment: comment => dispatch(createComment(comment)),
-    deleteComment: commentId => dispatch(deleteComment(commentId))
+    deleteComment: commentId => dispatch(deleteComment(commentId)),
+    openModal: modal => dispatch(openModal(modal))
   }
 }
 
