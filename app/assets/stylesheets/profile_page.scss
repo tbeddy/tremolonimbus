@@ -26,13 +26,52 @@
   margin-top: 35px;
 }
 
-.profile-name {
+.profile-name, .profile-other-info {
   display: inline-block;
-  color: $sc-white;
-  font-size: 25px;
   background-color: $sc-dark-black;
+  margin: 2px 2px;
+}
+
+.profile-name {
+  font-size: 25px;
+  color: $sc-white;
   padding: 5px;
-  margin: 5px 5px;
+}
+
+.profile-other-info {
+  font-size: 17px;
+  color: $sc-light-black;
+  padding: 3px;
+}
+
+.profile-tabs-and-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.profile-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin: 2px 2px;
+
+  button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: $sc-white;
+    border: solid $sc-light-black 1px;
+    padding: 3px 5px;
+
+    img {
+      height: 20px;
+      width: 20px;
+    }
+
+    &:hover {
+      border: solid $sc-hover-grey 1px;
+    }
+  }
 }
 
 .recent-header {

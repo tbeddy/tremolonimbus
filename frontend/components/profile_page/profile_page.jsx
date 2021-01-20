@@ -15,13 +15,45 @@ class ProfilePage extends React.Component {
   }
 
   render() {
-    const { id, tracks, user } = this.props;
+    const { currentUserId, id, tracks, user } = this.props;
     if (!user) return null;
     const trackList = (tracks === undefined) ? null : tracks.map(track => (
       <li key={track.id}>
         <PlayerContainer {...track} />
       </li>
     ));
+    const profileButtons = (currentUserId != id) ? null : (
+      <div className="profile-buttons">
+        <button
+          className="delete-track-button"
+          onClick={() => this.props.openModal("profileEdit")}
+        >
+          <img src={window.pencilURL} />
+          <span>Edit</span>
+        </button>
+      </div>
+    );
+    const { username, displayname, firstname, lastname, city, country } = user;
+    let location;
+    if ((!city) && (!country)) {
+      location = "";
+    } else if ((!city) && (country)) {
+      location = country;
+    } else if ((city) && (!country)) {
+      location = city;
+    } else {
+      location = city + ", " + country;
+    }
+    let realname;
+    if ((!firstname) && (!lastname)) {
+      realname = "";
+    } else if ((!firstname) && (lastname)) {
+      realname = lastname;
+    } else if ((firstname) && (!lastname)) {
+      realname = firstname;
+    } else {
+      realname = firstname + " " + lastname;
+    }
     return (
       <div className="profile-page">
         <div
@@ -34,9 +66,22 @@ class ProfilePage extends React.Component {
           />
           <div className="profile-info">
             <div className="profile-name">
-              {user.username}
+              {!displayname ? username : displayname}
             </div>
+            {realname === "" ? null : <br/>}
+            {realname === "" ? null : (
+              <div className="profile-other-info">{realname}</div>
+            )}
+            {location === "" ? null : <br />}
+            {location === "" ? null : (
+              <div className="profile-other-info">{location}</div>
+            )}
           </div>
+        </div>
+        <div className="profile-tabs-and-buttons">
+          <div className="profile-tabs">
+          </div>
+          {profileButtons}
         </div>
         <p className="recent-header">
           Recent
