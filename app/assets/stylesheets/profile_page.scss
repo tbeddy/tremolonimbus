@@ -27,13 +27,22 @@
   margin-top: 35px;
 }
 
-.profile-name {
+.profile-name, .profile-other-info {
   display: inline-block;
-  color: $sc-white;
-  font-size: 25px;
   background-color: $sc-dark-black;
+  margin: 2px 2px;
+}
+
+.profile-name {
+  font-size: 25px;
+  color: $sc-white;
   padding: 5px;
-  margin: 5px 5px;
+}
+
+.profile-other-info {
+  font-size: 17px;
+  color: $sc-light-black;
+  padding: 3px;
 }
 
 .profile-tabs-and-buttons {

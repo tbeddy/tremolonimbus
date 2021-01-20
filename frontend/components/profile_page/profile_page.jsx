@@ -33,6 +33,27 @@ class ProfilePage extends React.Component {
         </button>
       </div>
     );
+    const { username, displayname, firstname, lastname, city, country } = user;
+    let location;
+    if ((!city) && (!country)) {
+      location = "";
+    } else if ((!city) && (country)) {
+      location = country;
+    } else if ((city) && (!country)) {
+      location = city;
+    } else {
+      location = city + ", " + country;
+    }
+    let realname;
+    if ((!firstname) && (!lastname)) {
+      realname = "";
+    } else if ((!firstname) && (lastname)) {
+      realname = lastname;
+    } else if ((firstname) && (!lastname)) {
+      realname = firstname;
+    } else {
+      realname = firstname + " " + lastname;
+    }
     return (
       <div className="profile-page">
         <div
@@ -45,8 +66,16 @@ class ProfilePage extends React.Component {
           />
           <div className="profile-info">
             <div className="profile-name">
-              {user.username}
+              {!displayname ? username : displayname}
             </div>
+            {realname === "" ? null : <br/>}
+            {realname === "" ? null : (
+              <div className="profile-other-info">{realname}</div>
+            )}
+            {location === "" ? null : <br />}
+            {location === "" ? null : (
+              <div className="profile-other-info">{location}</div>
+            )}
           </div>
         </div>
         <div className="profile-tabs-and-buttons">
