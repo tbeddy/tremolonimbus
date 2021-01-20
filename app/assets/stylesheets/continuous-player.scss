@@ -130,9 +130,20 @@
 }
 
 .current-orange-bar {
+  position: relative;
   background-color: $sc-orange;
   height: inherit;
   width: 100px;
+}
+
+.hover-ball {
+  position: absolute;
+  right: -5px;
+  top: -4px;
+  background-color: $sc-orange;
+  border-radius: 50%;
+  height: 8px;
+  width: 8px;
 }
 
 .current-track-details {

@@ -10,7 +10,8 @@ class ContinuousPlayer extends React.Component {
     this.state = {
       currentTime: 0,
       percentDone: 0,
-      volumeSliderOpen: false
+      volumeSliderOpen: false,
+      hovering: false
     };
 
     this.audio = React.createRef();
@@ -148,6 +149,11 @@ class ContinuousPlayer extends React.Component {
         />
       </div>
     );
+    const hoverBall = !this.state.hovering ? null : (
+      <div
+        className="hover-ball"
+      />
+    );
     const continuousPlayer = (
       <div className="continuous-player-and-sidebars">
         <div className="sidebar continuous-player-sidebar" />
@@ -177,6 +183,8 @@ class ContinuousPlayer extends React.Component {
             className="containing-bar"
             onClick={this.seekAudio}
             onMouseMove={this.changeSeekPosition}
+            onMouseEnter={() => this.setState({ hovering: true })}
+            onMouseLeave={() => this.setState({ hovering: false })}
           >
             <div
               className="current-grey-bar"
@@ -184,7 +192,7 @@ class ContinuousPlayer extends React.Component {
               <div
                 className="current-orange-bar"
                 style={{ width: `${this.state.percentDone}%` }}
-              ></div>
+              >{hoverBall}</div>
             </div>
           </div>
           <span className="current-end-time">
