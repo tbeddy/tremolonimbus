@@ -11,7 +11,8 @@ class ContinuousPlayer extends React.Component {
       currentTime: 0,
       percentDone: 0,
       volumeSliderOpen: false,
-      hovering: false
+      hovering: false,
+      dragging: 0
     };
 
     this.audio = React.createRef();
@@ -83,9 +84,11 @@ class ContinuousPlayer extends React.Component {
 
   updateBar() {
     const audio = this.audio.current;
-    this.setState({
-      percentDone: 100 * (audio.currentTime / audio.duration)
-    });
+    if (!this.state.dragging) {
+      this.setState({
+        percentDone: 100 * (audio.currentTime / audio.duration)
+      });
+    }
   }
 
   playOrPause() {
@@ -105,6 +108,11 @@ class ContinuousPlayer extends React.Component {
     this.setState({
       seekPosition: (e.clientX - x) / width
     });
+    if (this.state.dragging) {
+      this.setState({
+        percentDone: 100 * this.state.seekPosition
+      });
+    }
   }
 
   seekAudio() {
@@ -140,9 +148,7 @@ class ContinuousPlayer extends React.Component {
       </div>
     );
     const hoverBall = !this.state.hovering ? null : (
-      <div
-        className="hover-ball"
-      />
+      <div className="hover-ball" />
     );
     const continuousPlayer = (
       <div className="continuous-player-and-sidebars">
@@ -173,6 +179,8 @@ class ContinuousPlayer extends React.Component {
             className="containing-bar"
             onClick={this.seekAudio}
             onMouseMove={this.changeSeekPosition}
+            onMouseDown={() => this.setState({ dragging: true })}
+            onMouseUp={() => this.setState({ dragging: false })}
             onMouseEnter={() => this.setState({ hovering: true })}
             onMouseLeave={() => this.setState({ hovering: false })}
           >
