@@ -46,9 +46,25 @@
   transform: rotate(270deg);
   background-color: $sc-light-grey;
   border: solid $sc-border-grey 1px;
-  padding: 5px 12px;
+  padding: 0px 12px;
   height: 35px;
   width: 120px;
+}
+
+#volume-slider-grey-bar {
+  position: absolute;
+  top: 15.5px;
+  height: 2px;
+  width: 90px;
+  background: transparent;
+  pointer-events: none;
+}
+
+#volume-slider-orange-bar {
+  position: absolute;
+  height: 2px;
+  background-color: $sc-orange;
+  pointer-events: none;
 }
 
 #volume-slider {
@@ -67,7 +83,7 @@
 
   &::-webkit-slider-runnable-track {
     height: 2px;
-    background-color: $sc-orange;
+    background-color: $sc-border-grey;
   }
 
   &::-webkit-slider-thumb {
@@ -83,7 +99,8 @@
 
   &::-moz-range-track {
     height: 2px;
-    background-color: $sc-orange;
+    width: 90px;
+    background-color: $sc-border-grey;
   }
 
   &::-moz-range-thumb {

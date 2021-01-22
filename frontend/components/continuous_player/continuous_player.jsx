@@ -140,6 +140,12 @@ class ContinuousPlayer extends React.Component {
     const audio = this.audio.current;
     const volumeSlider = !this.state.volumeSliderOpen ? null : (
       <div id="volume-slider-container">
+        <div id="volume-slider-grey-bar">
+          <div
+            id="volume-slider-orange-bar"
+            style={{ width: `${100 * this.props.volume}%` }}
+          />
+        </div>
         <input id="volume-slider" type="range"
           min="0.0" max="1.0" step="0.01"
           value={this.props.volume}
