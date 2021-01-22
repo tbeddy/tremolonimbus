@@ -4,8 +4,10 @@ import { openModal } from "../../actions/modal_actions";
 import { fetchSplashTracks } from "../../actions/track_actions";
 
 const mStP = ({ entities }) => {
+  const allTracks = Object.values(entities.tracks);
+  const startPos = Math.floor(Math.random() * (allTracks.length - 3));
   return {
-    tracks: Object.values(entities.tracks)
+    tracks: allTracks.slice(startPos,startPos + 3)
   }
 }
 

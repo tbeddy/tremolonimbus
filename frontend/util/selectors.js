@@ -21,5 +21,5 @@ export const reduceTracks = (state, tracks) => {
     if (state[track.id]) track.url = state[track.id].url;
     newTracks[track.id] = track;
   });
-  return newTracks;
+  return Object.assign({}, state, newTracks);
 }
