@@ -6,8 +6,22 @@ export default props => {
 
   document.title = "Upload your music & audio and share it with the world. on TremoloNimbus";
 
+  const dropFile = e => {
+    e.preventDefault();
+    const file = e.dataTransfer.files[0];
+    if (file.type.split("/")[0] === "audio") {
+      setFile(file);
+    } else {
+      alert("Incorrect file type. Only audio files can be uploaded as tracks.")
+    }
+  }
+
   const uploadControls = (
-    <div className="upload-box">
+    <div
+      className="upload-box"
+      onDragOver={e => e.preventDefault()}
+      onDrop={dropFile}
+    >
       <div className="upload-controls">
         <p className="upload-message">
           Upload your track here
