@@ -16,6 +16,12 @@ export default props => {
     }
   }
 
+  const cancelAction = () => {
+    if (confirm("Are you sure you want to stop your upload? Any unsaved changes will be lost.")) {
+      setFile(null);
+    }
+  }
+
   const uploadControls = (
     <div className="upload-box" >
       <div className="upload-controls">
@@ -52,7 +58,7 @@ export default props => {
             currentUserId={props.currentUserId}
             createTrack={props.createTrack}
             file={file} title={""} description={""}
-            cancelAction={() => setFile(null)}
+            cancelAction={cancelAction}
           />
         </div>
       }
