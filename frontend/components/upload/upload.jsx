@@ -20,13 +20,13 @@ export default props => {
     <div className="upload-box" >
       <div className="upload-controls">
         <p className="upload-message">
-          Upload your track here
+          Drag and drop your track here
         </p>
         <div className="upload-button">
           <label
             className="input-label"
             htmlFor="upload"
-          >choose the file to upload</label>
+          >or choose the file to upload</label>
           <input
             id="upload"
             type="file"
