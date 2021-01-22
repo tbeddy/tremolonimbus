@@ -17,11 +17,7 @@ export default props => {
   }
 
   const uploadControls = (
-    <div
-      className="upload-box"
-      onDragOver={e => e.preventDefault()}
-      onDrop={dropFile}
-    >
+    <div className="upload-box" >
       <div className="upload-controls">
         <p className="upload-message">
           Upload your track here
@@ -44,7 +40,11 @@ export default props => {
   );
 
   return (
-    <div className="upload-page">
+    <div
+      className="upload-page"
+      onDragOver={e => e.preventDefault()}
+      onDrop={dropFile}
+    >
       {file === null ? uploadControls :
         <div className="upload-track-form-container">
           <TrackCreateForm
