@@ -59,13 +59,13 @@
     top: -50%;
   }
   100% {
-    bottom: 0;
+    top: 40%;
   }
 }
 
 @keyframes ascend {
-  0%, 70%  {
-    bottom: 0%;
+  0% {
+    top: 40%;
   }
   35% {
     top: 50%;
