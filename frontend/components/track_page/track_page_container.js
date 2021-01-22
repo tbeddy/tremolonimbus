@@ -10,9 +10,11 @@ import { selectCommentsforTrack } from '../../util/selectors';
 
 const mStP = ({ entities, session }, ownProps) => {
   const trackId = ownProps.match.params.trackId;
+  const track = entities.tracks[trackId];
   return {
-    track: entities.tracks[trackId] || {},
+    track: track || {},
     comments: selectCommentsforTrack(entities, trackId),
+    uploader: track ? entities.users[track.uploader_id] : null,
     currentUserId: session.id
   }
 }

@@ -4,6 +4,8 @@ import TrackCreateForm from './track_create_form';
 export default props => {
   const [file, setFile] = useState(null);
 
+  document.title = "Upload your music & audio and share it with the world. on TremoloNimbus";
+
   const uploadControls = (
     <div className="upload-box">
       <div className="upload-controls">

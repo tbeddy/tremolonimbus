@@ -18,6 +18,13 @@ class TrackPage extends React.Component {
     this.props.fetchTrack(this.props.match.params.trackId);
   }
 
+  componentDidUpdate() {
+    const { uploader, track } = this.props;
+    if (uploader) {
+      document.title = `${track.title} by ${uploader.username} | Free Listening on TremoloNimbus`;
+    }
+  }
+
   updateCommentInput(e) {
     this.setState({ commentInput: e.currentTarget.value });
   }

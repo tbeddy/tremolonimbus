@@ -14,6 +14,13 @@ class ProfilePage extends React.Component {
     this.props.fetchUser(this.props.id);
   }
 
+  componentDidUpdate() {
+    const { user } = this.props;
+    if (user) {
+      document.title = `${user.username} | Free Listening on TremoloNimbus`;
+    }
+  }
+
   render() {
     const { currentUserId, id, tracks, user } = this.props;
     if (!user) return null;

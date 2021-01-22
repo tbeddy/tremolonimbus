@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import PlayerContainer from '../player/player_container';
 
 export default ({ openModal, fetchTracks, tracks }) => {
+  document.title = "TremoloNimbus — Listen to free music & podcasts on TremoloNimbus"
+
   useEffect(() => {
     fetchTracks();
   }, []);

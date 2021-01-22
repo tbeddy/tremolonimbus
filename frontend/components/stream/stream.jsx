@@ -7,6 +7,7 @@ class Stream extends React.Component {
   }
 
   componentDidMount() {
+    document.title = "Your stream on TremoloNimbus";
     this.props.fetchTracks();
   }
 
