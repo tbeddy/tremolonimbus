@@ -12,8 +12,7 @@ class Player extends React.Component {
       percentDone: 0
     };
 
-    this.timeInterval = null;
-    this.barInterval = null;
+    this.timeAndBarInterval = null;
 
     this.playOrPause = this.playOrPause.bind(this);
     this.seekAudio = this.seekAudio.bind(this);
@@ -22,26 +21,20 @@ class Player extends React.Component {
   }
 
   componentDidMount() {
-    this.timeInterval = setInterval(() => this.updateTime(), 1000);
-    this.barInterval = setInterval(() => this.updateBar(), 100);
+    this.timeAndBarInterval = setInterval(() => this.updateTimeAndBar(), 100);
   }
 
   componentWillUnmount() {
-    clearInterval(this.timeInterval);
-    clearInterval(this.barInterval);
+    clearInterval(this.timeAndBarInterval);
   }
 
-  updateTime() {
+  updateTimeAndBar() {
     const trackAudio = document.getElementById("audio");
     if (this.props.playing) {
       this.setState({
         currentTime: Math.floor(trackAudio.currentTime)
       });
     }
-  }
-
-  updateBar() {
-    const trackAudio = document.getElementById("audio");
     if (!this.props.isCurrentTrack) {
       this.setState({
         percentDone: 0
@@ -85,8 +78,6 @@ class Player extends React.Component {
     const trackAudio = document.getElementById("audio");
     const { seekPosition } = this.state;
     trackAudio.currentTime = seekPosition * trackAudio.duration;
-    this.updateTime();
-    this.updateBar();
   }
 
   deleteTrack() {

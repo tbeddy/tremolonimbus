@@ -17,8 +17,7 @@ class ContinuousPlayer extends React.Component {
 
     this.audio = React.createRef();
 
-    this.timeInterval = null;
-    this.barInterval = null;
+    this.timeAndBarInterval = null;
 
     this.playOrPause = this.playOrPause.bind(this);
     this.seekAudio = this.seekAudio.bind(this);
@@ -28,8 +27,7 @@ class ContinuousPlayer extends React.Component {
   }
 
   componentDidMount() {
-    this.timeInterval = setInterval(() => this.updateTime(), 1000);
-    this.barInterval = setInterval(() => this.updateBar(), 10);
+    this.timeAndBarInterval = setInterval(() => this.updateTimeAndBar(), 100);
 
     const volume = localStorage.getItem('volume');
     const muted = localStorage.getItem('muted');
@@ -57,18 +55,23 @@ class ContinuousPlayer extends React.Component {
   }
 
   componentWillUnmount() {
-    clearInterval(this.timeInterval);
-    clearInterval(this.barInterval);
+    clearInterval(this.timeAndBarInterval);
   }
 
   componentDidUpdate() {
     if (!!this.props.track) this.audio.current.volume = this.props.volume;
   }
 
-  updateTime() {
+  updateTimeAndBar() {
+    const audio = this.audio.current;
     this.setState({
       currentTime: Math.floor(this.audio.current.currentTime)
     });
+    if (!this.state.dragging) {
+      this.setState({
+        percentDone: 100 * (audio.currentTime / audio.duration)
+      });
+    }
   }
 
   changeVolume(volume) {
@@ -80,15 +83,6 @@ class ContinuousPlayer extends React.Component {
   toggleMute() {
     this.props.toggleMute();
     localStorage.setItem('muted', !this.props.muted);
-  }
-
-  updateBar() {
-    const audio = this.audio.current;
-    if (!this.state.dragging) {
-      this.setState({
-        percentDone: 100 * (audio.currentTime / audio.duration)
-      });
-    }
   }
 
   playOrPause() {
@@ -119,8 +113,6 @@ class ContinuousPlayer extends React.Component {
     const audio = this.audio.current;
     const { seekPosition } = this.state;
     audio.currentTime = seekPosition * audio.duration;
-    this.updateTime();
-    this.updateBar();
   }
 
   volumeIcon() {
