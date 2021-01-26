@@ -71,6 +71,7 @@
 }
 
 .grey-bar {
+  position: relative;
   background-color: $sc-light-black;
   width: auto;
   height: 50px;
@@ -87,11 +88,14 @@
 }
 
 .hover-orange-bar {
+  position: absolute;
+  top: 0;
   background-color: $sc-hover-orange;
   height: inherit;
 }
 
 .track-times {
+  position: absolute;
   display: flex;
   flex-direction: row;
   justify-content: space-between;

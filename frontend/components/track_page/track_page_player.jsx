@@ -39,6 +39,15 @@ class TrackPagePlayer extends Player {
         </button>
       </div>
     );
+    const hoverBar = !this.state.hovering ? null : (
+      <div
+        className="hover-orange-bar"
+        style={{
+          left: `${this.state.hoverStart}%`,
+          right: `${this.state.hoverEnd}%`
+        }}
+      />
+    );
     return (
       <div>
         <div
@@ -75,11 +84,14 @@ class TrackPagePlayer extends Player {
                 className="track-grey-bar"
                 onClick={this.seekAudio}
                 onMouseMove={this.changeSeekPosition}
+                onMouseEnter={() => this.setState({ hovering: true })}
+                onMouseLeave={() => this.setState({ hovering: false })}
               >
                 <div
                   className="orange-bar"
                   style={{ width: `${this.state.percentDone}%` }}
-                ></div>
+                />
+                {hoverBar}
                 <div className="track-track-times">
                   {currentTime}
                   {/* <div className="duration">

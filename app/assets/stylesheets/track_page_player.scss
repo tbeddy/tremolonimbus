@@ -59,7 +59,6 @@
   }
 }
 
-
 .track-track-name {
   display: inline-block;
   color: $sc-white;
@@ -70,20 +69,16 @@
 }
 
 .track-grey-bar {
+  position: relative;
   background-color: $sc-light-black;
   width: auto;
   height: 100px;
   margin: 20px 5px;
-
+  
   &:hover {
     background-color: $sc-hover-grey;
   }
 }
-
-// .orange-bar {
-//   background-color: $sc-orange;
-//   height: inherit;
-// }
 
 .track-hover-orange-bar {
   background-color: $sc-hover-orange;
@@ -91,6 +86,7 @@
 }
 
 .track-track-times {
+  position: absolute;
   display: flex;
   flex-direction: row;
   justify-content: space-between;

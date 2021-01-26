@@ -9,7 +9,8 @@ class Player extends React.Component {
     
     this.state = {
       currentTime: 0,
-      percentDone: 0
+      percentDone: 0,
+      hovering: false
     };
 
     this.timeAndBarInterval = null;
@@ -44,6 +45,20 @@ class Player extends React.Component {
         percentDone: 100 * (trackAudio.currentTime / trackAudio.duration)
       });
     }
+    
+    if (this.state.hovering) {
+      if ((this.state.percentDone / 100) > this.state.seekPosition) {
+        this.setState({
+          hoverStart: this.state.seekPosition * 100,
+          hoverEnd: 100 - this.state.percentDone
+        });
+      } else {
+        this.setState({
+          hoverStart: this.state.percentDone,
+          hoverEnd: 100 - (this.state.seekPosition * 100)
+        });
+      }
+    }
   }
 
   playOrPause() {
@@ -65,10 +80,6 @@ class Player extends React.Component {
     this.setState({
       seekPosition: (e.clientX  - x) / width
     });
-
-    if (this.props.playing) {
-      // Show the darker orange bar
-    }
   }
 
   seekAudio() {
@@ -113,6 +124,15 @@ class Player extends React.Component {
         </button>
       </div>
     );
+    const hoverBar = !this.state.hovering ? null : (
+      <div
+        className="hover-orange-bar"
+        style={{
+          left: `${this.state.hoverStart}%`,
+          right: `${this.state.hoverEnd}%`
+        }}
+      />
+    );
     return (
       <div className="page-player">
         <div
@@ -146,11 +166,14 @@ class Player extends React.Component {
             className="grey-bar"
             onClick={this.seekAudio}
             onMouseMove={this.changeSeekPosition}
+            onMouseEnter={() => this.setState({ hovering: true })}
+            onMouseLeave={() => this.setState({ hovering: false })}
           >
             <div
               className="orange-bar"
               style={{ width: `${this.state.percentDone}%` }}
-            ></div>
+            />
+            {hoverBar}
             <div className="track-times">
               {currentTime}
               {/* <div className="duration">
