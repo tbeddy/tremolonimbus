@@ -38,67 +38,77 @@ export default props => {
   return (
     <div className="track-form-container">
       <form className="track-form">
-        <div className="form-item">
-          <label
-            htmlFor="title-input"
-            className="title-label"
-          >
-            Display name <span className="required-asterisk">*</span>
-          </label>
-          <input
-            id="title-input"
-            type="text"
-            value={displayname}
-            onChange={e => setDisplayname(e.currentTarget.value)}
-          />
-        </div>
-        <div className="form-item">
-          <label
-            htmlFor="firstname-input"
-            className="firstname-label"
-          >First name</label>
-          <input
-            id="firstname-input"
-            type="text"
-            value={firstname}
-            onChange={e => setFirstname(e.currentTarget.value)}
-          />
-        </div>
-        <div className="form-item">
-          <label
-            htmlFor="lastname-input"
-            className="lastname-label"
-          >Last name</label>
-          <input
-            id="lastname-input"
-            type="text"
-            value={lastname}
-            onChange={e => setLastname(e.currentTarget.value)}
-          />
-        </div>
-        <div className="form-item">
-          <label
-            htmlFor="city-input"
-            className="city-label"
-          >City</label>
-          <input
-            id="city-input"
-            type="text"
-            value={city}
-            onChange={e => setCity(e.currentTarget.value)}
-          />
-        </div>
-        <div className="form-item">
-          <label
-            htmlFor="country-input"
-            className="country-label"
-          >Country</label>
-          <input
-            id="country-input"
-            type="text"
-            value={country}
-            onChange={e => setCountry(e.currentTarget.value)}
-          />
+        <div className="form-fields">
+          <div className="image-input-and-preview">
+          </div>
+          <div className="text-fields">
+            <div className="form-item">
+              <label
+                htmlFor="title-input"
+                className="title-label"
+              >
+                Display name <span className="required-asterisk">*</span>
+              </label>
+              <input
+                id="title-input"
+                type="text"
+                value={displayname}
+                onChange={e => setDisplayname(e.currentTarget.value)}
+              />
+            </div>
+            <div className="form-line">
+              <div className="form-item">
+                <label
+                  htmlFor="firstname-input"
+                  className="firstname-label"
+                >First name</label>
+                <input
+                  id="firstname-input"
+                  type="text"
+                  value={firstname}
+                  onChange={e => setFirstname(e.currentTarget.value)}
+                />
+              </div>
+              <div className="form-item">
+                <label
+                  htmlFor="lastname-input"
+                  className="lastname-label"
+                >Last name</label>
+                <input
+                  id="lastname-input"
+                  type="text"
+                  value={lastname}
+                  onChange={e => setLastname(e.currentTarget.value)}
+                />
+              </div>
+            </div>
+            <div className="form-line">
+              <div className="form-item">
+                <label
+                  htmlFor="city-input"
+                  className="city-label"
+                >City</label>
+                <input
+                  id="city-input"
+                  type="text"
+                  value={city}
+                  onChange={e => setCity(e.currentTarget.value)}
+                />
+              </div>
+              <div className="form-item">
+                <label
+                  htmlFor="country-input"
+                  className="country-label"
+                >Country</label>
+                <input
+                  id="country-input"
+                  type="text"
+                  value={country}
+                  onChange={e => setCountry(e.currentTarget.value)}
+                />
+              </div>
+            </div>
+          </div>
         </div>
         <div className="track-form-bottom">
           <p className="required-field-message">

@@ -1,0 +1,36 @@
+.form-fields {
+  display: flex;
+  flex-direction: row;
+}
+
+.image-input-and-preview {
+  height: 200px;
+  min-width: 200px;
+  border-radius: 50%;
+  margin-right: 20px;
+  background-color: red;
+}
+
+.text-fields {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+
+  .form-item {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0px;
+  }
+}
+
+.form-line {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 10px 0px;
+
+  .form-item {
+    width: 48%;
+  }
+}
