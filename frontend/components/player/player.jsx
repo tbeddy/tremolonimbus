@@ -124,7 +124,7 @@ class Player extends React.Component {
         </button>
       </div>
     );
-    const hoverBar = !this.state.hovering ? null : (
+    const hoverBar = (!this.state.hovering || !this.props.playing) ? null : (
       <div
         className="hover-orange-bar"
         style={{
