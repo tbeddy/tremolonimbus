@@ -82,7 +82,7 @@ class TrackPagePlayer extends Player {
               </div>
               <div
                 className="track-grey-bar"
-                onClick={this.seekAudio}
+                onClick={this.props.playing ? this.seekAudio : this.playOrPause}
                 onMouseMove={this.changeSeekPosition}
                 onMouseEnter={() => this.setState({ hovering: true })}
                 onMouseLeave={() => this.setState({ hovering: false })}

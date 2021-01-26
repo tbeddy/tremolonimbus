@@ -83,9 +83,6 @@ class Player extends React.Component {
   }
 
   seekAudio() {
-    if (!this.props.isCurrentTrack) {
-      this.props.playTrack(this.props.id);
-    }
     const trackAudio = document.getElementById("audio");
     const { seekPosition } = this.state;
     trackAudio.currentTime = seekPosition * trackAudio.duration;
@@ -164,7 +161,7 @@ class Player extends React.Component {
           </div>
           <div
             className="grey-bar"
-            onClick={this.seekAudio}
+            onClick={this.props.playing ? this.seekAudio : this.playOrPause}
             onMouseMove={this.changeSeekPosition}
             onMouseEnter={() => this.setState({ hovering: true })}
             onMouseLeave={() => this.setState({ hovering: false })}
