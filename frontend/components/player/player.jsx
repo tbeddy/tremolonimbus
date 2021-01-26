@@ -58,6 +58,11 @@ class Player extends React.Component {
           hoverEnd: 100 - (this.state.seekPosition * 100)
         });
       }
+    } else {
+      this.setState({
+        hoverStart: 100,
+        hoverEnd: 100
+      });
     }
   }
 
