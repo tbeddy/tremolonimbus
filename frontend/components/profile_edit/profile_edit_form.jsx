@@ -12,6 +12,19 @@ export default props => {
   const [lastname, setLastname] = useState(props.lastname);
   const [city, setCity] = useState(props.city);
   const [country, setCountry] = useState(props.country);
+  const [image, setImage] = useState(null);
+  const [imageUrl, setImageUrl] = useState(null);
+
+  
+  const handleImage = e => {
+    const file = e.currentTarget.files[0];
+    const fileReader = new FileReader();
+    fileReader.onloadend = () => {
+      setImageUrl(fileReader.result);
+      setImage(file)
+    }
+    if (file) fileReader.readAsDataURL(file);
+  }
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -42,7 +55,30 @@ export default props => {
         <div className="form-fields">
           <div className="image-input-and-preview"
             style={{ "backgroundImage": generateProfilePicture(props.id) }}
-          ></div>
+          >
+            {!image ? null : (
+              <img
+                className="preview-image"
+                src={imageUrl}
+              />
+            )}
+            <div className="upload-image-button">
+              <label
+                className="input-label"
+                htmlFor="image-upload"
+              >
+                <img src={window.cameraURL} />
+                <span>Upload image</span>
+              </label>
+              <input
+                id="image-upload"
+                type="file"
+                accept="image/*"
+                className="hidden-input"
+                onChange={handleImage}
+              />
+            </div>
+          </div>
           <div className="text-fields">
             <div className="form-item">
               <label

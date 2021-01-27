@@ -1,13 +1,57 @@
+@import './core.scss';
+
 .form-fields {
   display: flex;
   flex-direction: row;
 }
 
 .image-input-and-preview {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   height: 200px;
   min-width: 200px;
   border-radius: 50%;
   margin-right: 20px;
+
+  .preview-image {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+  }
+}
+
+.upload-image-button {
+  position: absolute;
+  bottom: 20px;
+  background-color: $sc-button-grey;
+  color: $sc-dark-grey;
+  font-size: 12px;
+  padding: 3px 5px;
+
+  &:hover {
+    background-color: $sc-white;
+  }
+
+  label {
+    display: inline-block;
+    height: inherit;
+    width: inherit;
+
+    img {
+      height: 15px;
+      width: 15px;
+      margin-right: 3px;
+    }
+  }
+
+  .hidden-input {
+    visibility: hidden;
+    height: 0;
+    width: 0;
+  }
+
 }
 
 .text-fields {
