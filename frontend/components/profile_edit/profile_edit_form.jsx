@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { generateProfilePicture } from '../../util/pic_util';
 
 export default props => {
   const originalDisplayname = props.displayname;
@@ -39,8 +40,9 @@ export default props => {
     <div className="track-form-container">
       <form className="track-form">
         <div className="form-fields">
-          <div className="image-input-and-preview">
-          </div>
+          <div className="image-input-and-preview"
+            style={{ "backgroundImage": generateProfilePicture(props.id) }}
+          ></div>
           <div className="text-fields">
             <div className="form-item">
               <label
