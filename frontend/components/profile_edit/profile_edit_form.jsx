@@ -12,16 +12,15 @@ export default props => {
   const [lastname, setLastname] = useState(props.lastname);
   const [city, setCity] = useState(props.city);
   const [country, setCountry] = useState(props.country);
-  const [image, setImage] = useState(null);
-  const [imageUrl, setImageUrl] = useState(null);
+  const [imageUrl, setImageUrl] = useState(props.profileImage);
+  const [imageFile, setImageFile] = useState(null);
 
-  
   const handleImage = e => {
     const file = e.currentTarget.files[0];
     const fileReader = new FileReader();
     fileReader.onloadend = () => {
       setImageUrl(fileReader.result);
-      setImage(file)
+      setImageFile(file)
     }
     if (file) fileReader.readAsDataURL(file);
   }
@@ -45,6 +44,9 @@ export default props => {
     if ((country !== "") || (!!originalCountry)) {
       fileData.append('user[country]', country);
     }
+    if ((imageUrl === null) || (!!imageFile)) {
+      fileData.append('user[profile_image]', imageFile);
+    }
     props.updateUser(fileData, props.id)
       .then(props.disappearAndCloseModal);
   }
@@ -56,7 +58,7 @@ export default props => {
           <div className="image-input-and-preview"
             style={{ "backgroundImage": generateProfilePicture(props.id) }}
           >
-            {!image ? null : (
+            {!imageUrl ? null : (
               <img
                 className="preview-image"
                 src={imageUrl}

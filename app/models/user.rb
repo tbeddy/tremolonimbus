@@ -7,6 +7,8 @@ class User < ApplicationRecord
   validates :username, :email, :session_token, uniqueness: true
   validates :password, length: { minimum: 6, allow_nil: true }
 
+  has_one_attached :profile_image
+
   has_many :tracks,
     foreign_key: :uploader_id,
     class_name: :Track

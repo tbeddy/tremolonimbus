@@ -4,7 +4,10 @@ import ProfileEditForm from './profile_edit_form';
 
 const mStP = ({ session, entities }) => {
   const user = entities.users[session.id];
-  const { id, username, displayname, firstname, lastname, city, country } = user;
+  const {
+    id, username, displayname, firstname, lastname,
+    city, country, profile_image
+  } = user;
   return {
     id,
     username,
@@ -12,7 +15,8 @@ const mStP = ({ session, entities }) => {
     firstname: firstname ?? "",
     lastname: lastname ?? "",
     city: city ?? "",
-    country: country ?? ""
+    country: country ?? "",
+    profileImage: profile_image ?? null
   }
 }
 
