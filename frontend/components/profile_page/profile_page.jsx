@@ -23,7 +23,7 @@ class ProfilePage extends React.Component {
 
   render() {
     const { currentUserId, id, tracks, user } = this.props;
-    if (!user) return null;
+    if (!user) return null
     const trackList = (tracks === undefined) ? null : tracks.map(track => (
       <li key={track.id}>
         <PlayerContainer {...track} />
@@ -40,7 +40,10 @@ class ProfilePage extends React.Component {
         </button>
       </div>
     );
-    const { username, displayname, firstname, lastname, city, country } = user;
+    const {
+      username, displayname, firstname, lastname,
+      city, country, profileImage
+    } = user;
     let location;
     if ((!city) && (!country)) {
       location = "";
@@ -70,7 +73,9 @@ class ProfilePage extends React.Component {
           <div
             className="profile-picture"
             style={{ "backgroundImage": generateProfilePicture(id) }}
-          />
+          >
+            {!profileImage ? null : <img src={profileImage} />}
+          </div>
           <div className="profile-info">
             <div className="profile-name">
               {!displayname ? username : displayname}

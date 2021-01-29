@@ -6,7 +6,7 @@ const mStP = ({ session, entities }) => {
   const user = entities.users[session.id];
   const {
     id, username, displayname, firstname, lastname,
-    city, country, profile_image
+    city, country, profileImage
   } = user;
   return {
     id,
@@ -16,7 +16,7 @@ const mStP = ({ session, entities }) => {
     lastname: lastname ?? "",
     city: city ?? "",
     country: country ?? "",
-    profileImage: profile_image ?? null
+    profileImage: profileImage ?? null
   }
 }
 

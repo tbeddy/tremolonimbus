@@ -14,7 +14,7 @@ end
   end
   json.users do
     json.set! comment.author_id do
-      json.extract! comment.author, :id, :username
+      json.partial! "/api/users/user", user: comment.author
     end
   end
 end

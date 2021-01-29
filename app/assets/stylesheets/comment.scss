@@ -22,6 +22,11 @@
 .comment-input-picture {
   height: 40px;
   width: 40px;
+
+  img {
+    height: 40px;
+    width: 40px;
+  }
 }
 
 .comment-input {
@@ -61,6 +66,12 @@
   width: 40px;
   border-radius: 50%;
   margin-right: 5px;
+
+  img {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+  }
 }
 
 .comment-except-picture {

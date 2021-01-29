@@ -7,7 +7,7 @@
 
   json.users do
     json.set! track.uploader_id do
-      json.extract! track.uploader, :id, :username
+      json.partial! "/api/users/user", user: track.uploader
     end
   end
 

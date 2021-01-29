@@ -15,7 +15,8 @@ const mStP = ({ entities, session }, ownProps) => {
     track: track || {},
     comments: selectCommentsforTrack(entities, trackId),
     uploader: track ? entities.users[track.uploader_id] : null,
-    currentUserId: session.id
+    currentUserId: session.id,
+    currentUser: entities.users[session.id]
   }
 }
 

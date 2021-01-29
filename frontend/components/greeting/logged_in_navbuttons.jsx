@@ -38,7 +38,9 @@ class LoggedInNavButtons extends React.Component {
           <div
             className="navbar-profile-picture"
             style={{ "backgroundImage": generateProfilePicture(this.props.currentUser.id) }}
-          />
+          >
+            {!this.props.currentUser.profileImage ? null : <img src={this.props.currentUser.profileImage} />}
+          </div>
           <p>{this.props.currentUser.username}</p>
         </div>
         <div className={this.state.nameDropdownOpen ? "black-back" : ""}>

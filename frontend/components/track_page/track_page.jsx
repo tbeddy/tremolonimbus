@@ -43,7 +43,7 @@ class TrackPage extends React.Component {
   }
 
   render() {
-    const { track, comments, currentUserId } = this.props;
+    const { track, comments, currentUserId, currentUser } = this.props;
     const commentList = comments.length === 0 ? (
       <div className="empty-comments-container">
         <img src={window.chatNoCommentsURL} />
@@ -67,7 +67,9 @@ class TrackPage extends React.Component {
             <div
               className="comment-picture"
               style={{ "backgroundImage": generateProfilePicture(user.id) }}
-            />
+            >
+              {!user.profileImage ? null : <img src={user.profileImage} />}
+            </div>
             <div className="comment-except-picture">
               <div className="comment-layer">
                 <p className="comment-username">
@@ -107,7 +109,9 @@ class TrackPage extends React.Component {
             <div
               className="comment-input-picture"
               style={{ "backgroundImage": generateProfilePicture(currentUserId) }}
-            />
+            >
+              {!currentUser ? null : <img src={currentUser.profileImage} />}
+            </div>
             <form onSubmit={currentUserId ? this.submitComment : (
               e => {
                 e.preventDefault();
