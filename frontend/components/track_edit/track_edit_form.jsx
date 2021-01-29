@@ -63,7 +63,7 @@ export default props => {
               />
             </div>
           </div>
-          <div className="track-fields">
+          <div className="text-fields">
             <div className="form-item">
               <label
                 htmlFor="title-input"
