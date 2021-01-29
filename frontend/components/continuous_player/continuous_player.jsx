@@ -211,7 +211,14 @@ class ContinuousPlayer extends React.Component {
               <div
                 className="current-track-picture"
                 style={{ "backgroundImage": generateProfilePicture(this.props.uploader.id) }}
-              />
+              >
+                {!this.props.track.image ? null : (
+                  <img
+                    className="preview-image"
+                    src={this.props.track.image}
+                  />
+                )}
+              </div>
             )}
             <div className="current-track-text">
               <p className="current-artist-name">

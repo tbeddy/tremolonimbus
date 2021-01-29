@@ -104,7 +104,13 @@ class TrackPagePlayer extends Player {
               <div
                 className="track-page-player-picture"
                 style={{ "backgroundImage": generateProfilePicture(this.props.uploader.id) }}
-              />
+              >
+                {!this.props.image ? null : (
+                  <img
+                    src={this.props.image}
+                  />
+                )}
+              </div>
             )}
           </div>
         </div>

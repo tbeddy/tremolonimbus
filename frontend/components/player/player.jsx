@@ -140,7 +140,13 @@ class Player extends React.Component {
         <div
           className="page-player-picture"
           style={{ "backgroundImage": generateProfilePicture(this.props.uploader.id) }}
-        />
+        >
+          {!this.props.image ? null : (
+            <img
+              src={this.props.image}
+            />
+          )}
+        </div>
         <div className="page-player-except-picture">
           <div className="track-info-and-button">
             <button
