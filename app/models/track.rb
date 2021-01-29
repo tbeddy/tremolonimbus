@@ -4,6 +4,7 @@ class Track < ApplicationRecord
   validates :title, :uploader_id, presence: true
 
   has_one_attached :audio
+  has_one_attached :image
 
   belongs_to :uploader,
     foreign_key: :uploader_id,

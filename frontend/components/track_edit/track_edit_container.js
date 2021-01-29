@@ -7,7 +7,8 @@ const mStP = ({ session, entities }, ownProps) => {
   return {
     currentUserId: session.id,
     title: !track ? "" : track.title,
-    description: !track.description ? "" : track.description
+    description: !track.description ? "" : track.description,
+    image: !track.image ? null : track.image
   }
 }
 
