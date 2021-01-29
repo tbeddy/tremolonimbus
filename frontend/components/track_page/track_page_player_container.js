@@ -13,14 +13,16 @@ import { openModal } from '../../actions/modal_actions';
 import { selectCommentsforTrack } from '../../util/selectors';
 
 const mStP = ({ session, audio, entities }, ownProps) => {
+  const uploader = entities.users[ownProps.uploader_id];
   return {
     isCurrentUsersTrack: session.id === ownProps.uploader_id,
     currentTrackId: audio.id,
     isCurrentTrack: ownProps.id === audio.id,
     playing: audio.playing && ownProps.id === audio.id,
     currentTime: audio.currentTime,
-    uploader: entities.users[ownProps.uploader_id],
-    comments: selectCommentsforTrack(entities, ownProps.id)
+    uploader,
+    comments: selectCommentsforTrack(entities, ownProps.id),
+    image: !!ownProps.image ? ownProps.image : uploader.profileImage
   }
 };
 
