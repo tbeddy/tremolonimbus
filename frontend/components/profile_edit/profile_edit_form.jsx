@@ -55,7 +55,7 @@ export default props => {
     <div className="track-form-container">
       <form className="track-form">
         <div className="form-fields">
-          <div className="image-input-and-preview"
+          <div className="image-input-and-preview smooth-corners"
             style={{ "backgroundImage": generateProfilePicture(props.id) }}
           >
             {!imageUrl ? null : (
