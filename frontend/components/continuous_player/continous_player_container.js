@@ -12,6 +12,8 @@ import { fetchTrack } from '../../actions/track_actions';
 
 const mStP = ({ session, audio, entities }) => {
   const track = entities.tracks[audio.id];
+  const uploader = track ? entities.users[track.uploader_id] : null;
+  const image = track ? (track.image ?? (uploader ? uploader.profileImage : null)) : null
   return {
     id: audio.id,
     isCurrentUsersTrack: track && session.id === track.uploader_id,
@@ -20,8 +22,9 @@ const mStP = ({ session, audio, entities }) => {
     volume: audio.muted ? 0.0 : audio.volume,
     looping: audio.looping,
     muted: audio.muted,
-    track: track,
-    uploader: track ? entities.users[track.uploader_id] : null
+    track,
+    uploader,
+    image
   }
 };
 
