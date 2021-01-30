@@ -36,6 +36,34 @@ User.create([
     city: "Kingston", country: "Jamaica" },
 ])
 
+demo_user_profile_image = open('https://tremolonimbus-seeds.s3.amazonaws.com/facebook_default.jpeg')
+User.find_by(username: "demo_user").profile_image.attach(
+  io: demo_user_profile_image, filename: "facebook_default.jpeg")
+roald_dahl_profile_image = open('https://tremolonimbus-seeds.s3.amazonaws.com/roald_dahl.jpeg')
+User.find_by(username: "roald_dahl").profile_image.attach(
+  io: roald_dahl_profile_image, filename: "roald_dahl.jpeg")
+winner_profile_image = open('https://tremolonimbus-seeds.s3.amazonaws.com/smitty.jpeg')
+User.find_by(username: "winner").profile_image.attach(
+  io: winner_profile_image, filename: "smitty.jpeg")
+pumpkin_profile_image = open('https://tremolonimbus-seeds.s3.amazonaws.com/snoopy.jpeg')
+User.find_by(username: "pumpkin").profile_image.attach(
+  io: pumpkin_profile_image, filename: "snoopy.jpeg")
+space_profile_image = open('https://tremolonimbus-seeds.s3.amazonaws.com/carl_sagan.jpeg')
+User.find_by(username: "space").profile_image.attach(
+  io: space_profile_image, filename: "carl_sagan.jpeg")
+santa_profile_image = open('https://tremolonimbus-seeds.s3.amazonaws.com/santa.jpeg')
+User.find_by(username: "santa").profile_image.attach(
+  io: santa_profile_image, filename: "santa.jpeg")
+adventurer_profile_image = open('https://tremolonimbus-seeds.s3.amazonaws.com/indiana_jones.jpeg')
+User.find_by(username: "adventurer").profile_image.attach(
+  io: adventurer_profile_image, filename: "indiana_jones.jpeg")
+eightbit_profile_image = open('https://tremolonimbus-seeds.s3.amazonaws.com/mario.png')
+User.find_by(username: "8bit").profile_image.attach(
+  io: eightbit_profile_image, filename: "mario.png")
+bob_profile_image = open('https://tremolonimbus-seeds.s3.amazonaws.com/king_tubby.jpeg')
+User.find_by(username: "bob").profile_image.attach(
+  io: bob_profile_image, filename: "king_tubby.jpeg")
+
 Track.create([
   { title: "Halloween Countdown (30 Seconds)", play_count: rand(200..1000),
     uploader_id: User.find_by(username: "pumpkin").id },
