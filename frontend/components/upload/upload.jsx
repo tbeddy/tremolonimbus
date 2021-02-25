@@ -1,16 +1,31 @@
 import React, { useState } from 'react';
+import jsmediatags from 'jsmediatags';
 import TrackCreateForm from './track_create_form';
 
 export default props => {
   const [file, setFile] = useState(null);
+  const [title, setTitle] = useState("");
 
   document.title = "Upload your music & audio and share it with the world. on TremoloNimbus";
+
+  const prepareFile = file => {
+    jsmediatags.read(file, {
+        onSuccess: ({ tags: { title } }) => {
+          setTitle(title ?? file.name);
+          setFile(file);
+        },
+        onError: err => {
+          setTitle(file.name);
+          setFile(file);
+        }
+      })
+  }
 
   const dropFile = e => {
     e.preventDefault();
     const file = e.dataTransfer.files[0];
     if (file.type.split("/")[0] === "audio") {
-      setFile(file);
+      prepareFile(file);
     } else {
       alert("Incorrect file type. Only audio files can be uploaded as tracks.")
     }
@@ -38,7 +53,7 @@ export default props => {
             type="file"
             accept="audio/*"
             className="hidden-input"
-            onChange={e => setFile(e.currentTarget.files[0])}
+            onChange={e => prepareFile(e.currentTarget.files[0])}
           />
         </div>
       </div>
@@ -57,7 +72,7 @@ export default props => {
             {...props}
             currentUserId={props.currentUserId}
             createTrack={props.createTrack}
-            file={file} title={""} description={""}
+            file={file} title={title} description={""}
             cancelAction={cancelAction}
           />
         </div>

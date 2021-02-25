@@ -15,7 +15,7 @@ export default props => {
     const fileReader = new FileReader();
     fileReader.onloadend = () => {
       setImageUrl(fileReader.result);
-      setImageFile(file)
+      setImageFile(file);
     }
     if (file) fileReader.readAsDataURL(file);
   }
