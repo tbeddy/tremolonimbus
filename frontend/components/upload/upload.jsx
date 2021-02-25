@@ -9,13 +9,14 @@ export default props => {
   document.title = "Upload your music & audio and share it with the world. on TremoloNimbus";
 
   const prepareFile = file => {
+    const fileName = /(.+)\.[^.]+/.exec(file.name)[1];
     jsmediatags.read(file, {
         onSuccess: ({ tags: { title } }) => {
-          setTitle(title ?? file.name);
+          setTitle(title ?? fileName);
           setFile(file);
         },
         onError: err => {
-          setTitle(file.name);
+          setTitle(fileName);
           setFile(file);
         }
       })
