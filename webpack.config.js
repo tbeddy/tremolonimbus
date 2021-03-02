@@ -23,6 +23,11 @@ module.exports = {
   },
   devtool: 'source-map',
   resolve: {
-    extensions: [".js", ".jsx", "*"]
+    extensions: [".js", ".jsx", "*"],
+    fallback: {
+      "fs": false,
+      "buffer": false,
+      "react-native-fs": false
+    }
   }
 };
