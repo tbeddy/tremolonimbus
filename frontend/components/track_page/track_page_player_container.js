@@ -12,17 +12,17 @@ import {
 import { openModal } from '../../actions/modal_actions';
 import { selectCommentsforTrack } from '../../util/selectors';
 
-const mStP = ({ session, audio, entities }, ownProps) => {
-  const uploader = entities.users[ownProps.uploader_id];
+const mStP = ({ session, audio, entities }, { id, uploader_id, image }) => {
+  const uploader = entities.users[uploader_id];
   return {
-    isCurrentUsersTrack: session.id === ownProps.uploader_id,
+    isCurrentUsersTrack: session.id === uploader_id,
     currentTrackId: audio.id,
-    isCurrentTrack: ownProps.id === audio.id,
-    playing: audio.playing && ownProps.id === audio.id,
+    isCurrentTrack: id === audio.id,
+    playing: audio.playing && id === audio.id,
     currentTime: audio.currentTime,
     uploader,
-    comments: selectCommentsforTrack(entities, ownProps.id),
-    image: !!ownProps.image ? ownProps.image : uploader.profileImage
+    comments: selectCommentsforTrack(entities, id),
+    image: image ? image : (uploader ? uploader.profileImage : null)
   }
 };
 
