@@ -24,4 +24,17 @@
       end
     end
   end
+
+  track.likes.each do |like|
+    json.likes do
+      json.set! like.id do
+        json.partial! "/api/likes/like", like: like
+      end
+    end
+    json.users do
+      json.set! like.liker_id do
+        json.partial! "/api/users/user", user: like.liker
+      end
+    end
+  end
 end
