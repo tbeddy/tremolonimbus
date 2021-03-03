@@ -14,6 +14,10 @@ class Track < ApplicationRecord
     foreign_key: :track_id,
     class_name: :Comment
 
+  has_many :likes,
+    foreign_key: :track_id,
+    class_name: :Like
+
   private
 
   def ensure_play_count
