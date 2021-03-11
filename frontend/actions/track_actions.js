@@ -4,21 +4,23 @@ export const RECEIVE_TRACKS = "RECEIVE_TRACKS";
 export const RECEIVE_TRACK = "RECEIVE_TRACK";
 export const REMOVE_TRACK = "REMOVE_TRACK";
 
-const receiveTracks = ({ tracks, users, comments }) => {
+const receiveTracks = ({ tracks, users, comments, likes }) => {
   return {
     type: RECEIVE_TRACKS,
     tracks,
     users,
-    comments
+    comments,
+    likes
   }
 }
 
-const receiveTrack = ({ track, users, comments }) => {
+const receiveTrack = ({ track, users, comments, likes }) => {
   return {
     type: RECEIVE_TRACK,
     track,
     users,
-    comments
+    comments,
+    likes
   }
 }
 

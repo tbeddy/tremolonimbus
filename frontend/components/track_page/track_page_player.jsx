@@ -19,24 +19,33 @@ class TrackPagePlayer extends Player {
         {toMinutesAndSeconds(this.state.currentTime)}
       </div>
     );
-    const deleteAndEditButtons = !this.props.isCurrentUsersTrack ? (
-      <div></div>
-    ) : (
+    const trackButtons = (
       <div className="track-buttons">
-        <button
-          className="delete-track-button"
-          onClick={() => this.props.openModal("trackEdit", this.props.id)}
-        >
-          <img src={window.pencilURL} />
-          <span>Edit</span>
-        </button>
-        <button
-          className="delete-track-button"
-          onClick={this.deleteTrackandRedirect.bind(this)}
-        >
-          <img src={window.trashBlackURL} />
-          <span>Delete track</span>
-        </button>
+        <div>
+          <button
+            onClick={this.likeOrUnlikeTrack}
+          >
+            {this.props.isLiked ? "Unlike" : "Like"}
+          </button>
+        </div>
+        {!this.props.isCurrentUsersTrack ? null : (
+          <button
+            className="delete-track-button"
+            onClick={() => this.props.openModal("trackEdit", this.props.id)}
+          >
+            <img src={window.pencilURL} />
+            <span>Edit</span>
+          </button>
+        )}
+        {!this.props.isCurrentUsersTrack ? null : (
+          <button
+            className="delete-track-button"
+            onClick={this.deleteTrack}
+          >
+            <img src={window.trashBlackURL} />
+            <span>Delete track</span>
+          </button>
+        )}
       </div>
     );
     const hoverBar = (!this.state.hovering || !this.props.playing) ? null : (
@@ -116,7 +125,7 @@ class TrackPagePlayer extends Player {
         </div>
         <div className="other-than-player">
           <div className="track-buttons">
-            {deleteAndEditButtons}
+            {trackButtons}
             <div className="track-data">
               {this.props.play_count === 0 ? null : (
                 <div className="play-count">

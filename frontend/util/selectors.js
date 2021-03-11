@@ -8,6 +8,16 @@ export const selectCommentsforTrack = ({ comments, users }, trackId) => {
   })
 }
 
+export const selectLikesforTrack = ({ likes, users }, trackId) => {
+  if (!likes) return [];
+  const trackLikes = Object.values(likes).filter(
+    ({ track_id }) => track_id == trackId);
+  return trackLikes.map(like => {
+    like.user = users[like.liker_id];
+    return like;
+  })
+}
+
 export const selectTracksforUser = ({ tracks }, userId) => {
   if (!tracks) return [];
   return Object.values(tracks).filter(
