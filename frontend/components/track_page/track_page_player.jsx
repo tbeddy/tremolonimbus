@@ -27,6 +27,7 @@ class TrackPagePlayer extends Player {
             onClick={this.likeOrUnlikeTrack}
           >
             <img src={this.props.isLiked ? window.heartOrangeURL : window.heartBlackURL} />
+            <span>{this.props.isLiked ? "Liked" : "Like"}</span>
           </button>
         </div>
         {!this.props.isCurrentUsersTrack ? null : (
@@ -128,6 +129,12 @@ class TrackPagePlayer extends Player {
           <div className="track-buttons">
             {trackButtons}
             <div className="track-data">
+              {this.props.likes.length === 0 ? null : (
+                <div className="like-count">
+                  <img src={window.heartGreyURL} />
+                  {this.props.likes.length}
+                </div>
+              )}
               {this.props.play_count === 0 ? null : (
                 <div className="play-count">
                   <img src={window.playGreyURL} />

@@ -130,7 +130,7 @@ class Player extends React.Component {
             onClick={this.likeOrUnlikeTrack}
           >
             <img src={this.props.isLiked ? window.heartOrangeURL : window.heartBlackURL} />
-            <span>{this.props.isLiked ? "Liked" : "Like"}</span>
+            {this.props.likes.length === 0 ? null : <span>{this.props.likes.length}</span>}
           </button>
         </div>
         {!this.props.isCurrentUsersTrack ? null : (
