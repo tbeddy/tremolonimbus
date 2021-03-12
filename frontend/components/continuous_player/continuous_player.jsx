@@ -24,6 +24,7 @@ class ContinuousPlayer extends React.Component {
     this.changeSeekPosition = this.changeSeekPosition.bind(this);
     this.changeVolume = this.changeVolume.bind(this);
     this.toggleMute = this.toggleMute.bind(this);
+    this.likeOrUnlikeTrack = this.likeOrUnlikeTrack.bind(this);
   }
 
   componentDidMount() {
@@ -128,6 +129,18 @@ class ContinuousPlayer extends React.Component {
     }
   }
 
+  likeOrUnlikeTrack() {
+    if (this.props.isLiked) {
+      return this.props.deleteLike(this.props.isLiked);
+    } else {
+      const likeData = {
+        liker_id: this.props.currentUserId,
+        track_id: this.props.track.id
+      };
+      return this.props.createLike(likeData);
+    }
+  }
+
   render() {
     const audio = this.audio.current;
     const volumeSlider = !this.state.volumeSliderOpen ? null : (
@@ -206,34 +219,38 @@ class ContinuousPlayer extends React.Component {
             />
             {volumeSlider}
           </button>
-          <div className="current-track-details">
-            {!this.props.track ? null : (
-              <div
-                className="current-track-picture"
-                style={{ "backgroundImage": generateProfilePicture(this.props.uploader.id) }}
-              >
-                {!this.props.image ? null : (
-                  <img src={this.props.image} />
-                )}
+          {!this.props.track ? null : (
+            <div className="current-track-info">
+              <div className="current-track-details">
+                <div
+                  className="current-track-picture"
+                  style={{ "backgroundImage": generateProfilePicture(this.props.uploader.id) }}
+                >
+                  {!this.props.image ? null : (
+                    <img src={this.props.image} />
+                  )}
+                </div>
+                <div className="current-track-text">
+                  <p className="current-artist-name">
+                    <Link to={`/users/${this.props.uploader.id}`}>
+                      {this.props.track ? this.props.uploader.username : "Artist"}
+                    </Link>
+                  </p>
+                  <p className="current-track-name">
+                    <Link to={`/tracks/${this.props.track.id}`}>
+                      {this.props.track ? this.props.track.title : "Title"}
+                    </Link>
+                  </p>
+                </div>
               </div>
-            )}
-            <div className="current-track-text">
-              <p className="current-artist-name">
-                {!this.props.track ? "Artist" : (
-                  <Link to={`/users/${this.props.uploader.id}`}>
-                    {this.props.track ? this.props.uploader.username : "Artist"}
-                  </Link>
-                )}
-              </p>
-              <p className="current-track-name">
-                {!this.props.track ? "Title" : (
-                  <Link to={`/tracks/${this.props.track.id}`}>
-                    {this.props.track ? this.props.track.title : "Title"}
-                  </Link>
-                )}
-              </p>
+              <button
+                className={`continuous-like-button ${this.props.isLiked ? "liked-button" : ""}`}
+                onClick={this.likeOrUnlikeTrack}
+              >
+                <img src={!!this.props.isLiked ? window.heartOrangeURL : window.heartBlackURL} />
+              </button>
             </div>
-          </div>
+          )}
         </div>
         <div className="sidebar continuous-player-sidebar" />
       </div>

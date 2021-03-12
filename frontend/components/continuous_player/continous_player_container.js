@@ -9,13 +9,27 @@ import {
   toggleMute
 } from '../../actions/audio_actions';
 import { fetchTrack } from '../../actions/track_actions';
+import {
+  createLike,
+  deleteLike
+} from '../../actions/like_actions';
+import {
+  isCurrentTrackLiked,
+  selectLikesforTrack
+} from '../../util/selectors';
 
 const mStP = ({ session, audio, entities }) => {
   const track = entities.tracks[audio.id];
   const uploader = track ? entities.users[track.uploader_id] : null;
-  const image = track ? (track.image ?? (uploader ? uploader.profileImage : null)) : null
+  const image = track ? (
+    track.image ?? (uploader ? uploader.profileImage : null)
+  ) : null;
+  const isLiked = track ? (
+    isCurrentTrackLiked(entities.likes, track.id, session.id)
+  ) : null;
   return {
     id: audio.id,
+    currentUserId: session.id,
     isCurrentUsersTrack: track && session.id === track.uploader_id,
     playing: audio.playing,
     currentTime: audio.currentTime,
@@ -24,7 +38,8 @@ const mStP = ({ session, audio, entities }) => {
     muted: audio.muted,
     track,
     uploader,
-    image
+    image,
+    isLiked
   }
 };
 
@@ -37,7 +52,9 @@ const mDtP = dispatch => {
     changeVolume: volume => dispatch(changeVolume(volume)),
     toggleMute: () => dispatch(toggleMute()),
     updateTrack: track => dispatch(updateTrack(track)),
-    fetchTrack: trackId => dispatch(fetchTrack(trackId))
+    fetchTrack: trackId => dispatch(fetchTrack(trackId)),
+    createLike: likeData => dispatch(createLike(likeData)),
+    deleteLike: likeId => dispatch(deleteLike(likeId))
   }
 };
 

@@ -167,6 +167,19 @@
   width: 8px;
 }
 
+.current-track-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.continuous-like-button {
+  border: none;
+  height: 25px;
+  width: 25px;
+}
+
 .current-track-details {
   display: flex;
   flex-direction: row;

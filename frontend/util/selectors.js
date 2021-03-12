@@ -18,6 +18,22 @@ export const selectLikesforTrack = ({ likes, users }, trackId) => {
   })
 }
 
+export const isCurrentTrackLiked = (likes, trackId, currentUserId) => {
+  if (!likes) return false;
+  // Object.values(likes).forEach(({ id, track_id, liker_id }) => {
+  //   if ((track_id === trackId) && (liker_id === currentUserId)) {
+  //     return id;
+  //   }
+  // });
+  for (let id in likes) {
+    const { track_id, liker_id } = likes[id];
+    if ((track_id === trackId) && (liker_id === currentUserId)) {
+      return id;
+    }
+  }
+  return null;
+}
+
 export const selectTracksforUser = ({ tracks }, userId) => {
   if (!tracks) return [];
   return Object.values(tracks).filter(
