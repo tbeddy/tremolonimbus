@@ -126,10 +126,10 @@ class Player extends React.Component {
       <div className="track-buttons">
         <div>
           <button
-            className="delete-track-button"
-            onClick = {this.likeOrUnlikeTrack}
+            className={this.props.isLiked ? "liked-button" : ""}
+            onClick={this.likeOrUnlikeTrack}
           >
-            <img src={window.heartBlackURL} />
+            <img src={this.props.isLiked ? window.heartOrangeURL : window.heartBlackURL} />
             <span>{this.props.isLiked ? "Liked" : "Like"}</span>
           </button>
         </div>

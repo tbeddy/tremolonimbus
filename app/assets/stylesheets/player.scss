@@ -147,6 +147,15 @@
       border: solid $sc-hover-grey 1px;
     }
   }
+
+  .liked-button {
+    border: solid $sc-orange 1px;
+    color: $sc-orange;
+
+    &:hover {
+      border: solid $sc-orange 1px;
+    }
+  }
 }
 
 .track-data {
