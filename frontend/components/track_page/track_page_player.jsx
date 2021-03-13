@@ -24,7 +24,9 @@ class TrackPagePlayer extends Player {
         <div>
           <button
             className={this.props.isLiked ? "liked-button" : ""}
-            onClick={this.likeOrUnlikeTrack}
+            onClick={this.props.currentUserId ? this.likeOrUnlikeTrack : (
+              () => this.props.openModal('login')
+            )}
           >
             <img src={this.props.isLiked ? window.heartOrangeURL : window.heartBlackURL} />
             <span>{this.props.isLiked ? "Liked" : "Like"}</span>

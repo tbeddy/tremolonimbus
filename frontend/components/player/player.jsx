@@ -127,7 +127,9 @@ class Player extends React.Component {
         <div>
           <button
             className={this.props.isLiked ? "liked-button" : ""}
-            onClick={this.likeOrUnlikeTrack}
+            onClick={this.props.currentUserId ? this.likeOrUnlikeTrack : (
+              () => this.props.openModal('login')
+            )}
           >
             <img src={this.props.isLiked ? window.heartOrangeURL : window.heartBlackURL} />
             {this.props.likes.length === 0 ? null : <span>{this.props.likes.length}</span>}

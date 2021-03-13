@@ -13,10 +13,8 @@ import {
   createLike,
   deleteLike
 } from '../../actions/like_actions';
-import {
-  isCurrentTrackLiked,
-  selectLikesforTrack
-} from '../../util/selectors';
+import { openModal } from "../../actions/modal_actions";
+import { isCurrentTrackLiked } from '../../util/selectors';
 
 const mStP = ({ session, audio, entities }) => {
   const track = entities.tracks[audio.id];
@@ -54,7 +52,8 @@ const mDtP = dispatch => {
     updateTrack: track => dispatch(updateTrack(track)),
     fetchTrack: trackId => dispatch(fetchTrack(trackId)),
     createLike: likeData => dispatch(createLike(likeData)),
-    deleteLike: likeId => dispatch(deleteLike(likeId))
+    deleteLike: likeId => dispatch(deleteLike(likeId)),
+    openModal: modal => dispatch(openModal(modal))
   }
 };
 
