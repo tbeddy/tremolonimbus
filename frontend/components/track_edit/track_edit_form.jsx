@@ -13,7 +13,7 @@ export default props => {
     const fileReader = new FileReader();
     fileReader.onloadend = () => {
       setImageUrl(fileReader.result);
-      setImageFile(file)
+      setImageFile(file);
     }
     if (file) fileReader.readAsDataURL(file);
   }
@@ -26,7 +26,7 @@ export default props => {
     if ((description !== "") || (!!originalDescription)) {
       fileData.append('track[description]', description);
     }
-    if ((imageUrl === null) || (!!imageFile)) {
+    if ((imageUrl !== null) && (!!imageFile)) {
       fileData.append('track[image]', imageFile);
     }
     props.updateTrack(fileData, props.id)
