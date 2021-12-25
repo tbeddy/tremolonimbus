@@ -52,12 +52,6 @@ export default ({ openModal, fetchTracks, tracks }) => {
             src={window.githubURL}
           />
         </a>
-        <a href="https://angel.co/u/timcmbedford" target="_blank">
-          <img
-            className="outside-logo"
-            src={window.angelListURL}
-          />
-        </a>
         <a href="https://www.linkedin.com/in/timcmbedford" target="_blank">
           <img
             className="outside-logo"
