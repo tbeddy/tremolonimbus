@@ -12,5 +12,6 @@ jobs:
           bundler: Gemfile.lock
           bundler-cache: true
       - name: Run tests
-        run: ls
-        run: bundle exec rake
+        run: |
+          ls
+          bundle exec rake
