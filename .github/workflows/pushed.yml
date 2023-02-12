@@ -10,10 +10,8 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1.137.2
         with:
-          ruby-version: 3.2.1
+          ruby-version: 2.7
           bundler: Gemfile.lock
           bundler-cache: true
       - name: Run tests
-        run: |
-          ls
-          bundle exec rake
+        run: bundle exec rake
