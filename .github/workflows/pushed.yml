@@ -1,0 +1,15 @@
+name: "Pushed to branch"
+on:
+  push:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1.137.2
+        with:
+          ruby-version: 2.5
+          rubygems: Gemfile.lock
+          bundler-cache: true
+      - name: Run tests
+        run: bin/rake
