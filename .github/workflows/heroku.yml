@@ -6,6 +6,8 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
       - name: Install and set up Heroku
         run: |
           cat > ~/.netrc <<EOF
@@ -17,13 +19,10 @@ jobs:
               password $HEROKU_API_KEY
           EOF
           curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
-          git init
           git branch -m master
-          pwd
-          ls
           heroku git:remote -a tremolonimbus
         env:
           HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
       - name: Deploy
-        run: git push heroku main:master
+        run: git push heroku master
