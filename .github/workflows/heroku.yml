@@ -8,10 +8,18 @@ jobs:
     steps:
       - name: Install and set up Heroku
         run: |
+          cat > ~/.netrc <<EOF
+            machine api.heroku.com
+              login $HEROKU_EMAIL
+              password $HEROKU_API_KEY
+            machine git.heroku.com
+              login $HEROKU_EMAIL
+              password $HEROKU_API_KEY
+          EOF
           curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
-          git init
           heroku git:remote -a tremolonimbus
         env:
+          HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
       - name: Deploy
         run: git push heroku master
