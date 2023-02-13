@@ -11,5 +11,7 @@ jobs:
           curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
           git init
           heroku git:remote -a tremolonimbus
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
       - name: Deploy
         run: git push heroku master
