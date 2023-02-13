@@ -1,0 +1,12 @@
+name: "Deploy to Heroku"
+on:
+  push:
+    branches: ["master"]
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Heroku
+        run: 
+      - name: Deploy
+        run: git push heroku master
