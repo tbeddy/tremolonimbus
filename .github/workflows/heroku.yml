@@ -26,4 +26,4 @@ jobs:
           HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
       - name: Deploy
-        run: git push heroku master:master
+        run: git push heroku main:master
