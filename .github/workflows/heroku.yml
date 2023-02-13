@@ -9,6 +9,7 @@ jobs:
       - name: Install and set up Heroku
         run: |
           curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
+          git init
           heroku git:remote -a tremolonimbus
       - name: Deploy
         run: git push heroku master
