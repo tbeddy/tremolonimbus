@@ -17,6 +17,7 @@ jobs:
               password $HEROKU_API_KEY
           EOF
           curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
+          git init
           heroku git:remote -a tremolonimbus
         env:
           HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
