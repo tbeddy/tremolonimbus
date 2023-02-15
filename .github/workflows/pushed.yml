@@ -22,7 +22,7 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1.137.2
         with:
-          ruby-version: 2.7.7
+          ruby-version: 3.2.0
           bundler: Gemfile.lock
           bundler-cache: true
       - name: Set up database schema
